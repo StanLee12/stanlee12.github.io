@@ -102,21 +102,23 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout . / &#123;file&#125;</span><br></pre></td></tr></table></figure>
 <p>撤回修改，当为 . 时， 撤销所有的修改，除了新添加的文件。当指定文件时只撤销该文件的修改</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b &#123;branch_name&#125;</span><br></pre></td></tr></table></figure>
-<p>新建一个分支, 当没有 -b 是，指定分支名则为切换分支</p>
+<p>新建一个分支, 当没有 -b 时，指定分支名则为切换分支</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
 <p>拉取远程仓库最新代码到当前分支</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></table></figure>
 <p>推送当前分支commit到远程分支</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase &#123;branch_name&#125;</span><br></pre></td></tr></table></figure>
-<p>同步分支代码时建议使用，会保持commit记录干净整洁<br>使当前仓库的commit与指定分支进行同步，只会更新当前分支的commit，与主分支无关<br>当出现冲突时，会进入到rebase进度, git status会发现有修改了的文件，其中又冲突，并将冲突解决<br>解决之后使用<code>git add .</code>  然后 <code>git rebase --continue</code>继续rebase.<br>直到分支正常切换到当前分支下。如果中途不像rebase可以使用<code>git rebase --abort</code>中断rebase操作</p>
+<p>同步分支代码时建议使用，会保持commit记录干净整洁<br>使当前仓库的commit与指定分支进行同步，只会更新当前分支的commit，与主分支无关<br>当出现冲突时，会进入到rebase进度, git status会发现有修改了的文件，其中有冲突，并将冲突解决<br>解决之后使用<code>git add .</code>  然后 <code>git rebase --continue</code>继续rebase.<br>直到分支正常切换到当前分支下。如果中途不想继续rebase可以使用<code>git rebase --abort</code>中断rebase操作</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/02/git-operation-md/" data-id="clktiw8qx0000bv5te8vm0ppl" data-title="git操作常用命令说明" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/02/git-operation-md/" data-id="clktm28tl0000kl5t5f0s0re2" data-title="git操作常用命令说明" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+
     </footer>
   </div>
   
@@ -151,10 +153,12 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/02/canvas-arc-md/" data-id="clktiw8r30001bv5t3r044cau" data-title="使用canvas绘制扇形" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/02/canvas-arc-md/" data-id="clktm28tr0001kl5t3c1jgmei" data-title="使用canvas绘制扇形" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/canvas/" rel="tag">canvas</a></li></ul>
+
     </footer>
   </div>
   
@@ -185,28 +189,41 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p> <code>sh -p &#123;port&#125; &#123;name&#125;@&#123;ip_address&#125;</code> 回车之后输入服务器密码</p>
-<p> 安装nginx 可以使用 linux系统自带的yum包管理器</p>
-<p> <code>find / -name &#123;package_name&#125;</code> 可以查看包所在位置</p>
-<p> <code>firewall-cmd —list-ports</code>  查看所有开放端口</p>
-<p> <code>firewall-cmd —permanent —zone=public —add-port=&#123;port&#125;/tcp</code> 命令含义：<br>        <code>--zone #作用域</code><br>        <code>--add-port=1935/tcp  #添加端口，格式为：端口/通讯协议</code><br>        <code>--permanent  #永久生效，没有此参数重启后失效</code></p>
-<p> <code>firewall-cmd —reload</code> 重启防火墙，添加新的端口后必须需要重启</p>
-<p> netstat 该工具需要通过yum安装，可以查看机器的网络连接状态</p>
-<p> <code>netstat -anp</code> 查看所有网络连接 <code>netstat -lnp</code> 查看端口连接</p>
-<p> <code>nginx -s stop</code> 停止nginx所有服务</p>
-<p> <code>nginx -s reload</code> 重新加载nginx服务</p>
-<p> <code>nginx -c /etc/nginx/nginx.conf</code>  使用指定配置文件启动nginx</p>
-<p> nginx.conf文件有修改，需要先stop nginx服务，然后重新启动</p>
-<p> <code>scp -r -P &#123;port&#125; &#123;dir&#125; &#123;name&#125;@&#123;ip_address&#125;:&#123;dir&#125;</code>  该命令可以将本机上的文件夹上传至服务器</p>
-<p> <code>ps aux |grep nginx</code> 该命令查看所有包含有nginx字样的运行服务</p>
+        <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p &#123;port&#125; &#123;name&#125;@&#123;ip_address&#125;</span><br></pre></td></tr></table></figure>
+<p>回车之后输入服务器密码</p>
+<p>安装nginx 可以使用 linux系统自带的yum包管理器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -name &#123;package_name&#125;</span><br></pre></td></tr></table></figure>
+<p>可以查看包所在位置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd —list-ports</span><br></pre></td></tr></table></figure>
+<p>查看所有开放端口</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd —permanent —zone=public —add-port=&#123;port&#125;/tcp </span><br><span class="line"><span class="meta prompt_">		#</span><span class="language-bash">命令含义：</span></span><br><span class="line">   	--zone #作用域</span><br><span class="line">   	--add-port=1935/tcp  #添加端口，格式为：端口/通讯协议</span><br><span class="line">   	--permanent  #永久生效，没有此参数重启后失效</span><br></pre></td></tr></table></figure>
+<p>添加新的端口</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd —reload</span><br></pre></td></tr></table></figure>
+<p>重启防火墙，添加新的端口后必须需要重启</p>
+<p>netstat 该工具需要通过yum安装，可以查看机器的网络连接状态</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netstat -anp #查看所有网络连接 </span><br><span class="line">netstat -lnp #查看端口连接</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s stop</span><br></pre></td></tr></table></figure>
+<p>停止nginx所有服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>
+<p>重新加载nginx服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -c /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
+<p>使用指定配置文件启动nginx</p>
+<p>nginx.conf文件有修改，需要先stop nginx服务，然后重新启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r -P &#123;port&#125; &#123;dir&#125; &#123;name&#125;@&#123;ip_address&#125;:&#123;dir&#125;</span><br></pre></td></tr></table></figure>
+<p>该命令可以将本机上的文件夹上传至服务器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux |grep nginx</span><br></pre></td></tr></table></figure>
+<p>该命令查看所有包含有nginx字样的运行服务</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/02/service-operation-md/" data-id="clktiw8r60002bv5t8zeh34o5" data-title="服务器操作常用命令" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/02/service-operation-md/" data-id="clktm28tx0003kl5t8u6m47aa" data-title="服务器操作常用命令" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
+
     </footer>
   </div>
   
@@ -225,9 +242,23 @@
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/" rel="tag">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
