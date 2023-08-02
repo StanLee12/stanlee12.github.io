@@ -98,9 +98,12 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 plugin: landscape
 ## Themes: https://hexo.io/themes/
-remote_theme: landscape
+theme: landscape
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+  type: git
+  repo: https://github.com/StanLee12/stanlee12.github.io
+  branch: gh-pages
+  message: 更新blog
