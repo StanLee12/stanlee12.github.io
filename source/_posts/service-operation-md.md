@@ -5,7 +5,7 @@ date: 2023-08-02 15:52:04
 tags:
 ---
 
- `ssh -p {port} {name}@{ip_address}` 回车之后输入服务器密码
+ `sh -p {port} {name}@{ip_address}` 回车之后输入服务器密码
 
  安装nginx 可以使用 linux系统自带的yum包管理器
 
