@@ -73,6 +73,58 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-git-operation-md" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/02/git-operation-md/" class="article-date">
+  <time class="dt-published" datetime="2023-08-02T09:11:48.000Z" itemprop="datePublished">2023-08-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/02/git-operation-md/">git操作常用命令说明</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+<p>查看当前git目录下文件的修改情况</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff &#123;file&#125;</span><br></pre></td></tr></table></figure>
+<p>查看文件修改了什么内容， 不指定文件默认显示全部修改过的文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout . / &#123;file&#125;</span><br></pre></td></tr></table></figure>
+<p>撤回修改，当为 . 时， 撤销所有的修改，除了新添加的文件。当指定文件时只撤销该文件的修改</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b &#123;branch_name&#125;</span><br></pre></td></tr></table></figure>
+<p>新建一个分支, 当没有 -b 是，指定分支名则为切换分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
+<p>拉取远程仓库最新代码到当前分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></table></figure>
+<p>推送当前分支commit到远程分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase &#123;branch_name&#125;</span><br></pre></td></tr></table></figure>
+<p>同步分支代码时建议使用，会保持commit记录干净整洁<br>使当前仓库的commit与指定分支进行同步，只会更新当前分支的commit，与主分支无关<br>当出现冲突时，会进入到rebase进度, git status会发现有修改了的文件，其中又冲突，并将冲突解决<br>解决之后使用<code>git add .</code>  然后 <code>git rebase --continue</code>继续rebase.<br>直到分支正常切换到当前分支下。如果中途不像rebase可以使用<code>git rebase --abort</code>中断rebase操作</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://stanlee12.github.io/2023/08/02/git-operation-md/" data-id="clktiw8qx0000bv5te8vm0ppl" data-title="git操作常用命令说明" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-canvas-arc-md" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/08/02/canvas-arc-md/" class="article-date">
@@ -99,7 +151,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/02/canvas-arc-md/" data-id="clkti83580001va5t97ki1xra" data-title="使用canvas绘制扇形" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/02/canvas-arc-md/" data-id="clktiw8r30001bv5t3r044cau" data-title="使用canvas绘制扇形" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -133,7 +185,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p> <code>ssh -p &#123;port&#125; &#123;name&#125;@&#123;ip_address&#125;</code> 回车之后输入服务器密码</p>
+        <p> <code>sh -p &#123;port&#125; &#123;name&#125;@&#123;ip_address&#125;</code> 回车之后输入服务器密码</p>
 <p> 安装nginx 可以使用 linux系统自带的yum包管理器</p>
 <p> <code>find / -name &#123;package_name&#125;</code> 可以查看包所在位置</p>
 <p> <code>firewall-cmd —list-ports</code>  查看所有开放端口</p>
@@ -151,7 +203,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/02/service-operation-md/" data-id="clkti83520000va5t9iose0bn" data-title="服务器操作常用命令" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/02/service-operation-md/" data-id="clktiw8r60002bv5t8zeh34o5" data-title="服务器操作常用命令" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -192,6 +244,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2023/08/02/git-operation-md/">git操作常用命令说明</a>
+          </li>
         
           <li>
             <a href="/2023/08/02/canvas-arc-md/">使用canvas绘制扇形</a>

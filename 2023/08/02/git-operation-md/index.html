@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>git操作常用命令说明 | Stan&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1git status 查看当前git目录下文件的修改情况 1git diff &amp;#123;file&amp;#125; 查看文件修改了什么内容， 不指定文件默认显示全部修改过的文件 1git checkout . &#x2F; &amp;#123;file&amp;#125; 撤回修改，当为 . 时， 撤销所有的修改，除了新添加的文件。当指定文件时只撤销该文件的修改 1git checkout -b &amp;#123;branch_n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git操作常用命令说明">
+<meta property="og:url" content="https://stanlee12.github.io/2023/08/02/git-operation-md/index.html">
+<meta property="og:site_name" content="Stan&#39;s blog">
+<meta property="og:description" content="1git status 查看当前git目录下文件的修改情况 1git diff &amp;#123;file&amp;#125; 查看文件修改了什么内容， 不指定文件默认显示全部修改过的文件 1git checkout . &#x2F; &amp;#123;file&amp;#125; 撤回修改，当为 . 时， 撤销所有的修改，除了新添加的文件。当指定文件时只撤销该文件的修改 1git checkout -b &amp;#123;branch_n">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-08-02T09:11:48.000Z">
+<meta property="article:modified_time" content="2023-08-02T09:25:25.127Z">
+<meta property="article:author" content="Stan Lee">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Stan's blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Stan&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://stanlee12.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-git-operation-md" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/02/git-operation-md/" class="article-date">
+  <time class="dt-published" datetime="2023-08-02T09:11:48.000Z" itemprop="datePublished">2023-08-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      git操作常用命令说明
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+<p>查看当前git目录下文件的修改情况</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff &#123;file&#125;</span><br></pre></td></tr></table></figure>
+<p>查看文件修改了什么内容， 不指定文件默认显示全部修改过的文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout . / &#123;file&#125;</span><br></pre></td></tr></table></figure>
+<p>撤回修改，当为 . 时， 撤销所有的修改，除了新添加的文件。当指定文件时只撤销该文件的修改</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b &#123;branch_name&#125;</span><br></pre></td></tr></table></figure>
+<p>新建一个分支, 当没有 -b 是，指定分支名则为切换分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
+<p>拉取远程仓库最新代码到当前分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></table></figure>
+<p>推送当前分支commit到远程分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase &#123;branch_name&#125;</span><br></pre></td></tr></table></figure>
+<p>同步分支代码时建议使用，会保持commit记录干净整洁<br>使当前仓库的commit与指定分支进行同步，只会更新当前分支的commit，与主分支无关<br>当出现冲突时，会进入到rebase进度, git status会发现有修改了的文件，其中又冲突，并将冲突解决<br>解决之后使用<code>git add .</code>  然后 <code>git rebase --continue</code>继续rebase.<br>直到分支正常切换到当前分支下。如果中途不像rebase可以使用<code>git rebase --abort</code>中断rebase操作</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://stanlee12.github.io/2023/08/02/git-operation-md/" data-id="clktiw8qx0000bv5te8vm0ppl" data-title="git操作常用命令说明" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/08/02/canvas-arc-md/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">使用canvas绘制扇形</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/08/02/git-operation-md/">git操作常用命令说明</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/02/canvas-arc-md/">使用canvas绘制扇形</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/02/service-operation-md/">服务器操作常用命令</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 Stan Lee<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
