@@ -4,13 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>Stan&#39;s blog</title>
+  <title>使用canvas绘制扇形 | Stan&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Stan&#39;s blog">
-<meta property="og:url" content="https://stanlee12.github.io/index.html">
+  <meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用canvas绘制扇形">
+<meta property="og:url" content="https://stanlee12.github.io/2023/08/02/canvas-arc-md/index.html">
 <meta property="og:site_name" content="Stan&#39;s blog">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-08-02T09:05:55.000Z">
+<meta property="article:modified_time" content="2023-08-02T09:06:49.999Z">
 <meta property="article:author" content="Stan Lee">
 <meta name="twitter:card" content="summary">
   
@@ -71,9 +75,7 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-canvas-arc-md" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-canvas-arc-md" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/08/02/canvas-arc-md/" class="article-date">
   <time class="dt-published" datetime="2023-08-02T09:05:55.000Z" itemprop="datePublished">2023-08-02</time>
@@ -86,8 +88,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/02/canvas-arc-md/">使用canvas绘制扇形</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      使用canvas绘制扇形
     </h1>
   
 
@@ -106,63 +108,19 @@
     </footer>
   </div>
   
-</article>
-
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-service-operation-md" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/02/service-operation-md/" class="article-date">
-  <time class="dt-published" datetime="2023-08-02T07:52:04.000Z" itemprop="datePublished">2023-08-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/02/service-operation-md/">服务器操作常用命令</a>
-    </h1>
+    <a href="/2023/08/02/service-operation-md/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">服务器操作常用命令</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p> <code>ssh -p &#123;port&#125; &#123;name&#125;@&#123;ip_address&#125;</code> 回车之后输入服务器密码</p>
-<p> 安装nginx 可以使用 linux系统自带的yum包管理器</p>
-<p> <code>find / -name &#123;package_name&#125;</code> 可以查看包所在位置</p>
-<p> <code>firewall-cmd —list-ports</code>  查看所有开放端口</p>
-<p> <code>firewall-cmd —permanent —zone=public —add-port=&#123;port&#125;/tcp</code> 命令含义：<br>        <code>--zone #作用域</code><br>        <code>--add-port=1935/tcp  #添加端口，格式为：端口/通讯协议</code><br>        <code>--permanent  #永久生效，没有此参数重启后失效</code></p>
-<p> <code>firewall-cmd —reload</code> 重启防火墙，添加新的端口后必须需要重启</p>
-<p> netstat 该工具需要通过yum安装，可以查看机器的网络连接状态</p>
-<p> <code>netstat -anp</code> 查看所有网络连接 <code>netstat -lnp</code> 查看端口连接</p>
-<p> <code>nginx -s stop</code> 停止nginx所有服务</p>
-<p> <code>nginx -s reload</code> 重新加载nginx服务</p>
-<p> <code>nginx -c /etc/nginx/nginx.conf</code>  使用指定配置文件启动nginx</p>
-<p> nginx.conf文件有修改，需要先stop nginx服务，然后重新启动</p>
-<p> <code>scp -r -P &#123;port&#125; &#123;dir&#125; &#123;name&#125;@&#123;ip_address&#125;:&#123;dir&#125;</code>  该命令可以将本机上的文件夹上传至服务器</p>
-<p> <code>ps aux |grep nginx</code> 该命令查看所有包含有nginx字样的运行服务</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/02/service-operation-md/" data-id="clkti83520000va5t9iose0bn" data-title="服务器操作常用命令" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-
-  
 
 
 </section>
