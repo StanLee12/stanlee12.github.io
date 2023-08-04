@@ -73,6 +73,45 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-nginx-veu-server-md" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/04/nginx-veu-server-md/" class="article-date">
+  <time class="dt-published" datetime="2023-08-04T04:35:45.000Z" itemprop="datePublished">2023-08-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/04/nginx-veu-server-md/">nginx 部署 vue应用 server基本配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">		listen   18080; # 监听的端口号,需要在防火墙中开启</span><br><span class="line">    server_name  _; # server_name指令配置为_，则表示该虚拟主机将接受所有域名和主机名的请求。</span><br><span class="line"></span><br><span class="line">		location / &#123; # 用于匹配对根目录的请求</span><br><span class="line">        root /usr/share/nginx/dist; # 项目build之后存放的文件夹</span><br><span class="line">        try_files $uri $uri/ /index.html; # 指令用于尝试请求的文件或目录，如果找不到，则返回 index.html</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://stanlee12.github.io/2023/08/04/nginx-veu-server-md/" data-id="clkw3r9uf0004qu5t4jcreb78" data-title="nginx 部署 vue应用 server基本配置" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-git-operation-md" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/08/02/git-operation-md/" class="article-date">
@@ -113,7 +152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/02/git-operation-md/" data-id="clktm28tl0000kl5t5f0s0re2" data-title="git操作常用命令说明" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/02/git-operation-md/" data-id="clkw3r9u00000qu5t8bk86b3w" data-title="git操作常用命令说明" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -153,7 +192,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/02/canvas-arc-md/" data-id="clktm28tr0001kl5t3c1jgmei" data-title="使用canvas绘制扇形" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/02/canvas-arc-md/" data-id="clkw3r9u90001qu5t68136wyk" data-title="使用canvas绘制扇形" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -218,7 +257,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/02/service-operation-md/" data-id="clktm28tx0003kl5t8u6m47aa" data-title="服务器操作常用命令" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/02/service-operation-md/" data-id="clkw3r9ud0003qu5tevyw19te" data-title="服务器操作常用命令" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -275,6 +314,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2023/08/04/nginx-veu-server-md/">nginx 部署 vue应用 server基本配置</a>
+          </li>
         
           <li>
             <a href="/2023/08/02/git-operation-md/">git操作常用命令说明</a>
