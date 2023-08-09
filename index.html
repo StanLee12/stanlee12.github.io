@@ -116,7 +116,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/09/ssh-connect-service/" data-id="cll3kunq400058r5t5oy907ec" data-title="使用ssh免密连接服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/09/ssh-connect-service/" data-id="cll3kygxi0004gl5tdxgkc7pe" data-title="使用ssh免密连接服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -150,12 +150,12 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">		listen   18080; # 监听的端口号,需要在防火墙中开启</span><br><span class="line">    server_name  _; # server_name指令配置为_，则表示该虚拟主机将接受所有域名和主机名的请求。</span><br><span class="line"></span><br><span class="line">		location / &#123; # 用于匹配对根目录的请求</span><br><span class="line">        root /usr/share/nginx/dist; # 项目build之后存放的文件夹</span><br><span class="line">        try_files $uri $uri/ /index.html; # 指令用于尝试请求的文件或目录，如果找不到，则返回 index.html</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">  <span class="attribute">listen</span>   <span class="number">18080</span>; <span class="comment"># 监听的端口号,需要在防火墙中开启</span></span><br><span class="line">  <span class="attribute">server_name</span>  _; <span class="comment"># server_name指令配置为_，则表示该虚拟主机将接受所有域名和主机名的请求。</span></span><br><span class="line"></span><br><span class="line">  <span class="section">location</span> / &#123; <span class="comment"># 用于匹配对根目录的请求</span></span><br><span class="line">    <span class="attribute">root</span> /usr/share/nginx/dist; <span class="comment"># 项目build之后存放的文件夹</span></span><br><span class="line">    <span class="attribute">try_files</span> <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.html; <span class="comment"># 指令用于尝试请求的文件或目录，如果找不到，则返回 index.html</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/04/nginx-veu-server-md/" data-id="cll3kunps00018r5t5uz92k6q" data-title="nginx 部署 vue应用 server基本配置" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/04/nginx-veu-server-md/" data-id="cll3kygxk0005gl5ted6w1hnv" data-title="nginx 部署 vue应用 server基本配置" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -207,7 +207,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/02/git-operation-md/" data-id="cll3kunq000038r5t4ldnd81w" data-title="git操作常用命令说明" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/02/git-operation-md/" data-id="cll3kygx60000gl5t0z15110v" data-title="git操作常用命令说明" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -247,7 +247,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/02/canvas-arc-md/" data-id="cll3kunpj00008r5tdzbl2occ" data-title="使用canvas绘制扇形" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/02/canvas-arc-md/" data-id="cll3kygxc0001gl5t41h8csvn" data-title="使用canvas绘制扇形" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -312,7 +312,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/02/service-operation-md/" data-id="cll3kunq200048r5t9fuqa3ae" data-title="服务器操作常用命令" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/02/service-operation-md/" data-id="cll3kygxg0003gl5t6pqwha4h" data-title="服务器操作常用命令" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
