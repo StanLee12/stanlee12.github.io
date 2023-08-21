@@ -73,6 +73,60 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-ssh-default-md" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/21/ssh-default-md/" class="article-date">
+  <time class="dt-published" datetime="2023-08-21T03:50:20.000Z" itemprop="datePublished">2023-08-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/21/ssh-default-md/">ssh配置快捷连接服务器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Host myserver</span><br><span class="line">    HostName [ip_address] # 服务器ip地址</span><br><span class="line">    User [user_name] # 服务器登录的账户名称</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa # ssh生成的密钥文件地址</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    AddKeysToAgent yes</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>PreferredAuthentications</code> 是一个用于配置 SSH 客户端首选身份验证方式的选项。它允许你指定客户端在连接远程服务器时首选的身份验证方式顺序。SSH 支持多种身份验证方式，如密码、公钥、GSSAPI 等。</p>
+<p>如果需要同时支持多种身份验证方式，可以使用逗号分隔它们：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PreferredAuthentications publickey,password</span><br></pre></td></tr></table></figure>
+
+<p><code>AddKeysToAgent</code> 是一个用于配置 SSH 客户端是否将密钥添加到 SSH 代理（如 ssh-agent）中的选项。SSH 代理可以管理你的私钥，允许你在登录后只需要输入一次密码即可在整个会话中使用私钥。</p>
+<p>默认情况下，SSH 客户端不会自动将密钥添加到代理中。如果你想在每次登录时将密钥添加到代理，可以在 SSH 配置文件中添加以下行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AddKeysToAgent <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
+<p>这样，在登录时会提示你输入私钥的密码，并将私钥添加到代理中，以后不再需要重复输入密码。</p>
+<p>还有ssh配置github、gitee、gitlab连接的示例:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">Default gitHub user Self</span></span><br><span class="line">Host github.com</span><br><span class="line">  HostName github.com</span><br><span class="line">  User [stanlee1226@gmail.com] # email</span><br><span class="line">  PreferredAuthentications publickey</span><br><span class="line">  IdentityFile ~/.ssh/id_rsa.github</span><br><span class="line">  AddKeysToAgent yes</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">Add gitee user</span></span><br><span class="line">Host gitee.com</span><br><span class="line">  HostName gitee.com</span><br><span class="line">  User [stanlee1226@gmail.com] #email</span><br><span class="line">  PreferredAuthentications publickey</span><br><span class="line">  IdentityFile ~/.ssh/id_rsa.gitee</span><br><span class="line">  AddKeysToAgent yes</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">Add gitlab user</span></span><br><span class="line">Host git@[ip_address]</span><br><span class="line">  HostName [ip_address]</span><br><span class="line">  Port [port]</span><br><span class="line">  User [account]</span><br><span class="line">  PreferredAuthentications publickey</span><br><span class="line">  IdentityFile ~/.ssh/id_rsa.gitlab</span><br><span class="line">  AddKeysToAgent yes</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://stanlee12.github.io/2023/08/21/ssh-default-md/" data-id="cllkcpomh000bhe5t3e27b4qj" data-title="ssh配置快捷连接服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-ssh-connect-service" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/08/09/ssh-connect-service/" class="article-date">
@@ -116,7 +170,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/09/ssh-connect-service/" data-id="cll4iphfk0004n35tcog1h6in" data-title="使用ssh免密连接服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/09/ssh-connect-service/" data-id="cllkcpomd0005he5tesjg1xfg" data-title="使用ssh免密连接服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -155,7 +209,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/04/nginx-veu-server-md/" data-id="cll4iphg2000an35t3jnl48bu" data-title="nginx 部署 vue应用 server基本配置" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/04/nginx-veu-server-md/" data-id="cllkcpomb0003he5t80wl8sw0" data-title="nginx 部署 vue应用 server基本配置" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -207,7 +261,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/02/git-operation-md/" data-id="cll4iphf30001n35t1b5p23q1" data-title="git操作常用命令说明" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/02/git-operation-md/" data-id="cllkcpom60001he5th7o82a7h" data-title="git操作常用命令说明" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -247,7 +301,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/02/canvas-arc-md/" data-id="cll4iphev0000n35t0euzahxt" data-title="使用canvas绘制扇形" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/02/canvas-arc-md/" data-id="cllkcpom00000he5te22jgzwk" data-title="使用canvas绘制扇形" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -312,7 +366,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/02/service-operation-md/" data-id="cll4iphfd0003n35tbctzhj6a" data-title="服务器操作常用命令" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/02/service-operation-md/" data-id="cllkcpomc0004he5t8fhv561h" data-title="服务器操作常用命令" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -371,6 +425,10 @@
       <ul>
         
           <li>
+            <a href="/2023/08/21/ssh-default-md/">ssh配置快捷连接服务器</a>
+          </li>
+        
+          <li>
             <a href="/2023/08/09/ssh-connect-service/">使用ssh免密连接服务器</a>
           </li>
         
@@ -384,10 +442,6 @@
         
           <li>
             <a href="/2023/08/02/canvas-arc-md/">使用canvas绘制扇形</a>
-          </li>
-        
-          <li>
-            <a href="/2023/08/02/service-operation-md/">服务器操作常用命令</a>
           </li>
         
       </ul>
