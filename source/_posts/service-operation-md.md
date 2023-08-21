@@ -2,7 +2,7 @@
 title: 服务器操作常用命令
 author: stan
 date: 2023-08-02 15:52:04
-tags: linux
+tags: [linux]
 ---
 
 ```shell

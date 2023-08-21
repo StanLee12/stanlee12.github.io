@@ -2,7 +2,7 @@
 title: 使用ssh免密连接服务器
 author: stan
 date: 2023-08-09 17:54:17
-tags:
+tags: ssh
 ---
 
 1. 首先需要生成ssh密钥，类似于连接github、gitee的ssh密钥。

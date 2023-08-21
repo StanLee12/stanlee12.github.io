@@ -2,7 +2,7 @@
 title: nginx 部署 vue应用 server基本配置
 author: stan
 date: 2023-08-04 12:35:45
-tags:
+tags: [nginx, vue]
 ---
 
 ```nginx

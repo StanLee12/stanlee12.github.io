@@ -2,7 +2,7 @@
 title: ssh配置快捷连接服务器
 author: stan
 date: 2023-08-21 11:50:20
-tags:
+tags: [ssh, github, gitlab, gitee]
 ---
 
 ```shell
