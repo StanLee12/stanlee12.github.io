@@ -73,6 +73,70 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-vue3-init-md" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/24/vue3-init-md/" class="article-date">
+  <time class="dt-published" datetime="2023-08-24T03:56:28.000Z" itemprop="datePublished">2023-08-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/24/vue3-init-md/">VsCode快速生成Vue3默认用户片段</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="使用VsCode开发Vue项目的时候，有个Vue-Snippets的插件，其中的VueInit命令可以默认生成一段Vue文件的基础模板"><a href="#使用VsCode开发Vue项目的时候，有个Vue-Snippets的插件，其中的VueInit命令可以默认生成一段Vue文件的基础模板" class="headerlink" title="使用VsCode开发Vue项目的时候，有个Vue Snippets的插件，其中的VueInit命令可以默认生成一段Vue文件的基础模板"></a>使用VsCode开发Vue项目的时候，有个Vue Snippets的插件，其中的VueInit命令可以默认生成一段Vue文件的基础模板</h4><h4 id="但是和自己的使用习惯不太一致，而且和Vue3也不是很搭配"><a href="#但是和自己的使用习惯不太一致，而且和Vue3也不是很搭配" class="headerlink" title="但是和自己的使用习惯不太一致，而且和Vue3也不是很搭配"></a>但是和自己的使用习惯不太一致，而且和Vue3也不是很搭配</h4><h4 id="所以就想着自己创建一个命令，可以符合自己的预期-然后就研究了一下"><a href="#所以就想着自己创建一个命令，可以符合自己的预期-然后就研究了一下" class="headerlink" title="所以就想着自己创建一个命令，可以符合自己的预期, 然后就研究了一下"></a>所以就想着自己创建一个命令，可以符合自己的预期, 然后就研究了一下</h4><ol>
+<li><h3 id="首先是VsCode中按下-cmd-shift-p-键，打开VsCode的配置搜索框，输入Config-Use-Snippets-选中并点击"><a href="#首先是VsCode中按下-cmd-shift-p-键，打开VsCode的配置搜索框，输入Config-Use-Snippets-选中并点击" class="headerlink" title="首先是VsCode中按下 cmd + shift + p 键，打开VsCode的配置搜索框，输入Config Use Snippets, 选中并点击"></a>首先是VsCode中按下 <code>cmd + shift + p</code> 键，打开VsCode的配置搜索框，输入<code>Config Use Snippets</code>, 选中并点击</h3></li>
+<li><h3 id="点击之后会出现让你选择修改或新建一个snippet-这里我们选择新建一个全局的-global-输入框输入要创建的用户片段的名称之后回车就可以"><a href="#点击之后会出现让你选择修改或新建一个snippet-这里我们选择新建一个全局的-global-输入框输入要创建的用户片段的名称之后回车就可以" class="headerlink" title="点击之后会出现让你选择修改或新建一个snippet, 这里我们选择新建一个全局的 global, 输入框输入要创建的用户片段的名称之后回车就可以"></a>点击之后会出现让你选择修改或新建一个<code>snippet</code>, 这里我们选择新建一个全局的 <code>global</code>, 输入框输入要创建的用户片段的名称之后回车就可以</h3></li>
+<li><h3 id="创建成功之后会出现其配置文件，这是我修改过后的"><a href="#创建成功之后会出现其配置文件，这是我修改过后的" class="headerlink" title="创建成功之后会出现其配置文件，这是我修改过后的:"></a>创建成功之后会出现其配置文件，这是我修改过后的:</h3> <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Init Vue3 template&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;prefix&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Vue3Init&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;body&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">      <span class="string">&quot;&lt;template&gt;&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">&quot;  &lt;div&gt;&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">&quot;    &quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">&quot;  &lt;/div&gt;&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">&quot;&lt;/template&gt;&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">&quot;&lt;script lang=\&quot;ts\&quot; setup&gt;&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">&quot;defineOptions(&#123; name: \&quot;$&#123;TM_DIRECTORY/(.*\\/)([^\\/]+)/$&#123;2:/capitalize&#125;/&#125;\&quot; &#125;)&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">&quot;  &quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">&quot;&lt;/script&gt;&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">&quot;&lt;style lang=\&quot;scss\&quot; scoped&gt;&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">&quot;  &quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">&quot;&lt;/style&gt;&quot;</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Init Vue3 Template By Default&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p> <code>Init Vue3 template</code> 模板名称</p>
+<p> <code>scope</code> 模板命令生效的范围 “” 表示所有文件都生效, 可选 ‘javascript, typescript, vue, html’等等等</p>
+<p> <code>prefix</code> 使用该模板时需要敲击的命令, 例如在新文件中敲下 Vue3Init 就会生成该模板</p>
+<p> <code>body</code> 使用<code>Vue3Init</code> 命令户生成的内容</p>
+<p> <code>description</code> 描述信息</p>
+</li>
+<li><h3 id="defineOptions说明"><a href="#defineOptions说明" class="headerlink" title="defineOptions说明:"></a>defineOptions说明:</h3><h4 id="TM-DIRECTORY-2-capitalize-其中这段代码的意思是使用正则取当前文件目录名称"><a href="#TM-DIRECTORY-2-capitalize-其中这段代码的意思是使用正则取当前文件目录名称" class="headerlink" title="${TM_DIRECTORY/(.*\\/)([^\\/]+)/${2:/capitalize}/} 其中这段代码的意思是使用正则取当前文件目录名称"></a><code>$&#123;TM_DIRECTORY/(.*\\/)([^\\/]+)/$&#123;2:/capitalize&#125;/&#125;</code> 其中这段代码的意思是使用正则取当前文件目录名称</h4><h4 id="并将其首字母大写，因为我的vue项目的文件目录结构是-fileName-index-vue-所以需要将其转换为FileName用于组件的名称"><a href="#并将其首字母大写，因为我的vue项目的文件目录结构是-fileName-index-vue-所以需要将其转换为FileName用于组件的名称" class="headerlink" title="并将其首字母大写，因为我的vue项目的文件目录结构是/fileName/index.vue, 所以需要将其转换为FileName用于组件的名称"></a>并将其首字母大写，因为我的vue项目的文件目录结构是<code>/fileName/index.vue</code>, 所以需要将其转换为<code>FileName</code>用于组件的名称</h4></li>
+<li><h3 id="VsCode的一些内置变量"><a href="#VsCode的一些内置变量" class="headerlink" title="VsCode的一些内置变量:"></a>VsCode的一些内置变量:</h3><p> ${TM_DIRECTORY}：当前文件的目录路径。</p>
+<p> ${TM_FILEPATH}：当前文件的完整路径，包括文件名。</p>
+<p> ${TM_FILENAME}：当前文件的完整文件名（包括扩展名）。</p>
+<p> ${TM_FILENAME_BASE}：当前文件的基本文件名（不包括扩展名）。</p>
+<p> ${TM_SELECTED_TEXT}：选定的文本内容（如果有选定的文本）。</p>
+<p> ${TM_CURRENT_LINE}：当前所在行的内容。</p>
+<p> ${TM_CURRENT_WORD}：当前光标所在位置的单词。</p>
+<p> ${TM_LINE_INDEX}：当前行的索引（从0开始）。</p>
+<p> ${TM_LINE_NUMBER}：当前行的行号（从1开始）。</p>
+<p> ${TM_SOFT_TABS}：当前文件是否使用软制表符。</p>
+<p> ${TM_TAB_SIZE}：当前文件的制表符大小（空格数）。</p>
+<p> ${TM_FULLNAME}：当前用户的完整名称。</p>
+<p> ${CLIPBOARD}：剪贴板的内容。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://stanlee12.github.io/2023/08/24/vue3-init-md/" data-id="cllonn19o0008gw5tgdslhhvc" data-title="VsCode快速生成Vue3默认用户片段" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-ssh-default-md" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/08/21/ssh-default-md/" class="article-date">
@@ -115,7 +179,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/21/ssh-default-md/" data-id="cllkd0s1n0008g65tgpey8bun" data-title="ssh配置快捷连接服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/21/ssh-default-md/" data-id="cllonn19l0005gw5t8kr0cnib" data-title="ssh配置快捷连接服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -172,7 +236,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/09/ssh-connect-service/" data-id="cllkd0s1m0005g65t8fbs52rn" data-title="使用ssh免密连接服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/09/ssh-connect-service/" data-id="cllonn19k0004gw5t4ardco5d" data-title="使用ssh免密连接服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -213,7 +277,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/04/nginx-veu-server-md/" data-id="cllkd0s1j0003g65tccicaefe" data-title="nginx 部署 vue应用 server基本配置" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/04/nginx-veu-server-md/" data-id="cllonn19j0003gw5t9f4u7gbm" data-title="nginx 部署 vue应用 server基本配置" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -267,7 +331,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/02/git-operation-md/" data-id="cllkd0s1c0001g65tc7g26xco" data-title="git操作常用命令说明" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/02/git-operation-md/" data-id="cllonn1970000gw5t3ciqfdly" data-title="git操作常用命令说明" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -307,7 +371,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/02/canvas-arc-md/" data-id="cllkd0s160000g65t41u80po0" data-title="使用canvas绘制扇形" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/02/canvas-arc-md/" data-id="cllonn19f0001gw5tdiv9e3a8" data-title="使用canvas绘制扇形" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -372,7 +436,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/02/service-operation-md/" data-id="cllkd0s1k0004g65tgba25ki5" data-title="服务器操作常用命令" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/02/service-operation-md/" data-id="cllonn19n0007gw5t4xzih8md" data-title="服务器操作常用命令" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -431,6 +495,10 @@
       <ul>
         
           <li>
+            <a href="/2023/08/24/vue3-init-md/">VsCode快速生成Vue3默认用户片段</a>
+          </li>
+        
+          <li>
             <a href="/2023/08/21/ssh-default-md/">ssh配置快捷连接服务器</a>
           </li>
         
@@ -444,10 +512,6 @@
         
           <li>
             <a href="/2023/08/02/git-operation-md/">git操作常用命令说明</a>
-          </li>
-        
-          <li>
-            <a href="/2023/08/02/canvas-arc-md/">使用canvas绘制扇形</a>
           </li>
         
       </ul>
