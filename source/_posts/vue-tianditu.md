@@ -95,8 +95,37 @@ tags: [vue, 天地图]
    carTrack.stop() // 停止移动
    carTrack.clear() // 清除移动轨迹
    ```
+
+6. 添加天地图控制类组件, map为天地图对象的实例
+   ```javascript
+   let ctrlMapType = new T.Control.MapType({
+    mapTypes: [{
+      'title': '地图',
+      'icon': 'https://api.tianditu.gov.cn/v4.0/image/map/maptype/vector.png',
+      'layer': window.TMAP_NORMAL_MAP
+    }, {
+      'title': '卫星',
+      'icon': 'https://api.tianditu.gov.cn/v4.0/image/map/maptype/satellite.png',
+      'layer': window.TMAP_SATELLITE_MAP
+    }, {
+      'title': '卫星混合',
+      'https': 'api.tianditu.gov.cn/v4.0/image/map/maptype/satellitepoi.png',
+      'layer': window.TMAP_HYBRID_MAP
+    }, {
+      'title': '地形',
+      'icon': 'https://api.tianditu.gov.cn/v4.0/image/map/maptype/terrain.png',
+      'layer': window.TMAP_TERRAIN_MAP
+    }, {
+      'title': '地形混合',
+      'icon': 'https://api.tianditu.gov.cn/v4.0/image/map/maptype/terrainpoi.png',
+      'layer': window.TMAP_TERRAIN_HYBRID_MAP
+    }]
+   });
+   // 添加地图类型选择控件
+   map.addControl(ctrlMapType)
+   ```
   
-6. 天地图还有很多工具可以使用，具体可以参考天地图官网api. 
+7. 天地图还有很多工具可以使用，具体可以参考天地图官网api. 
    
    [天地图Api4.0类参考](http://lbs.tianditu.gov.cn/api/js4.0/class.html)
 
