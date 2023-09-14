@@ -113,6 +113,9 @@
 <li><p>如果要使用到CarTrack，则需要单独引入d3、D3SvgOverlay、CarTrack</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">CarTrackScripts</span> = [</span><br><span class="line">   <span class="string">&quot;https://cdn.bootcss.com/d3/3.5.17/d3.min.js&quot;</span>,</span><br><span class="line">   <span class="string">&quot;https://tianditu.lztl.cn/api/js4.0/opensource/openlibrary/D3SvgOverlay.min.js&quot;</span>,</span><br><span class="line">   <span class="string">&quot;https://tianditu.lztl.cn/api/js4.0/opensource/openlibrary/CarTrack.min.js&quot;</span></span><br><span class="line">]</span><br><span class="line"><span class="keyword">await</span> <span class="title class_">Promise</span>.<span class="title function_">all</span>([</span><br><span class="line"> <span class="title function_">loadScript</span>(<span class="title class_">CarTrackScripts</span>[<span class="number">0</span>]), <span class="title function_">loadScript</span>(<span class="title class_">CarTrackScripts</span>[<span class="number">1</span>]), <span class="title function_">loadScript</span>(<span class="title class_">CarTrackScripts</span>[<span class="number">2</span>])</span><br><span class="line">])</span><br><span class="line"><span class="keyword">const</span> <span class="attr">opt</span>: T.<span class="property">CarOverlayOptions</span> = &#123;</span><br><span class="line">   <span class="attr">interval</span>: <span class="number">1000</span>, <span class="comment">// 小车移动的间隔 ms</span></span><br><span class="line">   <span class="attr">speed</span>: <span class="number">0</span>, <span class="comment">// 小车移动的速度</span></span><br><span class="line">   <span class="attr">dynamicLine</span>: <span class="literal">true</span>,</span><br><span class="line">   <span class="attr">carstyle</span>: &#123; <span class="comment">// 移动小车图标样式</span></span><br><span class="line">     <span class="attr">display</span>: <span class="literal">true</span>,</span><br><span class="line">     <span class="attr">iconUrl</span>: <span class="string">&#x27;car.png&#x27;</span>, <span class="comment">// car图标</span></span><br><span class="line">     <span class="attr">width</span>: <span class="number">10</span>,</span><br><span class="line">     <span class="attr">height</span>: <span class="number">10</span></span><br><span class="line">   &#125;,</span><br><span class="line">   <span class="attr">polylinestyle</span>: &#123; <span class="attr">display</span>:<span class="literal">true</span>, <span class="attr">color</span>: <span class="string">&#x27;red&#x27;</span>, <span class="attr">width</span>: <span class="number">1</span>, <span class="attr">opacity</span>: <span class="number">1</span>, &#125;, <span class="comment">// 移动轨迹路线样式</span></span><br><span class="line">   <span class="title class_">Datas</span>: props.<span class="property">trackDatas</span>.<span class="title function_">map</span>(<span class="function">(<span class="params">pos</span>) =&gt;</span> <span class="title function_">toLngLat</span>(pos)),</span><br><span class="line">   <span class="attr">passOneNode</span>: handleCarMove <span class="comment">// 小车移动时触发的回调函数，返回Lnglat以及index</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 初始化CarTrack对象，参数map为上一步创建的window.T.map对象实例</span></span><br><span class="line"><span class="keyword">const</span> carTrack = <span class="keyword">new</span> T.<span class="title class_">CarTrack</span>(map, opt)</span><br><span class="line"> </span><br><span class="line">carTrack.<span class="title function_">start</span>() <span class="comment">// 开始移动</span></span><br><span class="line">carTrack.<span class="title function_">pause</span>() <span class="comment">// 暂停移动</span></span><br><span class="line">carTrack.<span class="title function_">resume</span>() <span class="comment">// 继续移动</span></span><br><span class="line">carTrack.<span class="title function_">stop</span>() <span class="comment">// 停止移动</span></span><br><span class="line">carTrack.<span class="title function_">clear</span>() <span class="comment">// 清除移动轨迹</span></span><br></pre></td></tr></table></figure>
 </li>
+<li><p>添加天地图控制类组件, map为天地图对象的实例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ctrlMapType = <span class="keyword">new</span> T.<span class="property">Control</span>.<span class="title class_">MapType</span>(&#123;</span><br><span class="line"> <span class="attr">mapTypes</span>: [&#123;</span><br><span class="line">   <span class="string">&#x27;title&#x27;</span>: <span class="string">&#x27;地图&#x27;</span>,</span><br><span class="line">   <span class="string">&#x27;icon&#x27;</span>: <span class="string">&#x27;https://api.tianditu.gov.cn/v4.0/image/map/maptype/vector.png&#x27;</span>,</span><br><span class="line">   <span class="string">&#x27;layer&#x27;</span>: <span class="variable language_">window</span>.<span class="property">TMAP_NORMAL_MAP</span></span><br><span class="line"> &#125;, &#123;</span><br><span class="line">   <span class="string">&#x27;title&#x27;</span>: <span class="string">&#x27;卫星&#x27;</span>,</span><br><span class="line">   <span class="string">&#x27;icon&#x27;</span>: <span class="string">&#x27;https://api.tianditu.gov.cn/v4.0/image/map/maptype/satellite.png&#x27;</span>,</span><br><span class="line">   <span class="string">&#x27;layer&#x27;</span>: <span class="variable language_">window</span>.<span class="property">TMAP_SATELLITE_MAP</span></span><br><span class="line"> &#125;, &#123;</span><br><span class="line">   <span class="string">&#x27;title&#x27;</span>: <span class="string">&#x27;卫星混合&#x27;</span>,</span><br><span class="line">   <span class="string">&#x27;https&#x27;</span>: <span class="string">&#x27;api.tianditu.gov.cn/v4.0/image/map/maptype/satellitepoi.png&#x27;</span>,</span><br><span class="line">   <span class="string">&#x27;layer&#x27;</span>: <span class="variable language_">window</span>.<span class="property">TMAP_HYBRID_MAP</span></span><br><span class="line"> &#125;, &#123;</span><br><span class="line">   <span class="string">&#x27;title&#x27;</span>: <span class="string">&#x27;地形&#x27;</span>,</span><br><span class="line">   <span class="string">&#x27;icon&#x27;</span>: <span class="string">&#x27;https://api.tianditu.gov.cn/v4.0/image/map/maptype/terrain.png&#x27;</span>,</span><br><span class="line">   <span class="string">&#x27;layer&#x27;</span>: <span class="variable language_">window</span>.<span class="property">TMAP_TERRAIN_MAP</span></span><br><span class="line"> &#125;, &#123;</span><br><span class="line">   <span class="string">&#x27;title&#x27;</span>: <span class="string">&#x27;地形混合&#x27;</span>,</span><br><span class="line">   <span class="string">&#x27;icon&#x27;</span>: <span class="string">&#x27;https://api.tianditu.gov.cn/v4.0/image/map/maptype/terrainpoi.png&#x27;</span>,</span><br><span class="line">   <span class="string">&#x27;layer&#x27;</span>: <span class="variable language_">window</span>.<span class="property">TMAP_TERRAIN_HYBRID_MAP</span></span><br><span class="line"> &#125;]</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 添加地图类型选择控件</span></span><br><span class="line">map.<span class="title function_">addControl</span>(ctrlMapType)</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>天地图还有很多工具可以使用，具体可以参考天地图官网api. </p>
 <p><a target="_blank" rel="noopener" href="http://lbs.tianditu.gov.cn/api/js4.0/class.html">天地图Api4.0类参考</a></p>
 <p><a target="_blank" rel="noopener" href="http://lbs.tianditu.gov.cn/api/js4.0/class.html">http://lbs.tianditu.gov.cn/api/js4.0/class.html</a></p>
@@ -122,7 +125,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/09/14/vue-tianditu/" data-id="clmj0e36k0008wj5t0fyn1upi" data-title="Vue中使用天地图" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/09/14/vue-tianditu/" data-id="clmj2glkl0009495tbxlscohk" data-title="Vue中使用天地图" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -188,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/24/vue3-init-md/" data-id="clmj0e370000xwj5t2qyy0jse" data-title="VsCode快速生成Vue3默认用户片段" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/24/vue3-init-md/" data-id="clmj2glkn000b495tcmde02zn" data-title="VsCode快速生成Vue3默认用户片段" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -242,7 +245,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/21/ssh-default-md/" data-id="clmj0e36l0009wj5t1umlbtkc" data-title="ssh配置快捷连接服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/21/ssh-default-md/" data-id="clmj2glkk0008495tgtyacly8" data-title="ssh配置快捷连接服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -299,7 +302,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/09/ssh-connect-service/" data-id="clmj0e36g0005wj5t061g4q6x" data-title="使用ssh免密连接服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/09/ssh-connect-service/" data-id="clmj2glkj0005495t9mtafuxg" data-title="使用ssh免密连接服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -340,7 +343,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/04/nginx-veu-server-md/" data-id="clmj0e3650003wj5t4tyrcflc" data-title="nginx 部署 vue应用 server基本配置" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/04/nginx-veu-server-md/" data-id="clmj2glkc0003495talsdaqry" data-title="nginx 部署 vue应用 server基本配置" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -394,7 +397,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/02/git-operation-md/" data-id="clmj0e35x0001wj5tdogcfmtx" data-title="git操作常用命令说明" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/02/git-operation-md/" data-id="clmj2glkh0004495t54nw3gn0" data-title="git操作常用命令说明" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -434,7 +437,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/02/canvas-arc-md/" data-id="clmj0e35r0000wj5tgzufeg73" data-title="使用canvas绘制扇形" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/02/canvas-arc-md/" data-id="clmj2glk00000495tdrlz4v5l" data-title="使用canvas绘制扇形" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -499,7 +502,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/02/service-operation-md/" data-id="clmj0e36e0004wj5t2rwn687v" data-title="服务器操作常用命令" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/02/service-operation-md/" data-id="clmj2glk60001495t5kmc7ss3" data-title="服务器操作常用命令" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
