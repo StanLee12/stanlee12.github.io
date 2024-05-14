@@ -73,6 +73,86 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-playwright" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/05/14/playwright/" class="article-date">
+  <time class="dt-published" datetime="2024-05-14T03:48:22.000Z" itemprop="datePublished">2024-05-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/05/14/playwright/">playwright</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="微软超强爬虫工具，可用于Web页面自动化测试工具-—-Playwright"><a href="#微软超强爬虫工具，可用于Web页面自动化测试工具-—-Playwright" class="headerlink" title="微软超强爬虫工具，可用于Web页面自动化测试工具 — Playwright"></a>微软超强爬虫工具，可用于Web页面自动化测试工具 — Playwright</h1><h3 id="Playwright是微软在2020年初开源的新一代自动化测试工具。它的功能和Selenium、Pyppeteer等工具类似，可以驱动浏览器进行各种自动化操作。Playwright支持当前所有的主流浏览器，包括Chrome、Edge、Firefox、Safari等，并且支持浏览器有头和无头模式。此外，Playwright的安装和配置过程简单，会自动安装对应的浏览器和驱动，不需要额外配置WebDriver等。"><a href="#Playwright是微软在2020年初开源的新一代自动化测试工具。它的功能和Selenium、Pyppeteer等工具类似，可以驱动浏览器进行各种自动化操作。Playwright支持当前所有的主流浏览器，包括Chrome、Edge、Firefox、Safari等，并且支持浏览器有头和无头模式。此外，Playwright的安装和配置过程简单，会自动安装对应的浏览器和驱动，不需要额外配置WebDriver等。" class="headerlink" title="Playwright是微软在2020年初开源的新一代自动化测试工具。它的功能和Selenium、Pyppeteer等工具类似，可以驱动浏览器进行各种自动化操作。Playwright支持当前所有的主流浏览器，包括Chrome、Edge、Firefox、Safari等，并且支持浏览器有头和无头模式。此外，Playwright的安装和配置过程简单，会自动安装对应的浏览器和驱动，不需要额外配置WebDriver等。"></a>Playwright是微软在2020年初开源的新一代自动化测试工具。它的功能和Selenium、Pyppeteer等工具类似，可以驱动浏览器进行各种自动化操作。Playwright支持当前所有的主流浏览器，包括Chrome、Edge、Firefox、Safari等，并且支持浏览器有头和无头模式。此外，Playwright的安装和配置过程简单，会自动安装对应的浏览器和驱动，不需要额外配置WebDriver等。</h3><h3 id="Playwright支持多种编程语言，包括JavaScript、TypeScript、Python和Java，这使得开发人员可以使用他们喜欢的语言来编写自动化测试。"><a href="#Playwright支持多种编程语言，包括JavaScript、TypeScript、Python和Java，这使得开发人员可以使用他们喜欢的语言来编写自动化测试。" class="headerlink" title="Playwright支持多种编程语言，包括JavaScript、TypeScript、Python和Java，这使得开发人员可以使用他们喜欢的语言来编写自动化测试。"></a>Playwright支持多种编程语言，包括JavaScript、TypeScript、Python和Java，这使得开发人员可以使用他们喜欢的语言来编写自动化测试。</h3><h3 id="我是用的是JavaScript版本，主要介绍基于node的playwright的使用"><a href="#我是用的是JavaScript版本，主要介绍基于node的playwright的使用" class="headerlink" title="我是用的是JavaScript版本，主要介绍基于node的playwright的使用"></a>我是用的是JavaScript版本，主要介绍基于node的playwright的使用</h3><h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h3><pre><code>可以通过使用npm来安装playwright
+
+npm install playwright -g
+
+将playwright安装在全局环境下，我们就可以直接使用playwright命令进行相关操作
+</code></pre>
+<h3 id="2-功能介绍"><a href="#2-功能介绍" class="headerlink" title="2. 功能介绍"></a>2. 功能介绍</h3><pre><code>  Usage: playwright [options] [command]
+
+  Options:
+    -V, --version                          output the version number
+    -h, --help                             display help for command
+
+  Commands:
+    open [options] [url]                   open page in browser specified via -b,
+                                          --browser
+    codegen [options] [url]                open page and generate code for user actions
+    install [options] [browser...]         ensure browsers necessary for this version of
+                                          Playwright are installed
+    install-deps [options] [browser...]    install dependencies necessary to run browsers
+                                          (will ask for sudo permissions)
+    cr [options] [url]                     open page in Chromium
+    ff [options] [url]                     open page in Firefox
+    wk [options] [url]                     open page in WebKit
+    screenshot [options] &lt;url&gt; &lt;filename&gt;  capture a page screenshot
+    pdf [options] &lt;url&gt; &lt;filename&gt;         save page as pdf
+    show-trace [options] [trace...]        show trace viewer
+    help [command]                         display help for command
+</code></pre>
+<h3 id="3-自动代码生成指令"><a href="#3-自动代码生成指令" class="headerlink" title="3. 自动代码生成指令"></a>3. 自动代码生成指令</h3><pre><code>  playwright codegen --target javascript -o &#39;playwright-baidu.js&#39; -b chromium https://www.baidu.com 
+
+  // --target 生成脚本的语言，可选python、java、javascript等
+
+  // -o output输出脚本文件的名称
+
+  // -b 使用的浏览器内核,包含chromium、firefox、safari等
+</code></pre>
+<h3 id="4-示例"><a href="#4-示例" class="headerlink" title="4.示例"></a>4.示例</h3><pre><code>![示例](/images/playwright/playwright-baidu.gif)
+
+如图所示, 当在浏览器执行相关操作时，代码记录器会对应的生成相关代码，但是代码不是完全准确无误的，如果是实际使用脚本代码，还需要进行检查和修改，也可以添加自己需要代码才能完成的操作，总之很大的省去了很多时间和精力.
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://stanlee12.github.io/2024/05/14/playwright/" data-id="clw5x1ktn0004wzpudya4fukf" data-title="playwright" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/playwright/" rel="tag">playwright</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" rel="tag">web自动化测试</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-uni-app-push" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/12/21/uni-app-push/" class="article-date">
@@ -132,7 +212,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/12/21/uni-app-push/" data-id="clqf0kt5c000by15tfqevfst3" data-title="uni-app 接入推送" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/12/21/uni-app-push/" data-id="clw5x1ktw000cwzpuflwa7eyv" data-title="uni-app 接入推送" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -184,7 +264,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/10/31/geo-server/" data-id="clqf0kt560004y15tfsc68xda" data-title="GeoServer发布tif格式的图层" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/10/31/geo-server/" data-id="clw5x1kto0005wzpu5ngx0cmi" data-title="GeoServer发布tif格式的图层" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -250,7 +330,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/09/14/vue-tianditu/" data-id="clqf0kt5w0016y15t12eme8ek" data-title="Vue中使用天地图" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/09/14/vue-tianditu/" data-id="clw5x1ku8001ewzpu1ys8c0t0" data-title="Vue中使用天地图" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -316,7 +396,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/24/vue3-init-md/" data-id="clqf0kt5x0017y15tdke23w22" data-title="VsCode快速生成Vue3默认用户片段" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/24/vue3-init-md/" data-id="clw5x1ku7001dwzpu2xpzhcxr" data-title="VsCode快速生成Vue3默认用户片段" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -370,7 +450,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/21/ssh-default-md/" data-id="clqf0kt5b0009y15t60u6d25z" data-title="ssh配置快捷连接服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/21/ssh-default-md/" data-id="clw5x1ktv000bwzpu2uwsbic7" data-title="ssh配置快捷连接服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -427,7 +507,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/09/ssh-connect-service/" data-id="clqf0kt5a0008y15tdnpa97qe" data-title="使用ssh免密连接服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/09/ssh-connect-service/" data-id="clw5x1ktr0009wzpu33nt336w" data-title="使用ssh免密连接服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -468,7 +548,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/04/nginx-veu-server-md/" data-id="clqf0kt4y0003y15t6dam4egz" data-title="nginx 部署 vue应用 server基本配置" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/04/nginx-veu-server-md/" data-id="clw5x1ktk0003wzpu4z4j1jw3" data-title="nginx 部署 vue应用 server基本配置" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -522,7 +602,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/02/git-operation-md/" data-id="clqf0kt4t0001y15t8x1h97f0" data-title="git操作常用命令说明" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/02/git-operation-md/" data-id="clw5x1kth0001wzpue04k8art" data-title="git操作常用命令说明" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -562,7 +642,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/02/canvas-arc-md/" data-id="clqf0kt4k0000y15tejsg1f6v" data-title="使用canvas绘制扇形" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/02/canvas-arc-md/" data-id="clw5x1kta0000wzpub8ugb0j8" data-title="使用canvas绘制扇形" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -576,72 +656,12 @@
 
 
   
-    <article id="post-service-operation-md" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/02/service-operation-md/" class="article-date">
-  <time class="dt-published" datetime="2023-08-02T07:52:04.000Z" itemprop="datePublished">2023-08-02</time>
-</a>
+
+
+  <nav id="page-nav">
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/02/service-operation-md/">服务器操作常用命令</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p &#123;port&#125; &#123;name&#125;@&#123;ip_address&#125;</span><br></pre></td></tr></table></figure>
-<p>回车之后输入服务器密码</p>
-<p>安装nginx 可以使用 linux系统自带的yum包管理器</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -name &#123;package_name&#125;</span><br></pre></td></tr></table></figure>
-<p>可以查看包所在位置</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd —list-ports</span><br></pre></td></tr></table></figure>
-<p>查看所有开放端口</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd —permanent —zone=public —add-port=&#123;port&#125;/tcp </span><br><span class="line"><span class="meta prompt_">		#</span><span class="language-bash">命令含义：</span></span><br><span class="line">   	--zone #作用域</span><br><span class="line">   	--add-port=1935/tcp  #添加端口，格式为：端口/通讯协议</span><br><span class="line">   	--permanent  #永久生效，没有此参数重启后失效</span><br></pre></td></tr></table></figure>
-<p>添加新的端口</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd —reload</span><br></pre></td></tr></table></figure>
-<p>重启防火墙，添加新的端口后必须需要重启</p>
-<p>netstat 该工具需要通过yum安装，可以查看机器的网络连接状态</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netstat -anp #查看所有网络连接 </span><br><span class="line">netstat -lnp #查看端口连接</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s stop</span><br></pre></td></tr></table></figure>
-<p>停止nginx所有服务</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>
-<p>重新加载nginx服务</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -c /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
-<p>使用指定配置文件启动nginx</p>
-<p>nginx.conf文件有修改，需要先stop nginx服务，然后重新启动</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r -P &#123;port&#125; &#123;dir&#125; &#123;name&#125;@&#123;ip_address&#125;:&#123;dir&#125;</span><br></pre></td></tr></table></figure>
-<p>该命令可以将本机上的文件夹上传至服务器</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux |grep nginx</span><br></pre></td></tr></table></figure>
-<p>该命令查看所有包含有nginx字样的运行服务</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/02/service-operation-md/" data-id="clqf0kt580005y15tfmbdg86s" data-title="服务器操作常用命令" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
 
 </section>
         
@@ -654,7 +674,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GeoServer/" rel="tag">GeoServer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/" rel="tag">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitee/" rel="tag">gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitlab/" rel="tag">gitlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/notification/" rel="tag">notification</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/push/" rel="tag">push</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rebase/" rel="tag">rebase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tif/" rel="tag">tif</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/" rel="tag">uni-app消息推送</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%A9%E5%9C%B0%E5%9B%BE/" rel="tag">天地图</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GeoServer/" rel="tag">GeoServer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/" rel="tag">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitee/" rel="tag">gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitlab/" rel="tag">gitlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/notification/" rel="tag">notification</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/playwright/" rel="tag">playwright</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/push/" rel="tag">push</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rebase/" rel="tag">rebase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tif/" rel="tag">tif</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/" rel="tag">uni-app消息推送</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" rel="tag">web自动化测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%A9%E5%9C%B0%E5%9B%BE/" rel="tag">天地图</a></li></ul>
     </div>
   </div>
 
@@ -664,7 +684,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/GeoServer/" style="font-size: 10px;">GeoServer</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitee/" style="font-size: 10px;">gitee</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/notification/" style="font-size: 10px;">notification</a> <a href="/tags/push/" style="font-size: 10px;">push</a> <a href="/tags/rebase/" style="font-size: 10px;">rebase</a> <a href="/tags/ssh/" style="font-size: 20px;">ssh</a> <a href="/tags/tif/" style="font-size: 10px;">tif</a> <a href="/tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="/tags/uni-app%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/" style="font-size: 10px;">uni-app消息推送</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E5%A4%A9%E5%9C%B0%E5%9B%BE/" style="font-size: 10px;">天地图</a>
+      <a href="/tags/GeoServer/" style="font-size: 10px;">GeoServer</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitee/" style="font-size: 10px;">gitee</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/notification/" style="font-size: 10px;">notification</a> <a href="/tags/playwright/" style="font-size: 10px;">playwright</a> <a href="/tags/push/" style="font-size: 10px;">push</a> <a href="/tags/rebase/" style="font-size: 10px;">rebase</a> <a href="/tags/ssh/" style="font-size: 20px;">ssh</a> <a href="/tags/tif/" style="font-size: 10px;">tif</a> <a href="/tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="/tags/uni-app%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/" style="font-size: 10px;">uni-app消息推送</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/web%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">web自动化测试</a> <a href="/tags/%E5%A4%A9%E5%9C%B0%E5%9B%BE/" style="font-size: 10px;">天地图</a>
     </div>
   </div>
 
@@ -673,7 +693,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li></ul>
     </div>
   </div>
 
@@ -684,6 +704,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2024/05/14/playwright/">playwright</a>
+          </li>
         
           <li>
             <a href="/2023/12/21/uni-app-push/">uni-app 接入推送</a>
@@ -701,10 +725,6 @@
             <a href="/2023/08/24/vue3-init-md/">VsCode快速生成Vue3默认用户片段</a>
           </li>
         
-          <li>
-            <a href="/2023/08/21/ssh-default-md/">ssh配置快捷连接服务器</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -718,7 +738,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       
-      &copy; 2023 Stan Lee<br>
+      &copy; 2024 Stan Lee<br>
       Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
