@@ -10,7 +10,7 @@ tags: [vue, 天地图]
 1. 首先是需要到天地图官网去注册账号并申请一个密钥，用于加载天地图的js文件。
    创建并生成一个key
     ![天地图Key](/images/tianditu_key.png)
-
+    ![示例](../images/playwright/playwright-baidu.gif)
 
 2. 回到编辑器，首先需要添加一个div，让其能作为天地图的展示容器
     ```html
