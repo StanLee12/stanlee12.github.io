@@ -73,6 +73,50 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-auto-build" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/11/08/auto-build/" class="article-date">
+  <time class="dt-published" datetime="2024-11-08T11:09:35.000Z" itemprop="datePublished">2024-11-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/11/08/auto-build/">shell自动化构建部署脚本</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="使用shell脚本自动化打包部署前端项目"><a href="#使用shell脚本自动化打包部署前端项目" class="headerlink" title="使用shell脚本自动化打包部署前端项目"></a>使用shell脚本自动化打包部署前端项目</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="comment"># 使用sh作为解释器  </span></span><br><span class="line"><span class="built_in">set</span> -e <span class="comment"># 当脚本执行出现错误立即退出</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置当脚本退出时打印异常信息</span></span><br><span class="line"><span class="built_in">trap</span> <span class="string">&#x27;echo &quot;退出: $?&quot;&#x27;</span> EXIT</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取当前时间</span></span><br><span class="line">CURRENT_TIME=`<span class="built_in">date</span> <span class="string">&quot;+%Y%m%d%H%M&quot;</span>`</span><br><span class="line"><span class="comment"># 获取当前文件夹名称</span></span><br><span class="line">SHELL_FOLDER=$(<span class="built_in">basename</span> $(<span class="built_in">pwd</span>))</span><br><span class="line"><span class="comment"># 使用文件夹名称以及当前时间作为压缩包名称</span></span><br><span class="line">FILE_NAME=<span class="string">&quot;<span class="variable">$SHELL_FOLDER</span>-<span class="variable">$CURRENT_TIME</span>.zip&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 打包后的文件夹</span></span><br><span class="line">FOLDER=<span class="string">&quot;dist&quot;</span> </span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;开始打包&quot;</span></span><br><span class="line">npm run build</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;打包完成, 开始压缩文件&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入到dist文件目录内进行打包</span></span><br><span class="line"><span class="comment"># $(echo $(cd $FOLDER;ls)) 是获取文件夹下的所有文件</span></span><br><span class="line">FILES=$(<span class="built_in">echo</span> $(<span class="built_in">cd</span> <span class="variable">$FOLDER</span>;<span class="built_in">ls</span>))</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$FILES</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 跳转至打包后的文件目录进行压缩</span></span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$FOLDER</span></span><br><span class="line">zip -r <span class="variable">$FILE_NAME</span> <span class="variable">$FILES</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 移到项目根目录</span></span><br><span class="line"><span class="built_in">mv</span> <span class="variable">$FILE_NAME</span> ../</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;文件名为:<span class="variable">$FILE_NAME</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 因为压缩的时候跳转到了dist目录内，所以需要跳转至上一层目录</span></span><br><span class="line"><span class="built_in">cd</span> ../</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;上传打包文件至服务器...&quot;</span></span><br><span class="line"><span class="comment"># 上传压缩包至服务器指定目录下</span></span><br><span class="line">scp <span class="variable">$FILE_NAME</span> [服务器]:/www/wwwroot/home</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;上传完成，开始解压...&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 注意，unzip -o 是指覆盖原文件, 传递的文件只能是具体文件名</span></span><br><span class="line"><span class="comment"># 需要先cd到需要解压文件的目录下,再执行解压操作，否则会解压出问题</span></span><br><span class="line"><span class="comment"># 下面命令时远程操作服务器命令，分别是跳转至指定文件夹，然后解压对应文件，最后删除压缩包</span></span><br><span class="line">ssh [服务器] <span class="string">&quot;cd /www/wwwroot/home &amp;&amp; unzip -o <span class="variable">$FILE_NAME</span> &amp;&amp; rm <span class="variable">$FILE_NAME</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">rm</span> <span class="variable">$FILE_NAME</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;更新完成,请刷新网页查看效果&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="代码中的-服务器-是指服务器地址，最好是配置ssh免密登录，并在ssh的config文件中配置别名，方便连接使用"><a href="#代码中的-服务器-是指服务器地址，最好是配置ssh免密登录，并在ssh的config文件中配置别名，方便连接使用" class="headerlink" title="代码中的&#96;[服务器]是指服务器地址，最好是配置ssh免密登录，并在ssh的config文件中配置别名，方便连接使用"></a>代码中的&#96;[服务器]是指服务器地址，最好是配置ssh免密登录，并在ssh的config文件中配置别名，方便连接使用</h3><p>如下配置好之后代码中的<code>[服务器]</code>就可以替换为 [服务器代称]</p>
+<h3 id="在-ssh-config-中进行配置"><a href="#在-ssh-config-中进行配置" class="headerlink" title="在 ~/.ssh/config 中进行配置"></a>在 <code>~/.ssh/config</code> 中进行配置</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Host [服务器代称]</span><br><span class="line">HostName [服务器ip]</span><br><span class="line">Port [服务器连接端口号]</span><br><span class="line">User [服务器用户名]</span><br><span class="line">IdentityFile [密钥路径]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://stanlee12.github.io/2024/11/08/auto-build/" data-id="cm38njgyn00002y5t9f0qgmit" data-title="shell自动化构建部署脚本" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/build/" rel="tag">build</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/scp/" rel="tag">scp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/unzip/" rel="tag">unzip</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/zip/" rel="tag">zip</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-xlsx-js" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2024/08/28/xlsx-js/" class="article-date">
@@ -109,7 +153,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2024/08/28/xlsx-js/" data-id="cm0dajmq00017japubzca5mih" data-title="xlsx-js" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2024/08/28/xlsx-js/" data-id="cm38njgzf000i2y5tdsgq0ujp" data-title="xlsx-js" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -191,7 +235,7 @@ npm install playwright -g
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2024/05/14/playwright/" data-id="cm0dajmp50004japu2ujdb43j" data-title="playwright" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2024/05/14/playwright/" data-id="cm38njgz400072y5t8slce5e5" data-title="playwright" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -264,7 +308,7 @@ npm install playwright -g
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/12/21/uni-app-push/" data-id="cm0dajmpy0014japudicrb4uw" data-title="uni-app 接入推送" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/12/21/uni-app-push/" data-id="cm38njgz9000e2y5t1fj18rmc" data-title="uni-app 接入推送" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -316,7 +360,7 @@ npm install playwright -g
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/10/31/geo-server/" data-id="cm0dajmp00001japu54lpduom" data-title="GeoServer发布tif格式的图层" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/10/31/geo-server/" data-id="cm38njgz000042y5t68x17b2g" data-title="GeoServer发布tif格式的图层" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -382,7 +426,7 @@ npm install playwright -g
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/09/14/vue-tianditu/" data-id="cm0dajmpz0015japu8dwf4xli" data-title="Vue中使用天地图" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/09/14/vue-tianditu/" data-id="cm38njgzb000h2y5tbio39epj" data-title="Vue中使用天地图" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -448,7 +492,7 @@ npm install playwright -g
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/24/vue3-init-md/" data-id="cm0dajmq00018japu59vub6r2" data-title="VsCode快速生成Vue3默认用户片段" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/24/vue3-init-md/" data-id="cm38njgza000f2y5thsvtd3kh" data-title="VsCode快速生成Vue3默认用户片段" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -502,7 +546,7 @@ npm install playwright -g
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/21/ssh-default-md/" data-id="cm0dajmpc000bjapugl2u4l7v" data-title="ssh配置快捷连接服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/21/ssh-default-md/" data-id="cm38njgz7000c2y5tgpp10x2d" data-title="ssh配置快捷连接服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -559,7 +603,7 @@ npm install playwright -g
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/09/ssh-connect-service/" data-id="cm0dajmpa0009japuczzhbgy5" data-title="使用ssh免密连接服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/09/ssh-connect-service/" data-id="cm38njgz500082y5t6vdm5wcc" data-title="使用ssh免密连接服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -600,65 +644,11 @@ npm install playwright -g
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/04/nginx-veu-server-md/" data-id="cm0dajmp60005japugwkiazp8" data-title="nginx 部署 vue应用 server基本配置" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/04/nginx-veu-server-md/" data-id="cm38njgz100052y5t8u1mgabq" data-title="nginx 部署 vue应用 server基本配置" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/" rel="tag">vue</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-git-operation-md" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/02/git-operation-md/" class="article-date">
-  <time class="dt-published" datetime="2023-08-02T09:11:48.000Z" itemprop="datePublished">2023-08-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/02/git-operation-md/">git操作常用命令说明</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
-<p>查看当前git目录下文件的修改情况</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff &#123;file&#125;</span><br></pre></td></tr></table></figure>
-<p>查看文件修改了什么内容， 不指定文件默认显示全部修改过的文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout . / &#123;file&#125;</span><br></pre></td></tr></table></figure>
-<p>撤回修改，当为 . 时， 撤销所有的修改，除了新添加的文件。当指定文件时只撤销该文件的修改</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b &#123;branch_name&#125;</span><br></pre></td></tr></table></figure>
-<p>新建一个分支, 当没有 -b 时，指定分支名则为切换分支</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
-<p>拉取远程仓库最新代码到当前分支</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></table></figure>
-<p>推送当前分支commit到远程分支</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase &#123;branch_name&#125;</span><br></pre></td></tr></table></figure>
-<p>同步分支代码时建议使用，会保持commit记录干净整洁<br>使当前仓库的commit与指定分支进行同步，只会更新当前分支的commit，与主分支无关<br>当出现冲突时，会进入到rebase进度, git status会发现有修改了的文件，其中有冲突，并将冲突解决<br>解决之后使用<code>git add .</code>  然后 <code>git rebase --continue</code>继续rebase.<br>直到分支正常切换到当前分支下。如果中途不想继续rebase可以使用<code>git rebase --abort</code>中断rebase操作</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/02/git-operation-md/" data-id="cm0dajmp40003japu4rxe3csh" data-title="git操作常用命令说明" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rebase/" rel="tag">rebase</a></li></ul>
 
     </footer>
   </div>
@@ -686,7 +676,7 @@ npm install playwright -g
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GeoServer/" rel="tag">GeoServer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/" rel="tag">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitee/" rel="tag">gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitlab/" rel="tag">gitlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/notification/" rel="tag">notification</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/playwright/" rel="tag">playwright</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/push/" rel="tag">push</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rebase/" rel="tag">rebase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tif/" rel="tag">tif</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/" rel="tag">uni-app消息推送</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" rel="tag">web自动化测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xlsx/" rel="tag">xlsx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%A9%E5%9C%B0%E5%9B%BE/" rel="tag">天地图</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GeoServer/" rel="tag">GeoServer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/build/" rel="tag">build</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/" rel="tag">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitee/" rel="tag">gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitlab/" rel="tag">gitlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/notification/" rel="tag">notification</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/playwright/" rel="tag">playwright</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/push/" rel="tag">push</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rebase/" rel="tag">rebase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scp/" rel="tag">scp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tif/" rel="tag">tif</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/" rel="tag">uni-app消息推送</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unzip/" rel="tag">unzip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" rel="tag">web自动化测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xlsx/" rel="tag">xlsx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zip/" rel="tag">zip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%A9%E5%9C%B0%E5%9B%BE/" rel="tag">天地图</a></li></ul>
     </div>
   </div>
 
@@ -696,7 +686,7 @@ npm install playwright -g
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/GeoServer/" style="font-size: 10px;">GeoServer</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitee/" style="font-size: 10px;">gitee</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/notification/" style="font-size: 10px;">notification</a> <a href="/tags/playwright/" style="font-size: 10px;">playwright</a> <a href="/tags/push/" style="font-size: 10px;">push</a> <a href="/tags/rebase/" style="font-size: 10px;">rebase</a> <a href="/tags/ssh/" style="font-size: 20px;">ssh</a> <a href="/tags/tif/" style="font-size: 10px;">tif</a> <a href="/tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="/tags/uni-app%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/" style="font-size: 10px;">uni-app消息推送</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/web%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">web自动化测试</a> <a href="/tags/xlsx/" style="font-size: 10px;">xlsx</a> <a href="/tags/%E5%A4%A9%E5%9C%B0%E5%9B%BE/" style="font-size: 10px;">天地图</a>
+      <a href="/tags/GeoServer/" style="font-size: 10px;">GeoServer</a> <a href="/tags/build/" style="font-size: 10px;">build</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitee/" style="font-size: 10px;">gitee</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/notification/" style="font-size: 10px;">notification</a> <a href="/tags/playwright/" style="font-size: 10px;">playwright</a> <a href="/tags/push/" style="font-size: 10px;">push</a> <a href="/tags/rebase/" style="font-size: 10px;">rebase</a> <a href="/tags/scp/" style="font-size: 10px;">scp</a> <a href="/tags/ssh/" style="font-size: 20px;">ssh</a> <a href="/tags/tif/" style="font-size: 10px;">tif</a> <a href="/tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="/tags/uni-app%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/" style="font-size: 10px;">uni-app消息推送</a> <a href="/tags/unzip/" style="font-size: 10px;">unzip</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/web%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">web自动化测试</a> <a href="/tags/xlsx/" style="font-size: 10px;">xlsx</a> <a href="/tags/zip/" style="font-size: 10px;">zip</a> <a href="/tags/%E5%A4%A9%E5%9C%B0%E5%9B%BE/" style="font-size: 10px;">天地图</a>
     </div>
   </div>
 
@@ -705,7 +695,7 @@ npm install playwright -g
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li></ul>
     </div>
   </div>
 
@@ -716,6 +706,10 @@ npm install playwright -g
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2024/11/08/auto-build/">shell自动化构建部署脚本</a>
+          </li>
         
           <li>
             <a href="/2024/08/28/xlsx-js/">xlsx-js</a>
@@ -731,10 +725,6 @@ npm install playwright -g
         
           <li>
             <a href="/2023/10/31/geo-server/">GeoServer发布tif格式的图层</a>
-          </li>
-        
-          <li>
-            <a href="/2023/09/14/vue-tianditu/">Vue中使用天地图</a>
           </li>
         
       </ul>
