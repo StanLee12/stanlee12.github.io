@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>uni-app 接入推送 | Stan&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="uni-app 移动端app介入消息推送(本文只介绍安卓版本) 首先需要在manifest.json文件中的App模块配置 选中 Push(消息推送), 离线推送需要对应厂商平台的密钥和key，作者并没有申请下来，所以暂时只针对在线推送   接着需要点击右侧的申请开通按钮, 此时会打开uni-app的配置推送应用的界面   APPID 可以在uni-app的manifest.json文件的基础配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="uni-app 接入推送">
+<meta property="og:url" content="https://stanlee12.github.io/2023/12/21/uni-app-push/index.html">
+<meta property="og:site_name" content="Stan&#39;s blog">
+<meta property="og:description" content="uni-app 移动端app介入消息推送(本文只介绍安卓版本) 首先需要在manifest.json文件中的App模块配置 选中 Push(消息推送), 离线推送需要对应厂商平台的密钥和key，作者并没有申请下来，所以暂时只针对在线推送   接着需要点击右侧的申请开通按钮, 此时会打开uni-app的配置推送应用的界面   APPID 可以在uni-app的manifest.json文件的基础配置">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://stanlee12.github.io/images/uni-app-push/uni-app-push-01.png">
+<meta property="og:image" content="https://stanlee12.github.io/images/uni-app-push/uni-app-push-02.png">
+<meta property="og:image" content="https://stanlee12.github.io/images/uni-app-push/uni-app-push-03.png">
+<meta property="og:image" content="https://stanlee12.github.io/images/uni-app-push/uni-app-push-04.png">
+<meta property="og:image" content="https://stanlee12.github.io/images/uni-app-push/uni-app-push-05.png">
+<meta property="article:published_time" content="2023-12-21T08:08:56.000Z">
+<meta property="article:modified_time" content="2024-11-10T12:49:52.930Z">
+<meta property="article:author" content="Stan Lee">
+<meta property="article:tag" content="uni-app">
+<meta property="article:tag" content="push">
+<meta property="article:tag" content="notification">
+<meta property="article:tag" content="uni-app消息推送">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://stanlee12.github.io/images/uni-app-push/uni-app-push-01.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Stan's blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Stan&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://stanlee12.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-uni-app-push" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/12/21/uni-app-push/" class="article-date">
+  <time class="dt-published" datetime="2023-12-21T08:08:56.000Z" itemprop="datePublished">2023-12-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      uni-app 接入推送
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="uni-app-移动端app介入消息推送-本文只介绍安卓版本"><a href="#uni-app-移动端app介入消息推送-本文只介绍安卓版本" class="headerlink" title="uni-app 移动端app介入消息推送(本文只介绍安卓版本)"></a>uni-app 移动端app介入消息推送(本文只介绍安卓版本)</h3><ol>
+<li><p>首先需要在<code>manifest.json</code>文件中的<code>App模块配置</code> 选中 <code>Push(消息推送)</code>, 离线推送需要对应厂商平台的密钥和key，作者并没有申请下来，所以暂时只针对在线推送</p>
+<p><img src="/images/uni-app-push/uni-app-push-01.png" alt="天地图Key"></p>
+</li>
+<li><p>接着需要点击右侧的<code>申请开通</code>按钮, 此时会打开uni-app的配置推送应用的界面</p>
+<p><img src="/images/uni-app-push/uni-app-push-02.png" alt="天地图Key"></p>
+<ul>
+<li><code>APPID</code> 可以在uni-app的<code>manifest.json</code>文件的基础配置模块看到</li>
+<li><code>包名</code> 是打包app时命名的应用名称(建议测试版、正式版各打一个，使用不同的包名)</li>
+<li><code>Android应用签名</code> 需要在应用管理内进行配置, 打包时使用的密钥文件内包含, 可以点击 <code>包名在“应用详情”中“各平台信息”管理，点击前往</code> 进行配置, uni-app 界面内都有详细的说明</li>
+<li><code>关联服务空间</code>  需要在uniCloud中新建一个自己的云服务空间, 我这里申请的是阿里云免费的服务空间, 后续的推送管理端也需要该云空间填完这些信息提交修改即可</li>
+</ul>
+</li>
+<li><p>完成上面这些步骤基本就已经配置完成了，当然<code>manifest.json</code>修改完成之后需要重新打包，记得包名要保持一致.完成了app相关配置还需要管理后台进行消息的发送<br>这时需要新建一个uni-admin 模板的项目,选择<code>文件&gt;新建&gt;项目&gt;un-app&gt;uni-admin</code>, 新建一个uni-admin 模板的项目,并添加<code>uni-push-admin</code>插件进项目中<br>这是一个web应用，管理uni-app应用的.</p>
+</li>
+<li><p>新的<code>uni-admin</code>以及添加<code>uni-push-admin</code> 完成之后, 启动项目时记得选中 <code>连接云端函数</code>.</p>
+<p><img src="/images/uni-app-push/uni-app-push-03.png" alt="天地图Key"></p>
+</li>
+<li><p>项目启动之后需要先注册一个管理员账号, 注册完成登录,项目是这个样子的</p>
+<p><img src="/images/uni-app-push/uni-app-push-04.png" alt="天地图Key"></p>
+<p>项目添加并配置了<code>uni-push-admin</code>，但是看不到<code>推送管理</code>的菜单栏, 需要在<code>系统管理</code>下的<code>菜单管理进行添加</code></p>
+</li>
+<li><p>进入<code>推送管理 &gt; 消息推送</code>, 可以进行测试发送了</p>
+<p><img src="/images/uni-app-push/uni-app-push-05.png" alt="天地图Key"></p>
+<ul>
+<li>如果<code>选择应用</code>中没有自己的应用，则需要在<code>系统管理 &gt; 应用管理</code>中进行添加</li>
+<li>因为只开启了在线推送，所以需要将 <code>强制通知栏消息</code> 打开, 并且应用在设备上处于开启状态才会收到推送消息</li>
+<li>接着填入必填信息即可进行推送消息的发送了</li>
+</ul>
+</li>
+<li><p>小程序内的订阅消息需要审核，则需要单独配置，且需要接入后端服务。总的来说, uni-app的文档还是挺详细的，接入时候也不算麻烦，文章内具体提到的内容也算是我没有注意到的点，花费了些许时间.</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://stanlee12.github.io/2023/12/21/uni-app-push/" data-id="cm6d7o6jj000f57q0gjmm5rlj" data-title="uni-app 接入推送" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/notification/" rel="tag">notification</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/push/" rel="tag">push</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/uni-app%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/" rel="tag">uni-app消息推送</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/05/14/playwright/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          playwright
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/10/31/geo-server/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">GeoServer发布tif格式的图层</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GeoServer/" rel="tag">GeoServer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/build/" rel="tag">build</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/" rel="tag">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centOS/" rel="tag">centOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitee/" rel="tag">gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitlab/" rel="tag">gitlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/notification/" rel="tag">notification</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/playwright/" rel="tag">playwright</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/push/" rel="tag">push</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rebase/" rel="tag">rebase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scp/" rel="tag">scp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tif/" rel="tag">tif</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/" rel="tag">uni-app消息推送</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unzip/" rel="tag">unzip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" rel="tag">web自动化测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xlsx/" rel="tag">xlsx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zip/" rel="tag">zip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%A9%E5%9C%B0%E5%9B%BE/" rel="tag">天地图</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/GeoServer/" style="font-size: 10px;">GeoServer</a> <a href="/tags/build/" style="font-size: 10px;">build</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/centOS/" style="font-size: 10px;">centOS</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitee/" style="font-size: 10px;">gitee</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/notification/" style="font-size: 10px;">notification</a> <a href="/tags/playwright/" style="font-size: 10px;">playwright</a> <a href="/tags/push/" style="font-size: 10px;">push</a> <a href="/tags/rebase/" style="font-size: 10px;">rebase</a> <a href="/tags/scp/" style="font-size: 10px;">scp</a> <a href="/tags/ssh/" style="font-size: 20px;">ssh</a> <a href="/tags/tif/" style="font-size: 10px;">tif</a> <a href="/tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="/tags/uni-app%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/" style="font-size: 10px;">uni-app消息推送</a> <a href="/tags/unzip/" style="font-size: 10px;">unzip</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/web%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">web自动化测试</a> <a href="/tags/xlsx/" style="font-size: 10px;">xlsx</a> <a href="/tags/zip/" style="font-size: 10px;">zip</a> <a href="/tags/%E5%A4%A9%E5%9C%B0%E5%9B%BE/" style="font-size: 10px;">天地图</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/01/26/docker-nginx/">服务器安装docker以及启用nginx服务</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/08/auto-build/">shell自动化构建部署脚本</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/28/xlsx-js/">xlsx-js</a>
+          </li>
+        
+          <li>
+            <a href="/2024/05/14/playwright/">playwright</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/21/uni-app-push/">uni-app 接入推送</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Stan Lee<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

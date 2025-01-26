@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>ssh配置快捷连接服务器 | Stan&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1234567Host myserver    HostName [ip_address] # 服务器ip地址    User [user_name] # 服务器登录的账户名称    IdentityFile ~&#x2F;.ssh&#x2F;id_rsa # ssh生成的密钥文件地址    PreferredAuthentications publickey    AddKeysToAgent yes  Prefe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ssh配置快捷连接服务器">
+<meta property="og:url" content="https://stanlee12.github.io/2023/08/21/ssh-default-md/index.html">
+<meta property="og:site_name" content="Stan&#39;s blog">
+<meta property="og:description" content="1234567Host myserver    HostName [ip_address] # 服务器ip地址    User [user_name] # 服务器登录的账户名称    IdentityFile ~&#x2F;.ssh&#x2F;id_rsa # ssh生成的密钥文件地址    PreferredAuthentications publickey    AddKeysToAgent yes  Prefe">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-08-21T03:50:20.000Z">
+<meta property="article:modified_time" content="2024-11-10T12:49:52.930Z">
+<meta property="article:author" content="Stan Lee">
+<meta property="article:tag" content="ssh">
+<meta property="article:tag" content="github">
+<meta property="article:tag" content="gitlab">
+<meta property="article:tag" content="gitee">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Stan's blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Stan&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://stanlee12.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-ssh-default-md" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/21/ssh-default-md/" class="article-date">
+  <time class="dt-published" datetime="2023-08-21T03:50:20.000Z" itemprop="datePublished">2023-08-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      ssh配置快捷连接服务器
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Host myserver</span><br><span class="line">    HostName [ip_address] # 服务器ip地址</span><br><span class="line">    User [user_name] # 服务器登录的账户名称</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa # ssh生成的密钥文件地址</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    AddKeysToAgent yes</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>PreferredAuthentications</code> 是一个用于配置 SSH 客户端首选身份验证方式的选项。它允许你指定客户端在连接远程服务器时首选的身份验证方式顺序。SSH 支持多种身份验证方式，如密码、公钥、GSSAPI 等。</p>
+<p>如果需要同时支持多种身份验证方式，可以使用逗号分隔它们：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PreferredAuthentications publickey,password</span><br></pre></td></tr></table></figure>
+
+<p><code>AddKeysToAgent</code> 是一个用于配置 SSH 客户端是否将密钥添加到 SSH 代理（如 ssh-agent）中的选项。SSH 代理可以管理你的私钥，允许你在登录后只需要输入一次密码即可在整个会话中使用私钥。</p>
+<p>默认情况下，SSH 客户端不会自动将密钥添加到代理中。如果你想在每次登录时将密钥添加到代理，可以在 SSH 配置文件中添加以下行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AddKeysToAgent <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
+<p>这样，在登录时会提示你输入私钥的密码，并将私钥添加到代理中，以后不再需要重复输入密码。</p>
+<p>还有ssh配置github、gitee、gitlab连接的示例:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">Default gitHub user Self</span></span><br><span class="line">Host github.com</span><br><span class="line">  HostName github.com</span><br><span class="line">  User [stanlee1226@gmail.com] # email</span><br><span class="line">  PreferredAuthentications publickey</span><br><span class="line">  IdentityFile ~/.ssh/id_rsa.github</span><br><span class="line">  AddKeysToAgent yes</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">Add gitee user</span></span><br><span class="line">Host gitee.com</span><br><span class="line">  HostName gitee.com</span><br><span class="line">  User [stanlee1226@gmail.com] #email</span><br><span class="line">  PreferredAuthentications publickey</span><br><span class="line">  IdentityFile ~/.ssh/id_rsa.gitee</span><br><span class="line">  AddKeysToAgent yes</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">Add gitlab user</span></span><br><span class="line">Host git@[ip_address]</span><br><span class="line">  HostName [ip_address]</span><br><span class="line">  Port [port]</span><br><span class="line">  User [account]</span><br><span class="line">  PreferredAuthentications publickey</span><br><span class="line">  IdentityFile ~/.ssh/id_rsa.gitlab</span><br><span class="line">  AddKeysToAgent yes</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://stanlee12.github.io/2023/08/21/ssh-default-md/" data-id="cm6d7o6ji000d57q00pf4a05i" data-title="ssh配置快捷连接服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gitee/" rel="tag">gitee</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gitlab/" rel="tag">gitlab</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/08/24/vue3-init-md/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          VsCode快速生成Vue3默认用户片段
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/08/09/ssh-connect-service/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">使用ssh免密连接服务器</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GeoServer/" rel="tag">GeoServer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/build/" rel="tag">build</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/" rel="tag">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centOS/" rel="tag">centOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitee/" rel="tag">gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitlab/" rel="tag">gitlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/notification/" rel="tag">notification</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/playwright/" rel="tag">playwright</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/push/" rel="tag">push</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rebase/" rel="tag">rebase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scp/" rel="tag">scp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tif/" rel="tag">tif</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/" rel="tag">uni-app消息推送</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unzip/" rel="tag">unzip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" rel="tag">web自动化测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xlsx/" rel="tag">xlsx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zip/" rel="tag">zip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%A9%E5%9C%B0%E5%9B%BE/" rel="tag">天地图</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/GeoServer/" style="font-size: 10px;">GeoServer</a> <a href="/tags/build/" style="font-size: 10px;">build</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/centOS/" style="font-size: 10px;">centOS</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitee/" style="font-size: 10px;">gitee</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/notification/" style="font-size: 10px;">notification</a> <a href="/tags/playwright/" style="font-size: 10px;">playwright</a> <a href="/tags/push/" style="font-size: 10px;">push</a> <a href="/tags/rebase/" style="font-size: 10px;">rebase</a> <a href="/tags/scp/" style="font-size: 10px;">scp</a> <a href="/tags/ssh/" style="font-size: 20px;">ssh</a> <a href="/tags/tif/" style="font-size: 10px;">tif</a> <a href="/tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="/tags/uni-app%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/" style="font-size: 10px;">uni-app消息推送</a> <a href="/tags/unzip/" style="font-size: 10px;">unzip</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/web%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">web自动化测试</a> <a href="/tags/xlsx/" style="font-size: 10px;">xlsx</a> <a href="/tags/zip/" style="font-size: 10px;">zip</a> <a href="/tags/%E5%A4%A9%E5%9C%B0%E5%9B%BE/" style="font-size: 10px;">天地图</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/01/26/docker-nginx/">服务器安装docker以及启用nginx服务</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/08/auto-build/">shell自动化构建部署脚本</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/28/xlsx-js/">xlsx-js</a>
+          </li>
+        
+          <li>
+            <a href="/2024/05/14/playwright/">playwright</a>
+          </li>
+        
+          <li>
+            <a href="/2023/12/21/uni-app-push/">uni-app 接入推送</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 Stan Lee<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
