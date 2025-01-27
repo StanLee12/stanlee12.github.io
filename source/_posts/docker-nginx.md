@@ -89,7 +89,7 @@ rm -rf /var/lib/docker
 
 ```shell
 docker info
-```  
+```
 
 可以看到docker默认工作目录是 `/var/lib/docker`,因为是系统盘所以不建议在此目录下存储docker相关内容
 
@@ -99,7 +99,7 @@ docker info
 
 通过修改 `/etc/docker/daemon.json`，没有该文件则新建一个, 并在其中添加
 
-``` json
+```json
 {
   "data-root": "/data/docker-workspace"
 }
