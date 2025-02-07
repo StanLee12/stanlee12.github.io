@@ -2,7 +2,7 @@
 title: 使用docker-compose 搭建nginx服务
 author: stan
 date: 2025-01-27 11:23:23
-tags:
+tags: [docker-compose, nginx, docker]
 ---
 
 ## 安装docker-compose
