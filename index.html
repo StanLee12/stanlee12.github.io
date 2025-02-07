@@ -1,917 +1,768 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/favicon.ico">
+  <link rel="icon" href="/images/favicon.ico">
   
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <title>Stan&#39;s blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Stan Lee">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
 <meta property="og:title" content="Stan&#39;s blog">
 <meta property="og:url" content="https://stanlee12.github.io/index.html">
 <meta property="og:site_name" content="Stan&#39;s blog">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="Stan Lee">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Stan's blog" type="application/atom+xml">
+<meta name="twitter:card" content="summary_large_image">
   
   
-    <link rel="shortcut icon" href="/images/favicon.ico">
   
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  <title>Stan&#39;s blog</title>
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"stanlee12.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
   
 <meta name="generator" content="Hexo 6.3.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Stan&#39;s blog</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Stan&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-          <a class="main-nav-link" href="/">Home</a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
         
-      </nav>
-      <nav id="sub-nav">
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
         
         
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://stanlee12.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-docker-compose-nginx" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/01/27/docker-compose-nginx/" class="article-date">
-  <time class="dt-published" datetime="2025-01-27T03:23:23.000Z" itemprop="datePublished">2025-01-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/01/27/docker-compose-nginx/">使用docker-compose 搭建nginx服务</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="安装docker-compose"><a href="#安装docker-compose" class="headerlink" title="安装docker-compose"></a>安装docker-compose</h2><p>Linux 上我们可以从 Github 上下载它的二进制包来使用，最新发行的版本地址：<a target="_blank" rel="noopener" href="https://github.com/docker/compose/releases%E3%80%82">https://github.com/docker/compose/releases。</a></p>
-<p>运行以下命令以下载 Docker Compose 的当前稳定版本：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L &quot;https://github.com/docker/compose/releases/download/v2.2.2/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
-
-<p>Docker Compose 存放在 GitHub，不太稳定。</p>
-<p>你可以也通过执行下面的命令，高速安装 Docker Compose:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://get.daocloud.io/docker/compose/releases/download/v2.4.1/docker-compose-`uname -s`-`uname -m` &gt; /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
-
-<p>将可执行权限应用于二进制文件：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
-
-<p>创建软链：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose</span><br></pre></td></tr></table></figure>
-
-<p>测试是否安装成功：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose version</span><br></pre></td></tr></table></figure>
-
-<h2 id="创建项目文件夹"><a href="#创建项目文件夹" class="headerlink" title="创建项目文件夹"></a>创建项目文件夹</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /data/blog</span><br></pre></td></tr></table></figure>
-
-<p>在<code>/data</code> 目录下创建blog文件夹，用于存放nginx项目以及docker-compose配置文件</p>
-<h2 id="创建docker-compose-yaml-配置文件"><a href="#创建docker-compose-yaml-配置文件" class="headerlink" title="创建docker-compose.yaml 配置文件"></a>创建docker-compose.yaml 配置文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tee docker-compose.yaml &lt;&lt;EOF</span><br></pre></td></tr></table></figure>
-
-<p><code>tee</code> 指令是将输入内容写入到文件中</p>
-<p><code>&lt;&lt;EOF</code> 文件开头，是 <code>end of file</code> 的缩写，加<code>&lt;&lt;</code>表示文件开头, 输入内容结尾加  <code>EOF</code> 表示文件内容到此结束</p>
-<p>上面的命令执行完之后会进入输入模式，输入以下内容即可:</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3&#x27;</span> <span class="comment">#指定版本</span></span><br><span class="line"><span class="attr">services:</span>    <span class="comment">#服务根节点</span></span><br><span class="line">  <span class="attr">nginx:</span>   <span class="comment">#jenkins服务/其他服务（web服务/nginx服务等）</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">nginx:1.22</span>  <span class="comment">#nginx镜像，如果镜像容器没有会去自动拉取</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">nginx</span>       <span class="comment">#容器的名称</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span>             <span class="comment">#跟随docker的启动而启动</span></span><br><span class="line">    <span class="attr">volumes:</span>                    <span class="comment">#挂载卷命令</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./conf/nginx.conf:/etc/nginx/nginx.conf</span>              <span class="comment">#映射配置文件入口文件</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./html:/usr/share/nginx/html</span>                         <span class="comment">#静态资源根目录挂载</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./logs:/var/log/nginx</span>                                <span class="comment">#日志文件挂载</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./conf.d:/etc/nginx/conf.d</span> <span class="comment">#映射配置文件</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">80</span><span class="string">:80</span>    <span class="comment">#宿主主机端口80 映射到 容器端口80</span></span><br><span class="line"><span class="string">EOF</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="创建-nginx-相关的配置文件夹"><a href="#创建-nginx-相关的配置文件夹" class="headerlink" title="创建 nginx 相关的配置文件夹"></a>创建 nginx 相关的配置文件夹</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ./&#123;conf,logs,html,conf.d&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>conf</code> 文件夹用于存放nginx web服务的基础配置</p>
-<p><code>logs</code> 文件夹用于存放日志</p>
-<p><code>html</code> 文件夹用于存放web项目打包后的文件</p>
-<p><code>conf.d</code> 文件夹用于存放web项目对应的nginx配置文件</p>
-<h2 id="创建基础配置文件"><a href="#创建基础配置文件" class="headerlink" title="创建基础配置文件"></a>创建基础配置文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tee ./conf/nginx.conf &lt;&lt;&#x27;EOF&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>输入以下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">user  nginx;</span><br><span class="line">worker_processes  auto;</span><br><span class="line"></span><br><span class="line">error_log  /var/log/nginx/error.log notice;</span><br><span class="line">pid        /var/run/nginx.pid;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       /etc/nginx/mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    log_format  main  &#x27;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#x27;</span><br><span class="line">                      &#x27;$status $body_bytes_sent &quot;$http_referer&quot; &#x27;</span><br><span class="line">                      &#x27;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#x27;;</span><br><span class="line"></span><br><span class="line">    access_log  /var/log/nginx/access.log  main;</span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line">    #tcp_nopush     on;</span><br><span class="line"></span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line"></span><br><span class="line">    #gzip  on;</span><br><span class="line"></span><br><span class="line">    include /etc/nginx/conf.d/*.conf;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="创建项目入口文件"><a href="#创建项目入口文件" class="headerlink" title="创建项目入口文件"></a>创建项目入口文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tee ./html/index.html &lt;&lt;&#x27;EOF&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>输入以下内容:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>Welcome to nginx!<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css"><span class="selector-tag">html</span> &#123; <span class="attribute">color</span>-scheme: light dark; &#125;</span></span><br><span class="line"><span class="language-css"><span class="selector-tag">body</span> &#123; <span class="attribute">width</span>: <span class="number">35em</span>; <span class="attribute">margin</span>: <span class="number">0</span> auto;</span></span><br><span class="line"><span class="language-css"><span class="attribute">font-family</span>: Tahoma, Verdana, Arial, sans-serif; &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Welcome to nginx!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>If you see this page, the nginx web server is successfully installed and</span><br><span class="line">working. Further configuration is required.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>For online documentation and support please refer to</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://nginx.org/&quot;</span>&gt;</span>nginx.org<span class="tag">&lt;/<span class="name">a</span>&gt;</span>.<span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">Commercial support is available at</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://nginx.com/&quot;</span>&gt;</span>nginx.com<span class="tag">&lt;/<span class="name">a</span>&gt;</span>.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">em</span>&gt;</span>Thank you for using nginx.<span class="tag">&lt;/<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
-
-<h2 id="创建-html-50x-html-文件"><a href="#创建-html-50x-html-文件" class="headerlink" title="创建./html/50x.html 文件"></a>创建<code>./html/50x.html</code> 文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tee ./html/50x.html &lt;&lt;&#x27;EOF&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>输入以下内容:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>Error<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css"><span class="selector-tag">html</span> &#123; <span class="attribute">color</span>-scheme: light dark; &#125;</span></span><br><span class="line"><span class="language-css"><span class="selector-tag">body</span> &#123; <span class="attribute">width</span>: <span class="number">35em</span>; <span class="attribute">margin</span>: <span class="number">0</span> auto;</span></span><br><span class="line"><span class="language-css"><span class="attribute">font-family</span>: Tahoma, Verdana, Arial, sans-serif; &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>An error occurred.<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Sorry, the page you are looking for is currently unavailable.<span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">Please try again later.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>If you are the system administrator of this resource then you should check</span><br><span class="line">the error log for details.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">em</span>&gt;</span>Faithfully yours, nginx.<span class="tag">&lt;/<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
-
-<h2 id="创建默认项目配置文件"><a href="#创建默认项目配置文件" class="headerlink" title="创建默认项目配置文件"></a>创建默认项目配置文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tee ./conf.d/default.conf &lt;&lt;&#x27;EOF&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>输入以下内容:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    listen  [::]:80;</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    #access_log  /var/log/nginx/host.access.log  main;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root   /usr/share/nginx/html;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #error_page  404              /404.html;</span><br><span class="line"></span><br><span class="line">    # redirect server error pages to the static page /50x.html</span><br><span class="line">    #</span><br><span class="line">    error_page   500 502 503 504  /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root   /usr/share/nginx/html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
-
-<h2 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
-
-<p>查看服务是否启动:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2025/01/27/docker-compose-nginx/" data-id="cm6eii19r0003m4q056d0dadf" data-title="使用docker-compose 搭建nginx服务" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-docker-nginx" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/01/26/docker-nginx/" class="article-date">
-  <time class="dt-published" datetime="2025-01-26T05:15:11.000Z" itemprop="datePublished">2025-01-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/01/26/docker-nginx/">服务器安装docker以及启用nginx服务</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="centOS7-安装docker以及通过docker启用一个nginx服务"><a href="#centOS7-安装docker以及通过docker启用一个nginx服务" class="headerlink" title="centOS7 安装docker以及通过docker启用一个nginx服务"></a>centOS7 安装docker以及通过docker启用一个nginx服务</h1><h2 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h2><ul>
-<li>本文所有操作基于centOS7系统</li>
-</ul>
-<h3 id="安装包管理器"><a href="#安装包管理器" class="headerlink" title="安装包管理器"></a>安装包管理器</h3><p>服务器上的包管理器使用的是 <code>dnf</code>， 用于替换 <code>yum</code> 管理器<br>可以使用命令 </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install dnf</span><br></pre></td></tr></table></figure>
-
-<p>检测 <code>dnf</code> 是否安装成功 可以执行 </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf --version</span><br></pre></td></tr></table></figure>
-
-<h3 id="设置dnf仓库"><a href="#设置dnf仓库" class="headerlink" title="设置dnf仓库"></a>设置<code>dnf</code>仓库</h3><p>安装 dnf-plugins-core 包（提供管理 DNF 仓库的命令），并设置仓库。  </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf -y install dnf-plugins-core</span><br></pre></td></tr></table></figure>
-
-<p>官方镜像,比较慢 </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
-
-<p>可以执行以下命令换成清华大学的镜像源：清华大学镜像源 </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i &#x27;s+https://download.docker.com+https://mirrors.tuna.tsinghua.edu.cn/docker-ce+&#x27; /etc/yum.repos.d/docker-ce.repo</span><br></pre></td></tr></table></figure>
-
-<h3 id="安装docker以及其他依赖"><a href="#安装docker以及其他依赖" class="headerlink" title="安装docker以及其他依赖"></a>安装docker以及其他依赖</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</span><br></pre></td></tr></table></figure>
-
-<p>启动docker </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure>
-
-<p>如果希望 Docker 在系统启动时也启动可以使用以下命令：  </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable --now docker</span><br></pre></td></tr></table></figure>
-<p>以上命令会配置 Docker 的 systemd 服务，在系统启动时自动启动 Docker。  </p>
-<p>检测是否安装并启动成功:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run hello-world</span><br></pre></td></tr></table></figure>
-
-<p>以上命令会自动从docker-hub下载一个用于测试的镜像，启动成功之后会自动停止。如果第一次没有成功可以再尝试一次</p>
-<h2 id="卸载docker"><a href="#卸载docker" class="headerlink" title="卸载docker"></a>卸载docker</h2><p>删除安装包：  </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum remove docker-ce</span><br></pre></td></tr></table></figure>
-
-<p>删除镜像、容器、配置文件等内容：  </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /var/lib/docker</span><br></pre></td></tr></table></figure>
-
-<h2 id="修改docker-默认工作目录"><a href="#修改docker-默认工作目录" class="headerlink" title="修改docker 默认工作目录"></a>修改docker 默认工作目录</h2><p>查看默认docker工作目录:  </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker info</span><br></pre></td></tr></table></figure>
-
-<p>可以看到docker默认工作目录是 <code>/var/lib/docker</code>,因为是系统盘所以不建议在此目录下存储docker相关内容</p>
-<p>可以通过docker 配置文件修改</p>
-<p>新建<code>/data/docker-workspace</code> 文件夹，并将默认docker目录修改为此目录 </p>
-<p>通过修改 <code>/etc/docker/daemon.json</code>，没有该文件则新建一个, 并在其中添加</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;data-root&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/data/docker-workspace&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>然后重启docker:  </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop docker.service</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure>
-
-<p>查看是否已修改:    </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker info</span><br></pre></td></tr></table></figure>
-
-<h2 id="其他docker常用命令"><a href="#其他docker常用命令" class="headerlink" title="其他docker常用命令"></a>其他docker常用命令</h2><p>查看运行中的服务:  </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
-<p>-a 表示查看运行中以及停止中的服务</p>
-<p>查看已安装的docker镜像:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
-
-<p>搜索docker hub 上已存在的镜像</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search [镜像名称]</span><br></pre></td></tr></table></figure>
-
-<h2 id="安装docker-nginx镜像"><a href="#安装docker-nginx镜像" class="headerlink" title="安装docker nginx镜像"></a>安装docker nginx镜像</h2><p>搜索可用的镜像:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search nginx</span><br></pre></td></tr></table></figure>
-
-<p>会看到第一个是官方的镜像源，这里我们就使用官方的就好</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull nginx</span><br></pre></td></tr></table></figure>
-
-<p>查看已安装的镜像:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
-<p>可以看到nginx镜像已装</p>
-<h2 id="启动docker-nginx-服务"><a href="#启动docker-nginx-服务" class="headerlink" title="启动docker nginx 服务"></a>启动docker nginx 服务</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name docker-nginx-test -p 8081:80 -d nginx</span><br></pre></td></tr></table></figure>
-
-<p><code>docker-nginx-test</code> 指的是启动的服务的名称</p>
-<p><code>8081</code> 指的是宿主机的开放端口,也就是本台服务器的开放端口.</p>
-<blockquote>
-<p>注意的是，需要先将防火墙关闭,可以通过以下命令查看防火墙状态</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --state</span><br></pre></td></tr></table></figure>
-
-<p><code>80</code> 指的是启动的docker nginx服务对应的端口号, 也就是将启动的nginx镜像的80端口映射到宿主机的8081端口</p>
-<p><code>-d</code> 指的是服务启动后在后台一直运行</p>
-<p><code>nginx</code>指的是使用已安装镜像中的 nginx镜像</p>
-<p>查看是否已启动成功:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
-
-<p>可以看到 <code>docker-nginx-test</code> 已在列表中</p>
-<h2 id="访问docker-nginx-test容器内部"><a href="#访问docker-nginx-test容器内部" class="headerlink" title="访问docker-nginx-test容器内部"></a>访问docker-nginx-test容器内部</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it docker-nginx-test /bin/bash</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>这条命令将会在当前窗口开启一个 <code>docker-nginx-test</code> 容器的命令行输入界面，即可以操作该容器</p>
-</blockquote>
-<p>如果我们需要修改容器内的文件，则还需要单独安装vim</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get install vim -y</span><br></pre></td></tr></table></figure>
-
-<p><code>-y</code> 指的是该命令执行中的所有操作默认输入 <code>y</code></p>
-<blockquote>
-<p>检测vim是否已安V装</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim --version</span><br></pre></td></tr></table></figure>
-
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>通过访问 <code>[ip地址或者域名]:[端口号]</code> 即可访问到部署的nginx默认页面</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2025/01/26/docker-nginx/" data-id="cm6eii19r0004m4q01knx8w4t" data-title="服务器安装docker以及启用nginx服务" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/centOS/" rel="tag">centOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-auto-build" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/11/08/auto-build/" class="article-date">
-  <time class="dt-published" datetime="2024-11-08T11:09:35.000Z" itemprop="datePublished">2024-11-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/11/08/auto-build/">shell自动化构建部署脚本</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="使用shell脚本自动化打包部署前端项目"><a href="#使用shell脚本自动化打包部署前端项目" class="headerlink" title="使用shell脚本自动化打包部署前端项目"></a>使用shell脚本自动化打包部署前端项目</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="comment"># 使用sh作为解释器  </span></span><br><span class="line"><span class="built_in">set</span> -e <span class="comment"># 当脚本执行出现错误立即退出</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置当脚本退出时打印异常信息</span></span><br><span class="line"><span class="built_in">trap</span> <span class="string">&#x27;echo &quot;退出: $?&quot;&#x27;</span> EXIT</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取当前时间</span></span><br><span class="line">CURRENT_TIME=`<span class="built_in">date</span> <span class="string">&quot;+%Y%m%d%H%M&quot;</span>`</span><br><span class="line"><span class="comment"># 获取当前文件夹名称</span></span><br><span class="line">SHELL_FOLDER=$(<span class="built_in">basename</span> $(<span class="built_in">pwd</span>))</span><br><span class="line"><span class="comment"># 使用文件夹名称以及当前时间作为压缩包名称</span></span><br><span class="line">FILE_NAME=<span class="string">&quot;<span class="variable">$SHELL_FOLDER</span>-<span class="variable">$CURRENT_TIME</span>.zip&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 打包后的文件夹</span></span><br><span class="line">FOLDER=<span class="string">&quot;dist&quot;</span> </span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;开始打包&quot;</span></span><br><span class="line">npm run build</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;打包完成, 开始压缩文件&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入到dist文件目录内进行打包</span></span><br><span class="line"><span class="comment"># $(echo $(cd $FOLDER;ls)) 是获取文件夹下的所有文件</span></span><br><span class="line">FILES=$(<span class="built_in">echo</span> $(<span class="built_in">cd</span> <span class="variable">$FOLDER</span>;<span class="built_in">ls</span>))</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$FILES</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 跳转至打包后的文件目录进行压缩</span></span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$FOLDER</span></span><br><span class="line">zip -r <span class="variable">$FILE_NAME</span> <span class="variable">$FILES</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 移到项目根目录</span></span><br><span class="line"><span class="built_in">mv</span> <span class="variable">$FILE_NAME</span> ../</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;文件名为:<span class="variable">$FILE_NAME</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 因为压缩的时候跳转到了dist目录内，所以需要跳转至上一层目录</span></span><br><span class="line"><span class="built_in">cd</span> ../</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;上传打包文件至服务器...&quot;</span></span><br><span class="line"><span class="comment"># 上传压缩包至服务器指定目录下</span></span><br><span class="line">scp <span class="variable">$FILE_NAME</span> [服务器]:/www/wwwroot/home</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;上传完成，开始解压...&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 注意，unzip -o 是指覆盖原文件, 传递的文件只能是具体文件名</span></span><br><span class="line"><span class="comment"># 需要先cd到需要解压文件的目录下,再执行解压操作，否则会解压出问题</span></span><br><span class="line"><span class="comment"># 下面命令时远程操作服务器命令，分别是跳转至指定文件夹，然后解压对应文件，最后删除压缩包</span></span><br><span class="line">ssh [服务器] <span class="string">&quot;cd /www/wwwroot/home &amp;&amp; unzip -o <span class="variable">$FILE_NAME</span> &amp;&amp; rm <span class="variable">$FILE_NAME</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">rm</span> <span class="variable">$FILE_NAME</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;更新完成,请刷新网页查看效果&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="代码中的-服务器-是指服务器地址，最好是配置ssh免密登录，并在ssh的config文件中配置别名，方便连接使用"><a href="#代码中的-服务器-是指服务器地址，最好是配置ssh免密登录，并在ssh的config文件中配置别名，方便连接使用" class="headerlink" title="代码中的&#96;[服务器]是指服务器地址，最好是配置ssh免密登录，并在ssh的config文件中配置别名，方便连接使用"></a>代码中的&#96;[服务器]是指服务器地址，最好是配置ssh免密登录，并在ssh的config文件中配置别名，方便连接使用</h3><p>如下配置好之后代码中的<code>[服务器]</code>就可以替换为 [服务器代称]</p>
-<h3 id="在-ssh-config-中进行配置"><a href="#在-ssh-config-中进行配置" class="headerlink" title="在 ~/.ssh/config 中进行配置"></a>在 <code>~/.ssh/config</code> 中进行配置</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Host [服务器代称]</span><br><span class="line">HostName [服务器ip]</span><br><span class="line">Port [服务器连接端口号]</span><br><span class="line">User [服务器用户名]</span><br><span class="line">IdentityFile [密钥路径]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2024/11/08/auto-build/" data-id="cm6eii19o0000m4q0by4pbqqj" data-title="shell自动化构建部署脚本" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/build/" rel="tag">build</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/scp/" rel="tag">scp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/unzip/" rel="tag">unzip</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/zip/" rel="tag">zip</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-xlsx-js" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/08/28/xlsx-js/" class="article-date">
-  <time class="dt-published" datetime="2024-08-28T03:04:28.000Z" itemprop="datePublished">2024-08-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/08/28/xlsx-js/">xlsx-js</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="nodejs解析Excel表格"><a href="#nodejs解析Excel表格" class="headerlink" title="nodejs解析Excel表格"></a>nodejs解析Excel表格</h1><h3 id="解析excel可以说是工作中非常常用的一个功能，就简单叙述我工作中对excel文件进行解析的一个步骤吧"><a href="#解析excel可以说是工作中非常常用的一个功能，就简单叙述我工作中对excel文件进行解析的一个步骤吧" class="headerlink" title="解析excel可以说是工作中非常常用的一个功能，就简单叙述我工作中对excel文件进行解析的一个步骤吧"></a>解析excel可以说是工作中非常常用的一个功能，就简单叙述我工作中对excel文件进行解析的一个步骤吧</h3><ol>
-<li><p>初始化项目，因为是一个简单的脚本，我们先创建一个文件夹存放js文件的, 再新建<code>index.js</code>, 然后执行<code>npm init</code>, 会自动生成<code>package.json</code>, 再执行安装<code>npm install xlsx</code>, 我们就可以开始解析excel文件了</p>
-</li>
-<li><p>以下就是解析excel文件并写入文件的简单示例代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> dayjs = <span class="built_in">require</span>(<span class="string">&#x27;dayjs&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">XLSX</span> = <span class="built_in">require</span>(<span class="string">&#x27;xlsx&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 替换为你的xlsx文件路径</span></span><br><span class="line"><span class="keyword">const</span> workbookPath = <span class="string">&#x27;/path/to/file&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 读取xlsx文件  cellDates 表示时间类型的数据转换为时间格式，默认四展示1970年至时间日期的天数</span></span><br><span class="line"><span class="keyword">const</span> workbook = <span class="variable constant_">XLSX</span>.<span class="title function_">readFile</span>(workbookPath, &#123; <span class="attr">cellDates</span>: <span class="literal">true</span>, <span class="attr">dateNF</span>: <span class="string">&#x27;YYYY&quot;年&quot;MM&quot;月&quot;DD&#x27;</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 假设我们想要读取第一个工作表</span></span><br><span class="line"><span class="keyword">const</span> firstSheetName = workbook.<span class="property">SheetNames</span>[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">const</span> worksheet = workbook.<span class="property">Sheets</span>[firstSheetName];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用xlsx库的工具函数将工作表的数据转换为json对象数组</span></span><br><span class="line"><span class="comment">// 如果设置 raw: false, xlsx的时间格式会按照dateNF显示，但是数字类型会被转换为科学计数法显示</span></span><br><span class="line"><span class="comment">// 所以还是对时间格式使用dayjs直接转换</span></span><br><span class="line"><span class="comment">// header:1 表示第一行是标题行 将其去除掉</span></span><br><span class="line"><span class="comment">// reverse 是将数组倒序排列</span></span><br><span class="line"><span class="keyword">let</span> data = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">sheet_to_json</span>(worksheet, &#123; <span class="attr">header</span>:<span class="number">1</span>  &#125;).<span class="title function_">slice</span>(<span class="number">1</span>).<span class="title function_">reverse</span>();</span><br><span class="line"><span class="comment">// 指定文件路径</span></span><br><span class="line"><span class="keyword">const</span> filePath = path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;data.json&#x27;</span>); <span class="comment">// __dirname是当前执行脚本所在的目录</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2 表示多少个空格缩进</span></span><br><span class="line"><span class="keyword">const</span> jsonData = <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(data, <span class="literal">null</span>, <span class="number">2</span>);</span><br><span class="line"><span class="comment">// 写入文件</span></span><br><span class="line">fs.<span class="title function_">writeFile</span>(filePath, jsonData, <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&#x27;写入文件时发生错误:&#x27;</span>, err);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;JSON数据已成功写入文件&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
-<li><p>需要注意的是，xlsx解析时间格式的数据时默认会返回1970年1月1日至今的天数,如果你想将其格式化，可以设置在readFile时设置<br><code>XLSX.readFile(workbookPath, &#123; cellDates: true, dateNF: &#39;YYYY&quot;年&quot;MM&quot;月&quot;DD&#39; &#125;);</code> dataNF属性，想要其生效，还需要在<br><code>XLSX.utils.sheet_to_json()</code>发放中的第二个配置参数中设置 <code>&#123; raw: false &#125;</code>, 但是大数字类型会被转换为科学计数法显示<br>所以想定义自己需要的时间格式，还是获取到时间之后使用dayjs进行转换，但是xlsx读取的时间数据会比获取到的时间少一天，需要处理一下<br>例如：<code>date: dayjs(_item[5]).add(1, &#39;days&#39;).format(&#39;YYYY年MM月DD日&#39;)</code></p>
-</li>
-<li><p>最后写完之后，将代码中的文件路径修改，终端跳转至当前目录，然后在命令行中执行<code>node index.js</code>即可运行</p>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2024/08/28/xlsx-js/" data-id="cm6eii19x0020m4q0dh3gbiad" data-title="xlsx-js" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xlsx/" rel="tag">xlsx</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-playwright" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/05/14/playwright/" class="article-date">
-  <time class="dt-published" datetime="2024-05-14T03:48:22.000Z" itemprop="datePublished">2024-05-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/05/14/playwright/">playwright</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="微软超强爬虫工具，可用于Web页面自动化测试工具-—-Playwright"><a href="#微软超强爬虫工具，可用于Web页面自动化测试工具-—-Playwright" class="headerlink" title="微软超强爬虫工具，可用于Web页面自动化测试工具 — Playwright"></a>微软超强爬虫工具，可用于Web页面自动化测试工具 — Playwright</h1><h3 id="Playwright是微软在2020年初开源的新一代自动化测试工具。它的功能和Selenium、Pyppeteer等工具类似，可以驱动浏览器进行各种自动化操作。Playwright支持当前所有的主流浏览器，包括Chrome、Edge、Firefox、Safari等，并且支持浏览器有头和无头模式。此外，Playwright的安装和配置过程简单，会自动安装对应的浏览器和驱动，不需要额外配置WebDriver等。"><a href="#Playwright是微软在2020年初开源的新一代自动化测试工具。它的功能和Selenium、Pyppeteer等工具类似，可以驱动浏览器进行各种自动化操作。Playwright支持当前所有的主流浏览器，包括Chrome、Edge、Firefox、Safari等，并且支持浏览器有头和无头模式。此外，Playwright的安装和配置过程简单，会自动安装对应的浏览器和驱动，不需要额外配置WebDriver等。" class="headerlink" title="Playwright是微软在2020年初开源的新一代自动化测试工具。它的功能和Selenium、Pyppeteer等工具类似，可以驱动浏览器进行各种自动化操作。Playwright支持当前所有的主流浏览器，包括Chrome、Edge、Firefox、Safari等，并且支持浏览器有头和无头模式。此外，Playwright的安装和配置过程简单，会自动安装对应的浏览器和驱动，不需要额外配置WebDriver等。"></a>Playwright是微软在2020年初开源的新一代自动化测试工具。它的功能和Selenium、Pyppeteer等工具类似，可以驱动浏览器进行各种自动化操作。Playwright支持当前所有的主流浏览器，包括Chrome、Edge、Firefox、Safari等，并且支持浏览器有头和无头模式。此外，Playwright的安装和配置过程简单，会自动安装对应的浏览器和驱动，不需要额外配置WebDriver等。</h3><h3 id="Playwright支持多种编程语言，包括JavaScript、TypeScript、Python和Java，这使得开发人员可以使用他们喜欢的语言来编写自动化测试。"><a href="#Playwright支持多种编程语言，包括JavaScript、TypeScript、Python和Java，这使得开发人员可以使用他们喜欢的语言来编写自动化测试。" class="headerlink" title="Playwright支持多种编程语言，包括JavaScript、TypeScript、Python和Java，这使得开发人员可以使用他们喜欢的语言来编写自动化测试。"></a>Playwright支持多种编程语言，包括JavaScript、TypeScript、Python和Java，这使得开发人员可以使用他们喜欢的语言来编写自动化测试。</h3><h3 id="我是用的是JavaScript版本，主要介绍基于node的playwright的使用"><a href="#我是用的是JavaScript版本，主要介绍基于node的playwright的使用" class="headerlink" title="我是用的是JavaScript版本，主要介绍基于node的playwright的使用"></a>我是用的是JavaScript版本，主要介绍基于node的playwright的使用</h3><h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h3><pre><code>可以通过使用npm来安装playwright
-
-npm install playwright -g
-
-将playwright安装在全局环境下，我们就可以直接使用playwright命令进行相关操作
-</code></pre>
-<h3 id="2-功能介绍"><a href="#2-功能介绍" class="headerlink" title="2. 功能介绍"></a>2. 功能介绍</h3><pre><code>  Usage: playwright [options] [command]
-
-  Options:
-    -V, --version                          output the version number
-    -h, --help                             display help for command
-
-  Commands:
-    open [options] [url]                   open page in browser specified via -b,
-                                          --browser
-    codegen [options] [url]                open page and generate code for user actions
-    install [options] [browser...]         ensure browsers necessary for this version of
-                                          Playwright are installed
-    install-deps [options] [browser...]    install dependencies necessary to run browsers
-                                          (will ask for sudo permissions)
-    cr [options] [url]                     open page in Chromium
-    ff [options] [url]                     open page in Firefox
-    wk [options] [url]                     open page in WebKit
-    screenshot [options] &lt;url&gt; &lt;filename&gt;  capture a page screenshot
-    pdf [options] &lt;url&gt; &lt;filename&gt;         save page as pdf
-    show-trace [options] [trace...]        show trace viewer
-    help [command]                         display help for command
-</code></pre>
-<h3 id="3-自动代码生成指令"><a href="#3-自动代码生成指令" class="headerlink" title="3. 自动代码生成指令"></a>3. 自动代码生成指令</h3><pre><code>  playwright codegen --target javascript -o &#39;playwright-baidu.js&#39; -b chromium https://www.baidu.com 
-
-  // --target 生成脚本的语言，可选python、java、javascript等
-
-  // -o output输出脚本文件的名称
-
-  // -b 使用的浏览器内核,包含chromium、firefox、safari等
-</code></pre>
-<h3 id="4-示例"><a href="#4-示例" class="headerlink" title="4. 示例"></a>4. 示例</h3><p><img src="/images/playwright/playwright-baidu.gif" alt="示例"></p>
-<pre><code>如图所示, 当在浏览器执行相关操作时，代码记录器会对应的生成相关代码，
-但是代码不是完全准确无误的，如果是实际使用脚本代码，
-还需要进行检查和修改，也可以添加自己需要代码才能完成的操作，
-总之很大的省去了很多时间和精力.
-</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2024/05/14/playwright/" data-id="cm6eii19s000am4q042vxa8rh" data-title="playwright" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/playwright/" rel="tag">playwright</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" rel="tag">web自动化测试</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-uni-app-push" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/12/21/uni-app-push/" class="article-date">
-  <time class="dt-published" datetime="2023-12-21T08:08:56.000Z" itemprop="datePublished">2023-12-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/12/21/uni-app-push/">uni-app 接入推送</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="uni-app-移动端app介入消息推送-本文只介绍安卓版本"><a href="#uni-app-移动端app介入消息推送-本文只介绍安卓版本" class="headerlink" title="uni-app 移动端app介入消息推送(本文只介绍安卓版本)"></a>uni-app 移动端app介入消息推送(本文只介绍安卓版本)</h3><ol>
-<li><p>首先需要在<code>manifest.json</code>文件中的<code>App模块配置</code> 选中 <code>Push(消息推送)</code>, 离线推送需要对应厂商平台的密钥和key，作者并没有申请下来，所以暂时只针对在线推送</p>
-<p><img src="/images/uni-app-push/uni-app-push-01.png" alt="天地图Key"></p>
-</li>
-<li><p>接着需要点击右侧的<code>申请开通</code>按钮, 此时会打开uni-app的配置推送应用的界面</p>
-<p><img src="/images/uni-app-push/uni-app-push-02.png" alt="天地图Key"></p>
-<ul>
-<li><code>APPID</code> 可以在uni-app的<code>manifest.json</code>文件的基础配置模块看到</li>
-<li><code>包名</code> 是打包app时命名的应用名称(建议测试版、正式版各打一个，使用不同的包名)</li>
-<li><code>Android应用签名</code> 需要在应用管理内进行配置, 打包时使用的密钥文件内包含, 可以点击 <code>包名在“应用详情”中“各平台信息”管理，点击前往</code> 进行配置, uni-app 界面内都有详细的说明</li>
-<li><code>关联服务空间</code>  需要在uniCloud中新建一个自己的云服务空间, 我这里申请的是阿里云免费的服务空间, 后续的推送管理端也需要该云空间填完这些信息提交修改即可</li>
-</ul>
-</li>
-<li><p>完成上面这些步骤基本就已经配置完成了，当然<code>manifest.json</code>修改完成之后需要重新打包，记得包名要保持一致.完成了app相关配置还需要管理后台进行消息的发送<br>这时需要新建一个uni-admin 模板的项目,选择<code>文件&gt;新建&gt;项目&gt;un-app&gt;uni-admin</code>, 新建一个uni-admin 模板的项目,并添加<code>uni-push-admin</code>插件进项目中<br>这是一个web应用，管理uni-app应用的.</p>
-</li>
-<li><p>新的<code>uni-admin</code>以及添加<code>uni-push-admin</code> 完成之后, 启动项目时记得选中 <code>连接云端函数</code>.</p>
-<p><img src="/images/uni-app-push/uni-app-push-03.png" alt="天地图Key"></p>
-</li>
-<li><p>项目启动之后需要先注册一个管理员账号, 注册完成登录,项目是这个样子的</p>
-<p><img src="/images/uni-app-push/uni-app-push-04.png" alt="天地图Key"></p>
-<p>项目添加并配置了<code>uni-push-admin</code>，但是看不到<code>推送管理</code>的菜单栏, 需要在<code>系统管理</code>下的<code>菜单管理进行添加</code></p>
-</li>
-<li><p>进入<code>推送管理 &gt; 消息推送</code>, 可以进行测试发送了</p>
-<p><img src="/images/uni-app-push/uni-app-push-05.png" alt="天地图Key"></p>
-<ul>
-<li>如果<code>选择应用</code>中没有自己的应用，则需要在<code>系统管理 &gt; 应用管理</code>中进行添加</li>
-<li>因为只开启了在线推送，所以需要将 <code>强制通知栏消息</code> 打开, 并且应用在设备上处于开启状态才会收到推送消息</li>
-<li>接着填入必填信息即可进行推送消息的发送了</li>
-</ul>
-</li>
-<li><p>小程序内的订阅消息需要审核，则需要单独配置，且需要接入后端服务。总的来说, uni-app的文档还是挺详细的，接入时候也不算麻烦，文章内具体提到的内容也算是我没有注意到的点，花费了些许时间.</p>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/12/21/uni-app-push/" data-id="cm6eii19t000hm4q00g3h4md1" data-title="uni-app 接入推送" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/notification/" rel="tag">notification</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/push/" rel="tag">push</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/uni-app%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/" rel="tag">uni-app消息推送</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-geo-server" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/10/31/geo-server/" class="article-date">
-  <time class="dt-published" datetime="2023-10-31T10:25:43.000Z" itemprop="datePublished">2023-10-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/10/31/geo-server/">GeoServer发布tif格式的图层</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="GeoServer支持使用TIF图片作为空间数据的一种格式，可以通过上传、配置和调整参数等方式来使用TIF图片，并与地图和其他数据进行集成和发布。"><a href="#GeoServer支持使用TIF图片作为空间数据的一种格式，可以通过上传、配置和调整参数等方式来使用TIF图片，并与地图和其他数据进行集成和发布。" class="headerlink" title="GeoServer支持使用TIF图片作为空间数据的一种格式，可以通过上传、配置和调整参数等方式来使用TIF图片，并与地图和其他数据进行集成和发布。"></a>GeoServer支持使用TIF图片作为空间数据的一种格式，可以通过上传、配置和调整参数等方式来使用TIF图片，并与地图和其他数据进行集成和发布。</h2><h2 id="遥感图导出则为tif格式的，就可以上传至GeoServer进行发布，作为图层展示在地图上。"><a href="#遥感图导出则为tif格式的，就可以上传至GeoServer进行发布，作为图层展示在地图上。" class="headerlink" title="遥感图导出则为tif格式的，就可以上传至GeoServer进行发布，作为图层展示在地图上。"></a>遥感图导出则为tif格式的，就可以上传至GeoServer进行发布，作为图层展示在地图上。</h2><h2 id="1-首先，点击存储仓库，添加新的存储"><a href="#1-首先，点击存储仓库，添加新的存储" class="headerlink" title="1. 首先，点击存储仓库，添加新的存储"></a>1. 首先，点击存储仓库，添加新的存储</h2><p><img src="/images/geo_server/buzhou1.png" alt="步骤1"></p>
-<p><img src="/images/geo_server/buzhou2.png" alt="步骤2"></p>
-<h2 id="2-选择栅格数据源下的GeoTIFF"><a href="#2-选择栅格数据源下的GeoTIFF" class="headerlink" title="2. 选择栅格数据源下的GeoTIFF"></a>2. 选择栅格数据源下的GeoTIFF</h2><p><img src="/images/geo_server/buzhou3.png" alt="步骤3"></p>
-<h2 id="3-为新图层命名并选择对应的tif图片"><a href="#3-为新图层命名并选择对应的tif图片" class="headerlink" title="3. 为新图层命名并选择对应的tif图片"></a>3. 为新图层命名并选择对应的tif图片</h2><p><img src="/images/geo_server/buzhou4.png" alt="步骤4"></p>
-<h2 id="4-保存之后点击发布"><a href="#4-保存之后点击发布" class="headerlink" title="4. 保存之后点击发布"></a>4. 保存之后点击发布</h2><p><img src="/images/geo_server/buzhou5.png" alt="步骤5"></p>
-<h2 id="5-发布页可以调整相关配置，比较特殊的地方在于Input-Transparent-Color，过滤掉图片的背景。如果tif图片有白色的背景就可以填入‘FFFFFF’过滤掉白色背景，否则图层会有一个背景框显示在地图上"><a href="#5-发布页可以调整相关配置，比较特殊的地方在于Input-Transparent-Color，过滤掉图片的背景。如果tif图片有白色的背景就可以填入‘FFFFFF’过滤掉白色背景，否则图层会有一个背景框显示在地图上" class="headerlink" title="5. 发布页可以调整相关配置，比较特殊的地方在于Input Transparent Color，过滤掉图片的背景。如果tif图片有白色的背景就可以填入‘FFFFFF’过滤掉白色背景，否则图层会有一个背景框显示在地图上"></a>5. 发布页可以调整相关配置，比较特殊的地方在于Input Transparent Color，过滤掉图片的背景。如果tif图片有白色的背景就可以填入‘FFFFFF’过滤掉白色背景，否则图层会有一个背景框显示在地图上</h2><p><img src="/images/geo_server/buzhou6.png" alt="步骤6"></p>
-<h2 id="6-发布图层之后，接下来为图层切片缓存"><a href="#6-发布图层之后，接下来为图层切片缓存" class="headerlink" title="6. 发布图层之后，接下来为图层切片缓存"></a>6. 发布图层之后，接下来为图层切片缓存</h2><p><img src="/images/geo_server/buzhou7.png" alt="步骤7"></p>
-<p><img src="/images/geo_server/buzhou8.png" alt="步骤8"></p>
-<h2 id="7-zoom-start和zoom-stop根据地图的缩放控制来修改，缓存对应zoom级别的切片"><a href="#7-zoom-start和zoom-stop根据地图的缩放控制来修改，缓存对应zoom级别的切片" class="headerlink" title="7. zoom start和zoom stop根据地图的缩放控制来修改，缓存对应zoom级别的切片"></a>7. zoom start和zoom stop根据地图的缩放控制来修改，缓存对应zoom级别的切片</h2><p><img src="/images/geo_server/buzhou9.png" alt="步骤9"></p>
-<h2 id="8-完成上述步骤即可进行预览"><a href="#8-完成上述步骤即可进行预览" class="headerlink" title="8. 完成上述步骤即可进行预览"></a>8. 完成上述步骤即可进行预览</h2><p><img src="/images/geo_server/buzhou10.png" alt="步骤10"></p>
-<p><img src="/images/geo_server/buzhou11.png" alt="步骤11"></p>
-<p><img src="/images/geo_server/buzhou12.png" alt="步骤12"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/10/31/geo-server/" data-id="cm6eii19r0005m4q0084dh80t" data-title="GeoServer发布tif格式的图层" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GeoServer/" rel="tag">GeoServer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tif/" rel="tag">tif</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-vue-tianditu" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/09/14/vue-tianditu/" class="article-date">
-  <time class="dt-published" datetime="2023-09-14T07:50:30.000Z" itemprop="datePublished">2023-09-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/09/14/vue-tianditu/">Vue中使用天地图</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="Vue3中简单使用天地图的示例"><a href="#Vue3中简单使用天地图的示例" class="headerlink" title="Vue3中简单使用天地图的示例"></a>Vue3中简单使用天地图的示例</h3><ol>
-<li><p>首先是需要到天地图官网去注册账号并申请一个密钥，用于加载天地图的js文件。<br>创建并生成一个key<br> <img src="/images/tianditu_key.png" alt="天地图Key"><br> <img src="/../images/playwright/playwright-baidu.gif" alt="示例"></p>
-</li>
-<li><p>回到编辑器，首先需要添加一个div，让其能作为天地图的展示容器</p>
- <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;map&quot;</span> <span class="attr">class</span>=<span class="string">&quot;map&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p> 需要为其设置宽高，否则地图无法显示</p>
-</li>
-<li><p>这里我们动态加载天地图的js，先实现一个动态加载js的方法</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">loadScript</span>(<span class="params">url: string</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>&lt;<span class="keyword">void</span>&gt;(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> script = globalThis.<span class="property">document</span>?.<span class="title function_">createElement</span>(<span class="string">&quot;script&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (!script) <span class="title function_">resolve</span>();</span><br><span class="line">    script.<span class="property">src</span> = url;</span><br><span class="line">    script.<span class="property">type</span> = <span class="string">&quot;text/javascript&quot;</span>;</span><br><span class="line">    script.<span class="property">async</span> = <span class="literal">true</span>;</span><br><span class="line">    script.<span class="property">defer</span> = <span class="literal">true</span>;</span><br><span class="line">    script.<span class="property">onload</span> = <span class="function">() =&gt;</span> <span class="title function_">resolve</span>();</span><br><span class="line">    script.<span class="property">onerror</span> = <span class="function"><span class="params">e</span> =&gt;</span> <span class="title function_">resolve</span>();</span><br><span class="line">    globalThis.<span class="property">document</span>?.<span class="property">body</span>.<span class="title function_">appendChild</span>(script);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p> 该方法放在工具类中，加载任何动态脚本使用</p>
-</li>
-<li><p>接着就是初始化地图, 其中的v是指版本号，这里使用4.0版本，将v替换成4.0即可.<br>tk就是注册天地图账号时控制台中新增的应用密钥,将其替换为你注册的即可.<br>js加载成功之后会在全局window对象下挂载一个T对象，其就是天地图对象.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 加载天地图js, </span></span><br><span class="line"><span class="keyword">await</span> <span class="title function_">loadScript</span>(<span class="string">`https://api.tianditu.gov.cn/api?v=<span class="subst">$&#123;v&#125;</span>&amp;tk=<span class="subst">$&#123;tk&#125;</span>`</span>);</span><br><span class="line"><span class="comment">// 实例化天地图，</span></span><br><span class="line"><span class="comment">// 参数 ‘map’ 即对应div的id</span></span><br><span class="line"><span class="keyword">const</span> map = <span class="keyword">new</span> <span class="variable language_">window</span>.<span class="property">T</span>.<span class="title function_">map</span>(<span class="string">&#x27;map&#x27;</span>, &#123;</span><br><span class="line">     <span class="attr">center</span>: [<span class="number">116.397428</span>, <span class="number">39.90923</span>], <span class="comment">// 中心点坐标  </span></span><br><span class="line">     <span class="attr">zoom</span>: <span class="number">13</span>, <span class="comment">// 缩放级别  </span></span><br><span class="line">     <span class="attr">roam</span>: <span class="literal">true</span>, <span class="comment">// 开启鼠标缩放和平移交互</span></span><br><span class="line">     <span class="attr">zoomControl</span>: <span class="literal">true</span>, <span class="comment">// 开启缩放控件  </span></span><br><span class="line">     <span class="attr">scaleControl</span>: <span class="literal">true</span>, <span class="comment">// 开启比例尺控件  </span></span><br><span class="line">     <span class="attr">dragging</span>: <span class="literal">true</span>, <span class="comment">// 开启拖拽漫游  </span></span><br><span class="line">     <span class="attr">navigation</span>: <span class="literal">true</span>, <span class="comment">// 开启地图平移和缩放控件  </span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 添加矢量地图图层</span></span><br><span class="line"><span class="keyword">const</span> layer = <span class="keyword">new</span> T.<span class="title class_">TileLayer</span>(<span class="string">`https://t0.tianditu.gov.cn/img_w/wmts?SERVICE=WMTS&amp;REQUEST=GetTile&amp;VERSION=1.0.0&amp;LAYER=img&amp;STYLE=default&amp;TILEMATRIXSET=w&amp;FORMAT=tiles&amp;TILEMATRIX=&#123;z&#125;&amp;TILEROW=&#123;y&#125;&amp;TILECOL=&#123;x&#125;&amp;tk=<span class="subst">$&#123;tk&#125;</span>`</span>)</span><br><span class="line">map.<span class="title function_">addLayer</span>(layer)</span><br></pre></td></tr></table></figure>
-<p>到这里，就可以看到天地图的卫星地图显示在页面上了</p>
-</li>
-<li><p>如果要使用到CarTrack，则需要单独引入d3、D3SvgOverlay、CarTrack</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">CarTrackScripts</span> = [</span><br><span class="line">   <span class="string">&quot;https://cdn.bootcss.com/d3/3.5.17/d3.min.js&quot;</span>,</span><br><span class="line">   <span class="string">&quot;https://tianditu.lztl.cn/api/js4.0/opensource/openlibrary/D3SvgOverlay.min.js&quot;</span>,</span><br><span class="line">   <span class="string">&quot;https://tianditu.lztl.cn/api/js4.0/opensource/openlibrary/CarTrack.min.js&quot;</span></span><br><span class="line">]</span><br><span class="line"><span class="keyword">await</span> <span class="title class_">Promise</span>.<span class="title function_">all</span>([</span><br><span class="line"> <span class="title function_">loadScript</span>(<span class="title class_">CarTrackScripts</span>[<span class="number">0</span>]), <span class="title function_">loadScript</span>(<span class="title class_">CarTrackScripts</span>[<span class="number">1</span>]), <span class="title function_">loadScript</span>(<span class="title class_">CarTrackScripts</span>[<span class="number">2</span>])</span><br><span class="line">])</span><br><span class="line"><span class="keyword">const</span> <span class="attr">opt</span>: T.<span class="property">CarOverlayOptions</span> = &#123;</span><br><span class="line">   <span class="attr">interval</span>: <span class="number">1000</span>, <span class="comment">// 小车移动的间隔 ms</span></span><br><span class="line">   <span class="attr">speed</span>: <span class="number">0</span>, <span class="comment">// 小车移动的速度</span></span><br><span class="line">   <span class="attr">dynamicLine</span>: <span class="literal">true</span>,</span><br><span class="line">   <span class="attr">carstyle</span>: &#123; <span class="comment">// 移动小车图标样式</span></span><br><span class="line">     <span class="attr">display</span>: <span class="literal">true</span>,</span><br><span class="line">     <span class="attr">iconUrl</span>: <span class="string">&#x27;car.png&#x27;</span>, <span class="comment">// car图标</span></span><br><span class="line">     <span class="attr">width</span>: <span class="number">10</span>,</span><br><span class="line">     <span class="attr">height</span>: <span class="number">10</span></span><br><span class="line">   &#125;,</span><br><span class="line">   <span class="attr">polylinestyle</span>: &#123; <span class="attr">display</span>:<span class="literal">true</span>, <span class="attr">color</span>: <span class="string">&#x27;red&#x27;</span>, <span class="attr">width</span>: <span class="number">1</span>, <span class="attr">opacity</span>: <span class="number">1</span>, &#125;, <span class="comment">// 移动轨迹路线样式</span></span><br><span class="line">   <span class="title class_">Datas</span>: props.<span class="property">trackDatas</span>.<span class="title function_">map</span>(<span class="function">(<span class="params">pos</span>) =&gt;</span> <span class="title function_">toLngLat</span>(pos)),</span><br><span class="line">   <span class="attr">passOneNode</span>: handleCarMove <span class="comment">// 小车移动时触发的回调函数，返回Lnglat以及index</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 初始化CarTrack对象，参数map为上一步创建的window.T.map对象实例</span></span><br><span class="line"><span class="keyword">const</span> carTrack = <span class="keyword">new</span> T.<span class="title class_">CarTrack</span>(map, opt)</span><br><span class="line"> </span><br><span class="line">carTrack.<span class="title function_">start</span>() <span class="comment">// 开始移动</span></span><br><span class="line">carTrack.<span class="title function_">pause</span>() <span class="comment">// 暂停移动</span></span><br><span class="line">carTrack.<span class="title function_">resume</span>() <span class="comment">// 继续移动</span></span><br><span class="line">carTrack.<span class="title function_">stop</span>() <span class="comment">// 停止移动</span></span><br><span class="line">carTrack.<span class="title function_">clear</span>() <span class="comment">// 清除移动轨迹</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>添加天地图控制类组件, map为天地图对象的实例</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ctrlMapType = <span class="keyword">new</span> T.<span class="property">Control</span>.<span class="title class_">MapType</span>(&#123;</span><br><span class="line"> <span class="attr">mapTypes</span>: [&#123;</span><br><span class="line">   <span class="string">&#x27;title&#x27;</span>: <span class="string">&#x27;地图&#x27;</span>,</span><br><span class="line">   <span class="string">&#x27;icon&#x27;</span>: <span class="string">&#x27;https://api.tianditu.gov.cn/v4.0/image/map/maptype/vector.png&#x27;</span>,</span><br><span class="line">   <span class="string">&#x27;layer&#x27;</span>: <span class="variable language_">window</span>.<span class="property">TMAP_NORMAL_MAP</span></span><br><span class="line"> &#125;, &#123;</span><br><span class="line">   <span class="string">&#x27;title&#x27;</span>: <span class="string">&#x27;卫星&#x27;</span>,</span><br><span class="line">   <span class="string">&#x27;icon&#x27;</span>: <span class="string">&#x27;https://api.tianditu.gov.cn/v4.0/image/map/maptype/satellite.png&#x27;</span>,</span><br><span class="line">   <span class="string">&#x27;layer&#x27;</span>: <span class="variable language_">window</span>.<span class="property">TMAP_SATELLITE_MAP</span></span><br><span class="line"> &#125;, &#123;</span><br><span class="line">   <span class="string">&#x27;title&#x27;</span>: <span class="string">&#x27;卫星混合&#x27;</span>,</span><br><span class="line">   <span class="string">&#x27;https&#x27;</span>: <span class="string">&#x27;api.tianditu.gov.cn/v4.0/image/map/maptype/satellitepoi.png&#x27;</span>,</span><br><span class="line">   <span class="string">&#x27;layer&#x27;</span>: <span class="variable language_">window</span>.<span class="property">TMAP_HYBRID_MAP</span></span><br><span class="line"> &#125;, &#123;</span><br><span class="line">   <span class="string">&#x27;title&#x27;</span>: <span class="string">&#x27;地形&#x27;</span>,</span><br><span class="line">   <span class="string">&#x27;icon&#x27;</span>: <span class="string">&#x27;https://api.tianditu.gov.cn/v4.0/image/map/maptype/terrain.png&#x27;</span>,</span><br><span class="line">   <span class="string">&#x27;layer&#x27;</span>: <span class="variable language_">window</span>.<span class="property">TMAP_TERRAIN_MAP</span></span><br><span class="line"> &#125;, &#123;</span><br><span class="line">   <span class="string">&#x27;title&#x27;</span>: <span class="string">&#x27;地形混合&#x27;</span>,</span><br><span class="line">   <span class="string">&#x27;icon&#x27;</span>: <span class="string">&#x27;https://api.tianditu.gov.cn/v4.0/image/map/maptype/terrainpoi.png&#x27;</span>,</span><br><span class="line">   <span class="string">&#x27;layer&#x27;</span>: <span class="variable language_">window</span>.<span class="property">TMAP_TERRAIN_HYBRID_MAP</span></span><br><span class="line"> &#125;]</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 添加地图类型选择控件</span></span><br><span class="line">map.<span class="title function_">addControl</span>(ctrlMapType)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>天地图还有很多工具可以使用，具体可以参考天地图官网api. </p>
-<p><a target="_blank" rel="noopener" href="http://lbs.tianditu.gov.cn/api/js4.0/class.html">天地图Api4.0类参考</a></p>
-<p><a target="_blank" rel="noopener" href="http://lbs.tianditu.gov.cn/api/js4.0/class.html">http://lbs.tianditu.gov.cn/api/js4.0/class.html</a></p>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/09/14/vue-tianditu/" data-id="cm6eii19t000im4q03nirckmk" data-title="Vue中使用天地图" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%A9%E5%9C%B0%E5%9B%BE/" rel="tag">天地图</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-vue3-init-md" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/24/vue3-init-md/" class="article-date">
-  <time class="dt-published" datetime="2023-08-24T03:56:28.000Z" itemprop="datePublished">2023-08-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/24/vue3-init-md/">VsCode快速生成Vue3默认用户片段</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h4 id="使用VsCode开发Vue项目的时候，有个Vue-Snippets的插件，其中的VueInit命令可以默认生成一段Vue文件的基础模板"><a href="#使用VsCode开发Vue项目的时候，有个Vue-Snippets的插件，其中的VueInit命令可以默认生成一段Vue文件的基础模板" class="headerlink" title="使用VsCode开发Vue项目的时候，有个Vue Snippets的插件，其中的VueInit命令可以默认生成一段Vue文件的基础模板"></a>使用VsCode开发Vue项目的时候，有个Vue Snippets的插件，其中的VueInit命令可以默认生成一段Vue文件的基础模板</h4><h4 id="但是和自己的使用习惯不太一致，而且和Vue3也不是很搭配"><a href="#但是和自己的使用习惯不太一致，而且和Vue3也不是很搭配" class="headerlink" title="但是和自己的使用习惯不太一致，而且和Vue3也不是很搭配"></a>但是和自己的使用习惯不太一致，而且和Vue3也不是很搭配</h4><h4 id="所以就想着自己创建一个命令，可以符合自己的预期-然后就研究了一下"><a href="#所以就想着自己创建一个命令，可以符合自己的预期-然后就研究了一下" class="headerlink" title="所以就想着自己创建一个命令，可以符合自己的预期, 然后就研究了一下"></a>所以就想着自己创建一个命令，可以符合自己的预期, 然后就研究了一下</h4><ol>
-<li><h3 id="首先是VsCode中按下-cmd-shift-p-键，打开VsCode的配置搜索框，输入Config-Use-Snippets-选中并点击"><a href="#首先是VsCode中按下-cmd-shift-p-键，打开VsCode的配置搜索框，输入Config-Use-Snippets-选中并点击" class="headerlink" title="首先是VsCode中按下 cmd + shift + p 键，打开VsCode的配置搜索框，输入Config Use Snippets, 选中并点击"></a>首先是VsCode中按下 <code>cmd + shift + p</code> 键，打开VsCode的配置搜索框，输入<code>Config Use Snippets</code>, 选中并点击</h3></li>
-<li><h3 id="点击之后会出现让你选择修改或新建一个snippet-这里我们选择新建一个全局的-global-输入框输入要创建的用户片段的名称之后回车就可以"><a href="#点击之后会出现让你选择修改或新建一个snippet-这里我们选择新建一个全局的-global-输入框输入要创建的用户片段的名称之后回车就可以" class="headerlink" title="点击之后会出现让你选择修改或新建一个snippet, 这里我们选择新建一个全局的 global, 输入框输入要创建的用户片段的名称之后回车就可以"></a>点击之后会出现让你选择修改或新建一个<code>snippet</code>, 这里我们选择新建一个全局的 <code>global</code>, 输入框输入要创建的用户片段的名称之后回车就可以</h3></li>
-<li><h3 id="创建成功之后会出现其配置文件，这是我修改过后的"><a href="#创建成功之后会出现其配置文件，这是我修改过后的" class="headerlink" title="创建成功之后会出现其配置文件，这是我修改过后的:"></a>创建成功之后会出现其配置文件，这是我修改过后的:</h3> <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;Init Vue3 template&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;prefix&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Vue3Init&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;body&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">      <span class="string">&quot;&lt;template&gt;&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">&quot;  &lt;div&gt;&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">&quot;    &quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">&quot;  &lt;/div&gt;&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">&quot;&lt;/template&gt;&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">&quot;&lt;script lang=\&quot;ts\&quot; setup&gt;&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">&quot;defineOptions(&#123; name: \&quot;$&#123;TM_DIRECTORY/(.*\\/)([^\\/]+)/$&#123;2:/capitalize&#125;/&#125;\&quot; &#125;)&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">&quot;  &quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">&quot;&lt;/script&gt;&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">&quot;&lt;style lang=\&quot;scss\&quot; scoped&gt;&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">&quot;  &quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">&quot;&lt;/style&gt;&quot;</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Init Vue3 Template By Default&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-<p> <code>Init Vue3 template</code> 模板名称</p>
-<p> <code>scope</code> 模板命令生效的范围 “” 表示所有文件都生效, 可选 ‘javascript, typescript, vue, html’等等等</p>
-<p> <code>prefix</code> 使用该模板时需要敲击的命令, 例如在新文件中敲下 Vue3Init 就会生成该模板</p>
-<p> <code>body</code> 使用<code>Vue3Init</code> 命令户生成的内容</p>
-<p> <code>description</code> 描述信息</p>
-</li>
-<li><h3 id="defineOptions说明"><a href="#defineOptions说明" class="headerlink" title="defineOptions说明:"></a>defineOptions说明:</h3><h4 id="TM-DIRECTORY-2-capitalize-其中这段代码的意思是使用正则取当前文件目录名称"><a href="#TM-DIRECTORY-2-capitalize-其中这段代码的意思是使用正则取当前文件目录名称" class="headerlink" title="${TM_DIRECTORY/(.*\\/)([^\\/]+)/${2:/capitalize}/} 其中这段代码的意思是使用正则取当前文件目录名称"></a><code>$&#123;TM_DIRECTORY/(.*\\/)([^\\/]+)/$&#123;2:/capitalize&#125;/&#125;</code> 其中这段代码的意思是使用正则取当前文件目录名称</h4><h4 id="并将其首字母大写，因为我的vue项目的文件目录结构是-fileName-index-vue-所以需要将其转换为FileName用于组件的名称"><a href="#并将其首字母大写，因为我的vue项目的文件目录结构是-fileName-index-vue-所以需要将其转换为FileName用于组件的名称" class="headerlink" title="并将其首字母大写，因为我的vue项目的文件目录结构是/fileName/index.vue, 所以需要将其转换为FileName用于组件的名称"></a>并将其首字母大写，因为我的vue项目的文件目录结构是<code>/fileName/index.vue</code>, 所以需要将其转换为<code>FileName</code>用于组件的名称</h4></li>
-<li><h3 id="VsCode的一些内置变量"><a href="#VsCode的一些内置变量" class="headerlink" title="VsCode的一些内置变量:"></a>VsCode的一些内置变量:</h3><p> ${TM_DIRECTORY}：当前文件的目录路径。</p>
-<p> ${TM_FILEPATH}：当前文件的完整路径，包括文件名。</p>
-<p> ${TM_FILENAME}：当前文件的完整文件名（包括扩展名）。</p>
-<p> ${TM_FILENAME_BASE}：当前文件的基本文件名（不包括扩展名）。</p>
-<p> ${TM_SELECTED_TEXT}：选定的文本内容（如果有选定的文本）。</p>
-<p> ${TM_CURRENT_LINE}：当前所在行的内容。</p>
-<p> ${TM_CURRENT_WORD}：当前光标所在位置的单词。</p>
-<p> ${TM_LINE_INDEX}：当前行的索引（从0开始）。</p>
-<p> ${TM_LINE_NUMBER}：当前行的行号（从1开始）。</p>
-<p> ${TM_SOFT_TABS}：当前文件是否使用软制表符。</p>
-<p> ${TM_TAB_SIZE}：当前文件的制表符大小（空格数）。</p>
-<p> ${TM_FULLNAME}：当前用户的完整名称。</p>
-<p> ${CLIPBOARD}：剪贴板的内容。</p>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/24/vue3-init-md/" data-id="cm6eii19t000jm4q03hulgnkc" data-title="VsCode快速生成Vue3默认用户片段" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-ssh-default-md" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/21/ssh-default-md/" class="article-date">
-  <time class="dt-published" datetime="2023-08-21T03:50:20.000Z" itemprop="datePublished">2023-08-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/21/ssh-default-md/">ssh配置快捷连接服务器</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Host myserver</span><br><span class="line">    HostName [ip_address] # 服务器ip地址</span><br><span class="line">    User [user_name] # 服务器登录的账户名称</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa # ssh生成的密钥文件地址</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    AddKeysToAgent yes</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><code>PreferredAuthentications</code> 是一个用于配置 SSH 客户端首选身份验证方式的选项。它允许你指定客户端在连接远程服务器时首选的身份验证方式顺序。SSH 支持多种身份验证方式，如密码、公钥、GSSAPI 等。</p>
-<p>如果需要同时支持多种身份验证方式，可以使用逗号分隔它们：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PreferredAuthentications publickey,password</span><br></pre></td></tr></table></figure>
-
-<p><code>AddKeysToAgent</code> 是一个用于配置 SSH 客户端是否将密钥添加到 SSH 代理（如 ssh-agent）中的选项。SSH 代理可以管理你的私钥，允许你在登录后只需要输入一次密码即可在整个会话中使用私钥。</p>
-<p>默认情况下，SSH 客户端不会自动将密钥添加到代理中。如果你想在每次登录时将密钥添加到代理，可以在 SSH 配置文件中添加以下行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AddKeysToAgent <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
-<p>这样，在登录时会提示你输入私钥的密码，并将私钥添加到代理中，以后不再需要重复输入密码。</p>
-<p>还有ssh配置github、gitee、gitlab连接的示例:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">Default gitHub user Self</span></span><br><span class="line">Host github.com</span><br><span class="line">  HostName github.com</span><br><span class="line">  User [stanlee1226@gmail.com] # email</span><br><span class="line">  PreferredAuthentications publickey</span><br><span class="line">  IdentityFile ~/.ssh/id_rsa.github</span><br><span class="line">  AddKeysToAgent yes</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">Add gitee user</span></span><br><span class="line">Host gitee.com</span><br><span class="line">  HostName gitee.com</span><br><span class="line">  User [stanlee1226@gmail.com] #email</span><br><span class="line">  PreferredAuthentications publickey</span><br><span class="line">  IdentityFile ~/.ssh/id_rsa.gitee</span><br><span class="line">  AddKeysToAgent yes</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">Add gitlab user</span></span><br><span class="line">Host git@[ip_address]</span><br><span class="line">  HostName [ip_address]</span><br><span class="line">  Port [port]</span><br><span class="line">  User [account]</span><br><span class="line">  PreferredAuthentications publickey</span><br><span class="line">  IdentityFile ~/.ssh/id_rsa.gitlab</span><br><span class="line">  AddKeysToAgent yes</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/21/ssh-default-md/" data-id="cm6eii19t000em4q07p5qfule" data-title="ssh配置快捷连接服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gitee/" rel="tag">gitee</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gitlab/" rel="tag">gitlab</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-  </nav>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GeoServer/" rel="tag">GeoServer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/build/" rel="tag">build</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/canvas/" rel="tag">canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centOS/" rel="tag">centOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/" rel="tag">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitee/" rel="tag">gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/gitlab/" rel="tag">gitlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/" rel="tag">nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/notification/" rel="tag">notification</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/playwright/" rel="tag">playwright</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/push/" rel="tag">push</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rebase/" rel="tag">rebase</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scp/" rel="tag">scp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tif/" rel="tag">tif</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app/" rel="tag">uni-app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni-app%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/" rel="tag">uni-app消息推送</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/unzip/" rel="tag">unzip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" rel="tag">web自动化测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xlsx/" rel="tag">xlsx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zip/" rel="tag">zip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%A9%E5%9C%B0%E5%9B%BE/" rel="tag">天地图</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/GeoServer/" style="font-size: 10px;">GeoServer</a> <a href="/tags/build/" style="font-size: 10px;">build</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/centOS/" style="font-size: 10px;">centOS</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/gitee/" style="font-size: 10px;">gitee</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gitlab/" style="font-size: 10px;">gitlab</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/nginx/" style="font-size: 15px;">nginx</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/notification/" style="font-size: 10px;">notification</a> <a href="/tags/playwright/" style="font-size: 10px;">playwright</a> <a href="/tags/push/" style="font-size: 10px;">push</a> <a href="/tags/rebase/" style="font-size: 10px;">rebase</a> <a href="/tags/scp/" style="font-size: 10px;">scp</a> <a href="/tags/ssh/" style="font-size: 20px;">ssh</a> <a href="/tags/tif/" style="font-size: 10px;">tif</a> <a href="/tags/uni-app/" style="font-size: 10px;">uni-app</a> <a href="/tags/uni-app%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/" style="font-size: 10px;">uni-app消息推送</a> <a href="/tags/unzip/" style="font-size: 10px;">unzip</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/web%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">web自动化测试</a> <a href="/tags/xlsx/" style="font-size: 10px;">xlsx</a> <a href="/tags/zip/" style="font-size: 10px;">zip</a> <a href="/tags/%E5%A4%A9%E5%9C%B0%E5%9B%BE/" style="font-size: 10px;">天地图</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2025/01/27/docker-compose-nginx/">使用docker-compose 搭建nginx服务</a>
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
           </li>
+          
         
-          <li>
-            <a href="/2025/01/26/docker-nginx/">服务器安装docker以及启用nginx服务</a>
-          </li>
         
-          <li>
-            <a href="/2024/11/08/auto-build/">shell自动化构建部署脚本</a>
-          </li>
-        
-          <li>
-            <a href="/2024/08/28/xlsx-js/">xlsx-js</a>
-          </li>
-        
-          <li>
-            <a href="/2024/05/14/playwright/">playwright</a>
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
           </li>
         
       </ul>
     </div>
   </div>
+</nav>
 
   
-</aside>
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Do one thing and do it well"></span>
+          
+        </div>
+
         
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
+
       
-      &copy; 2025 Stan Lee<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
     </div>
   </div>
-</footer>
+</div>
 
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/01/27/docker-compose-nginx/" target="_self">
+          使用docker-compose 搭建nginx服务
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/01/27/docker-compose-nginx/" target="_self">
+        <div>
+          安装docker-composeLinux 上我们可以从 Github 上下载它的二进制包来使用，最新发行的版本地址：https://github.com/docker/compose/releases。 运行以下命令以下载 Docker Compose 的当前稳定版本： 1curl -L &quot;https://github.com/docker/compose/releases/downl
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-01-27 11:23" pubdate>
+              2025-01-27
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/docker/">#docker</a>
+            
+              <a href="/tags/nginx/">#nginx</a>
+            
+              <a href="/tags/docker-compose/">#docker-compose</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2025/01/26/docker-nginx/" target="_self">
+          服务器安装docker以及启用nginx服务
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2025/01/26/docker-nginx/" target="_self">
+        <div>
+          centOS7 安装docker以及通过docker启用一个nginx服务安装docker 本文所有操作基于centOS7系统  安装包管理器服务器上的包管理器使用的是 dnf， 用于替换 yum 管理器可以使用命令  1yum install dnf  检测 dnf 是否安装成功 可以执行  1dnf --version  设置dnf仓库安装 dnf-plugins-core 包（提供管理 DN
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2025-01-26 13:15" pubdate>
+              2025-01-26
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/docker/">#docker</a>
+            
+              <a href="/tags/nginx/">#nginx</a>
+            
+              <a href="/tags/centOS/">#centOS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/11/08/auto-build/" target="_self">
+          shell自动化构建部署脚本
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/11/08/auto-build/" target="_self">
+        <div>
+          使用shell脚本自动化打包部署前端项目123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354#!/bin/sh# 使用sh作为解释器  set -e # 当脚本执行出现错误立即退出# 设置当脚本退出时打印异常信息trap &#x27;echo &quot
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-11-08 19:09" pubdate>
+              2024-11-08
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/build/">#build</a>
+            
+              <a href="/tags/ssh/">#ssh</a>
+            
+              <a href="/tags/scp/">#scp</a>
+            
+              <a href="/tags/zip/">#zip</a>
+            
+              <a href="/tags/unzip/">#unzip</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/08/28/xlsx-js/" target="_self">
+          xlsx-js
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/08/28/xlsx-js/" target="_self">
+        <div>
+          nodejs解析Excel表格解析excel可以说是工作中非常常用的一个功能，就简单叙述我工作中对excel文件进行解析的一个步骤吧 初始化项目，因为是一个简单的脚本，我们先创建一个文件夹存放js文件的, 再新建index.js, 然后执行npm init, 会自动生成package.json, 再执行安装npm install xlsx, 我们就可以开始解析excel文件了  以下就是解析exc
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-08-28 11:04" pubdate>
+              2024-08-28
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/nodejs/">#nodejs</a>
+            
+              <a href="/tags/xlsx/">#xlsx</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/05/14/playwright/" target="_self">
+          playwright
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/05/14/playwright/" target="_self">
+        <div>
+          微软超强爬虫工具，可用于Web页面自动化测试工具 — PlaywrightPlaywright是微软在2020年初开源的新一代自动化测试工具。它的功能和Selenium、Pyppeteer等工具类似，可以驱动浏览器进行各种自动化操作。Playwright支持当前所有的主流浏览器，包括Chrome、Edge、Firefox、Safari等，并且支持浏览器有头和无头模式。此外，Playwright的安
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-05-14 11:48" pubdate>
+              2024-05-14
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/node/">#node</a>
+            
+              <a href="/tags/playwright/">#playwright</a>
+            
+              <a href="/tags/web%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/">#web自动化测试</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/12/21/uni-app-push/" target="_self">
+          uni-app 接入推送
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/21/uni-app-push/" target="_self">
+        <div>
+          uni-app 移动端app介入消息推送(本文只介绍安卓版本) 首先需要在manifest.json文件中的App模块配置 选中 Push(消息推送), 离线推送需要对应厂商平台的密钥和key，作者并没有申请下来，所以暂时只针对在线推送   接着需要点击右侧的申请开通按钮, 此时会打开uni-app的配置推送应用的界面   APPID 可以在uni-app的manifest.json文件的基础配置
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-21 16:08" pubdate>
+              2023-12-21
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/uni-app/">#uni-app</a>
+            
+              <a href="/tags/push/">#push</a>
+            
+              <a href="/tags/notification/">#notification</a>
+            
+              <a href="/tags/uni-app%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/">#uni-app消息推送</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/10/31/geo-server/" target="_self">
+          GeoServer发布tif格式的图层
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/10/31/geo-server/" target="_self">
+        <div>
+          GeoServer支持使用TIF图片作为空间数据的一种格式，可以通过上传、配置和调整参数等方式来使用TIF图片，并与地图和其他数据进行集成和发布。遥感图导出则为tif格式的，就可以上传至GeoServer进行发布，作为图层展示在地图上。1. 首先，点击存储仓库，添加新的存储  2. 选择栅格数据源下的GeoTIFF 3. 为新图层命名并选择对应的tif图片 4. 保存之后点击发布 5. 发布页可以
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-10-31 18:25" pubdate>
+              2023-10-31
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/GeoServer/">#GeoServer</a>
+            
+              <a href="/tags/tif/">#tif</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/09/14/vue-tianditu/" target="_self">
+          Vue中使用天地图
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/09/14/vue-tianditu/" target="_self">
+        <div>
+          Vue3中简单使用天地图的示例 首先是需要到天地图官网去注册账号并申请一个密钥，用于加载天地图的js文件。创建并生成一个key    回到编辑器，首先需要添加一个div，让其能作为天地图的展示容器  1234&lt;template&gt;  &lt;div id=&quot;map&quot; class=&quot;map&quot;&gt;  &lt;/div&gt;&lt;/templat
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-09-14 15:50" pubdate>
+              2023-09-14
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/vue/">#vue</a>
+            
+              <a href="/tags/%E5%A4%A9%E5%9C%B0%E5%9B%BE/">#天地图</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/08/24/vue3-init-md/" target="_self">
+          VsCode快速生成Vue3默认用户片段
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/24/vue3-init-md/" target="_self">
+        <div>
+          使用VsCode开发Vue项目的时候，有个Vue Snippets的插件，其中的VueInit命令可以默认生成一段Vue文件的基础模板但是和自己的使用习惯不太一致，而且和Vue3也不是很搭配所以就想着自己创建一个命令，可以符合自己的预期, 然后就研究了一下 首先是VsCode中按下 cmd + shift + p 键，打开VsCode的配置搜索框，输入Config Use Snippets, 选中
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-24 11:56" pubdate>
+              2023-08-24
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2023/08/21/ssh-default-md/" target="_self">
+          ssh配置快捷连接服务器
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/08/21/ssh-default-md/" target="_self">
+        <div>
+          1234567Host myserver    HostName [ip_address] # 服务器ip地址    User [user_name] # 服务器登录的账户名称    IdentityFile ~/.ssh/id_rsa # ssh生成的密钥文件地址    PreferredAuthentications publickey    AddKeysToAgent yes  Prefe
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-08-21 11:50" pubdate>
+              2023-08-21
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/ssh/">#ssh</a>
+            
+              <a href="/tags/github/">#github</a>
+            
+              <a href="/tags/gitlab/">#gitlab</a>
+            
+              <a href="/tags/gitee/">#gitee</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     
 
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-<script src="/js/jquery-3.6.4.min.js"></script>
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <i class="iconfont icon-love"></i> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
 
-<script src="/js/script.js"></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
 
 
-  </div>
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>
