@@ -73,6 +73,63 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-ssh-connect-service" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/09/ssh-connect-service/" class="article-date">
+  <time class="dt-published" datetime="2023-08-09T09:54:17.000Z" itemprop="datePublished">2023-08-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/09/ssh-connect-service/">使用ssh免密连接服务器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>首先需要生成ssh密钥，类似于连接github、gitee的ssh密钥。<br>密钥文件默认生成在 ~&#x2F;.ssh&#x2F; 文件夹下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -f [file_name]</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-t 指定加密方式, 有rsa 和 dsa, 通常默认使用rsa就好</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-f 指定生成密钥文件的名称, 默认生成的是id_rsa, 但是可能会有多个密钥文件</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">所以需要指定一个名称, 例如 id_rsa.[server_name]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行<code>ssk-keygen</code>之后，会出现</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter passphrase (empty for no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br><span class="line">Your identification has been saved in id_rsa.[server_name]</span><br><span class="line">Your public key has been saved in id_rsa.[server_name].pub</span><br><span class="line">The key fingerprint is:</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">这里是提示输入使用密钥文件时的密码，可以设置为空，直接回车就是</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文件生成之后，需要修改其权限，避免服务器验证密钥无法读取</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 600 ~/.ssh/id_rsa.[server_name] ~/.ssh/id_rsa.[server_name].pub</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">600 表示文件拥有者对该文件有读写的权限，其他用户无权限</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>密钥文件生成且权限修改之后将.pub后缀的公钥文件上传至服务器.<br>上传成功之后, 会在服务器的<code>~/.ssh/authorized_keys</code> 文件中添加一条公钥记录<br>如果后续验证失败可以看看该文件内的内容是否有冲突</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i ~/.ssh/id_rsa.[server_name].pub -p [port] [name]@[server_ip]</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-i 指定要上传的公钥文件</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-p 服务器开放端口号</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置完成之后可以开始免密连接服务器了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -i ~/.ssh/id_rsa.[server_name] -p [port] [name]@[server_ip]</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-i 指定连接服务器时使用的私钥文件</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>ok， 至此最基础的ssh免密连接服务器就完成了</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://stanlee12.github.io/2023/08/09/ssh-connect-service/" data-id="cm6eii19s000dm4q01junfquu" data-title="使用ssh免密连接服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-nginx-veu-server-md" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/08/04/nginx-veu-server-md/" class="article-date">
@@ -100,7 +157,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/04/nginx-veu-server-md/" data-id="cm6d7o6jh000757q01cvxf2lf" data-title="nginx 部署 vue应用 server基本配置" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/04/nginx-veu-server-md/" data-id="cm6eii19s0008m4q08by5hnqo" data-title="nginx 部署 vue应用 server基本配置" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -154,7 +211,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/02/git-operation-md/" data-id="cm6d7o6jh000557q0aeaz05vb" data-title="git操作常用命令说明" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/02/git-operation-md/" data-id="cm6eii19s0007m4q05mkx4wuj" data-title="git操作常用命令说明" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -194,7 +251,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/02/canvas-arc-md/" data-id="cm6d7o6jg000157q066of6vr4" data-title="使用canvas绘制扇形" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/02/canvas-arc-md/" data-id="cm6eii19q0001m4q06nii8zhy" data-title="使用canvas绘制扇形" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -259,7 +316,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/02/service-operation-md/" data-id="cm6d7o6ji000a57q015kfbn3i" data-title="服务器操作常用命令" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/02/service-operation-md/" data-id="cm6eii19s000bm4q0g41k5rj2" data-title="服务器操作常用命令" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -323,6 +380,10 @@
       <ul>
         
           <li>
+            <a href="/2025/01/27/docker-compose-nginx/">使用docker-compose 搭建nginx服务</a>
+          </li>
+        
+          <li>
             <a href="/2025/01/26/docker-nginx/">服务器安装docker以及启用nginx服务</a>
           </li>
         
@@ -336,10 +397,6 @@
         
           <li>
             <a href="/2024/05/14/playwright/">playwright</a>
-          </li>
-        
-          <li>
-            <a href="/2023/12/21/uni-app-push/">uni-app 接入推送</a>
           </li>
         
       </ul>

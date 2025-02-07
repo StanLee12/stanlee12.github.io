@@ -73,6 +73,101 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-docker-compose-nginx" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/27/docker-compose-nginx/" class="article-date">
+  <time class="dt-published" datetime="2025-01-27T03:23:23.000Z" itemprop="datePublished">2025-01-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/01/27/docker-compose-nginx/">使用docker-compose 搭建nginx服务</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="安装docker-compose"><a href="#安装docker-compose" class="headerlink" title="安装docker-compose"></a>安装docker-compose</h2><p>Linux 上我们可以从 Github 上下载它的二进制包来使用，最新发行的版本地址：<a target="_blank" rel="noopener" href="https://github.com/docker/compose/releases%E3%80%82">https://github.com/docker/compose/releases。</a></p>
+<p>运行以下命令以下载 Docker Compose 的当前稳定版本：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L &quot;https://github.com/docker/compose/releases/download/v2.2.2/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
+
+<p>Docker Compose 存放在 GitHub，不太稳定。</p>
+<p>你可以也通过执行下面的命令，高速安装 Docker Compose:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://get.daocloud.io/docker/compose/releases/download/v2.4.1/docker-compose-`uname -s`-`uname -m` &gt; /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
+
+<p>将可执行权限应用于二进制文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
+
+<p>创建软链：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose</span><br></pre></td></tr></table></figure>
+
+<p>测试是否安装成功：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose version</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建项目文件夹"><a href="#创建项目文件夹" class="headerlink" title="创建项目文件夹"></a>创建项目文件夹</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /data/blog</span><br></pre></td></tr></table></figure>
+
+<p>在<code>/data</code> 目录下创建blog文件夹，用于存放nginx项目以及docker-compose配置文件</p>
+<h2 id="创建docker-compose-yaml-配置文件"><a href="#创建docker-compose-yaml-配置文件" class="headerlink" title="创建docker-compose.yaml 配置文件"></a>创建docker-compose.yaml 配置文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tee docker-compose.yaml &lt;&lt;EOF</span><br></pre></td></tr></table></figure>
+
+<p><code>tee</code> 指令是将输入内容写入到文件中</p>
+<p><code>&lt;&lt;EOF</code> 文件开头，是 <code>end of file</code> 的缩写，加<code>&lt;&lt;</code>表示文件开头, 输入内容结尾加  <code>EOF</code> 表示文件内容到此结束</p>
+<p>上面的命令执行完之后会进入输入模式，输入以下内容即可:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&#x27;3&#x27;</span> <span class="comment">#指定版本</span></span><br><span class="line"><span class="attr">services:</span>    <span class="comment">#服务根节点</span></span><br><span class="line">  <span class="attr">nginx:</span>   <span class="comment">#jenkins服务/其他服务（web服务/nginx服务等）</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">nginx:1.22</span>  <span class="comment">#nginx镜像，如果镜像容器没有会去自动拉取</span></span><br><span class="line">    <span class="attr">container_name:</span> <span class="string">nginx</span>       <span class="comment">#容器的名称</span></span><br><span class="line">    <span class="attr">restart:</span> <span class="string">always</span>             <span class="comment">#跟随docker的启动而启动</span></span><br><span class="line">    <span class="attr">volumes:</span>                    <span class="comment">#挂载卷命令</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./conf/nginx.conf:/etc/nginx/nginx.conf</span>              <span class="comment">#映射配置文件入口文件</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./html:/usr/share/nginx/html</span>                         <span class="comment">#静态资源根目录挂载</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./logs:/var/log/nginx</span>                                <span class="comment">#日志文件挂载</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">./conf.d:/etc/nginx/conf.d</span> <span class="comment">#映射配置文件</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="number">80</span><span class="string">:80</span>    <span class="comment">#宿主主机端口80 映射到 容器端口80</span></span><br><span class="line"><span class="string">EOF</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="创建-nginx-相关的配置文件夹"><a href="#创建-nginx-相关的配置文件夹" class="headerlink" title="创建 nginx 相关的配置文件夹"></a>创建 nginx 相关的配置文件夹</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ./&#123;conf,logs,html,conf.d&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>conf</code> 文件夹用于存放nginx web服务的基础配置</p>
+<p><code>logs</code> 文件夹用于存放日志</p>
+<p><code>html</code> 文件夹用于存放web项目打包后的文件</p>
+<p><code>conf.d</code> 文件夹用于存放web项目对应的nginx配置文件</p>
+<h2 id="创建基础配置文件"><a href="#创建基础配置文件" class="headerlink" title="创建基础配置文件"></a>创建基础配置文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tee ./conf/nginx.conf &lt;&lt;&#x27;EOF&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>输入以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">user  nginx;</span><br><span class="line">worker_processes  auto;</span><br><span class="line"></span><br><span class="line">error_log  /var/log/nginx/error.log notice;</span><br><span class="line">pid        /var/run/nginx.pid;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       /etc/nginx/mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    log_format  main  &#x27;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#x27;</span><br><span class="line">                      &#x27;$status $body_bytes_sent &quot;$http_referer&quot; &#x27;</span><br><span class="line">                      &#x27;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#x27;;</span><br><span class="line"></span><br><span class="line">    access_log  /var/log/nginx/access.log  main;</span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line">    #tcp_nopush     on;</span><br><span class="line"></span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line"></span><br><span class="line">    #gzip  on;</span><br><span class="line"></span><br><span class="line">    include /etc/nginx/conf.d/*.conf;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建项目入口文件"><a href="#创建项目入口文件" class="headerlink" title="创建项目入口文件"></a>创建项目入口文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tee ./html/index.html &lt;&lt;&#x27;EOF&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>输入以下内容:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>Welcome to nginx!<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css"><span class="selector-tag">html</span> &#123; <span class="attribute">color</span>-scheme: light dark; &#125;</span></span><br><span class="line"><span class="language-css"><span class="selector-tag">body</span> &#123; <span class="attribute">width</span>: <span class="number">35em</span>; <span class="attribute">margin</span>: <span class="number">0</span> auto;</span></span><br><span class="line"><span class="language-css"><span class="attribute">font-family</span>: Tahoma, Verdana, Arial, sans-serif; &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Welcome to nginx!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>If you see this page, the nginx web server is successfully installed and</span><br><span class="line">working. Further configuration is required.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>For online documentation and support please refer to</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://nginx.org/&quot;</span>&gt;</span>nginx.org<span class="tag">&lt;/<span class="name">a</span>&gt;</span>.<span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">Commercial support is available at</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://nginx.com/&quot;</span>&gt;</span>nginx.com<span class="tag">&lt;/<span class="name">a</span>&gt;</span>.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">em</span>&gt;</span>Thank you for using nginx.<span class="tag">&lt;/<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建-html-50x-html-文件"><a href="#创建-html-50x-html-文件" class="headerlink" title="创建./html/50x.html 文件"></a>创建<code>./html/50x.html</code> 文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tee ./html/50x.html &lt;&lt;&#x27;EOF&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>输入以下内容:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>Error<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css"><span class="selector-tag">html</span> &#123; <span class="attribute">color</span>-scheme: light dark; &#125;</span></span><br><span class="line"><span class="language-css"><span class="selector-tag">body</span> &#123; <span class="attribute">width</span>: <span class="number">35em</span>; <span class="attribute">margin</span>: <span class="number">0</span> auto;</span></span><br><span class="line"><span class="language-css"><span class="attribute">font-family</span>: Tahoma, Verdana, Arial, sans-serif; &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>An error occurred.<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Sorry, the page you are looking for is currently unavailable.<span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">Please try again later.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>If you are the system administrator of this resource then you should check</span><br><span class="line">the error log for details.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">em</span>&gt;</span>Faithfully yours, nginx.<span class="tag">&lt;/<span class="name">em</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建默认项目配置文件"><a href="#创建默认项目配置文件" class="headerlink" title="创建默认项目配置文件"></a>创建默认项目配置文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tee ./conf.d/default.conf &lt;&lt;&#x27;EOF&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>输入以下内容:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    listen  [::]:80;</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    #access_log  /var/log/nginx/host.access.log  main;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root   /usr/share/nginx/html;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #error_page  404              /404.html;</span><br><span class="line"></span><br><span class="line">    # redirect server error pages to the static page /50x.html</span><br><span class="line">    #</span><br><span class="line">    error_page   500 502 503 504  /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root   /usr/share/nginx/html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<h2 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+
+<p>查看服务是否启动:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://stanlee12.github.io/2025/01/27/docker-compose-nginx/" data-id="cm6eii19r0003m4q056d0dadf" data-title="使用docker-compose 搭建nginx服务" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-docker-nginx" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/01/26/docker-nginx/" class="article-date">
@@ -132,7 +227,13 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /var/lib/docker</span><br></pre></td></tr></table></figure>
 
 <h2 id="修改docker-默认工作目录"><a href="#修改docker-默认工作目录" class="headerlink" title="修改docker 默认工作目录"></a>修改docker 默认工作目录</h2><p>查看默认docker工作目录:  </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">docker info</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line">可以看到docker默认工作目录是 `/var/lib/docker`,因为是系统盘所以不建议在此目录下存储docker相关内容</span><br><span class="line"></span><br><span class="line">可以通过docker 配置文件修改</span><br><span class="line"></span><br><span class="line">新建`/data/docker-workspace` 文件夹，并将默认docker目录修改为此目录 </span><br><span class="line"></span><br><span class="line">通过修改 `/etc/docker/daemon.json`，没有该文件则新建一个, 并在其中添加</span><br><span class="line"></span><br><span class="line">``` json</span><br><span class="line">&#123;</span><br><span class="line">  &quot;data-root&quot;: &quot;/data/docker-workspace&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker info</span><br></pre></td></tr></table></figure>
+
+<p>可以看到docker默认工作目录是 <code>/var/lib/docker</code>,因为是系统盘所以不建议在此目录下存储docker相关内容</p>
+<p>可以通过docker 配置文件修改</p>
+<p>新建<code>/data/docker-workspace</code> 文件夹，并将默认docker目录修改为此目录 </p>
+<p>通过修改 <code>/etc/docker/daemon.json</code>，没有该文件则新建一个, 并在其中添加</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;data-root&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/data/docker-workspace&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
 <p>然后重启docker:  </p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop docker.service</span><br></pre></td></tr></table></figure>
@@ -195,7 +296,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2025/01/26/docker-nginx/" data-id="cm6d7o6jh000357q0hm8965am" data-title="服务器安装docker以及启用nginx服务" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2025/01/26/docker-nginx/" data-id="cm6eii19r0004m4q01knx8w4t" data-title="服务器安装docker以及启用nginx服务" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -239,7 +340,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2024/11/08/auto-build/" data-id="cm6d7o6je000057q04ji30cj9" data-title="shell自动化构建部署脚本" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2024/11/08/auto-build/" data-id="cm6eii19o0000m4q0by4pbqqj" data-title="shell自动化构建部署脚本" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -289,7 +390,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2024/08/28/xlsx-js/" data-id="cm6d7o6jm001z57q07g120bpc" data-title="xlsx-js" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2024/08/28/xlsx-js/" data-id="cm6eii19x0020m4q0dh3gbiad" data-title="xlsx-js" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -371,7 +472,7 @@ npm install playwright -g
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2024/05/14/playwright/" data-id="cm6d7o6ji000857q0f2vqek61" data-title="playwright" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2024/05/14/playwright/" data-id="cm6eii19s000am4q042vxa8rh" data-title="playwright" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -444,7 +545,7 @@ npm install playwright -g
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/12/21/uni-app-push/" data-id="cm6d7o6jj000f57q0gjmm5rlj" data-title="uni-app 接入推送" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/12/21/uni-app-push/" data-id="cm6eii19t000hm4q00g3h4md1" data-title="uni-app 接入推送" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -496,7 +597,7 @@ npm install playwright -g
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/10/31/geo-server/" data-id="cm6d7o6jh000457q05jyyfikp" data-title="GeoServer发布tif格式的图层" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/10/31/geo-server/" data-id="cm6eii19r0005m4q0084dh80t" data-title="GeoServer发布tif格式的图层" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -562,7 +663,7 @@ npm install playwright -g
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/09/14/vue-tianditu/" data-id="cm6d7o6jj000h57q0hf5f9q0e" data-title="Vue中使用天地图" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/09/14/vue-tianditu/" data-id="cm6eii19t000im4q03nirckmk" data-title="Vue中使用天地图" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -628,7 +729,7 @@ npm install playwright -g
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/24/vue3-init-md/" data-id="cm6d7o6jm001y57q0bu9p3u3v" data-title="VsCode快速生成Vue3默认用户片段" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/24/vue3-init-md/" data-id="cm6eii19t000jm4q03hulgnkc" data-title="VsCode快速生成Vue3默认用户片段" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -682,68 +783,11 @@ npm install playwright -g
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/21/ssh-default-md/" data-id="cm6d7o6ji000d57q00pf4a05i" data-title="ssh配置快捷连接服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://stanlee12.github.io/2023/08/21/ssh-default-md/" data-id="cm6eii19t000em4q07p5qfule" data-title="ssh配置快捷连接服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gitee/" rel="tag">gitee</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/" rel="tag">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gitlab/" rel="tag">gitlab</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-ssh-connect-service" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/08/09/ssh-connect-service/" class="article-date">
-  <time class="dt-published" datetime="2023-08-09T09:54:17.000Z" itemprop="datePublished">2023-08-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/08/09/ssh-connect-service/">使用ssh免密连接服务器</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <ol>
-<li><p>首先需要生成ssh密钥，类似于连接github、gitee的ssh密钥。<br>密钥文件默认生成在 ~&#x2F;.ssh&#x2F; 文件夹下</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -f [file_name]</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-t 指定加密方式, 有rsa 和 dsa, 通常默认使用rsa就好</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-f 指定生成密钥文件的名称, 默认生成的是id_rsa, 但是可能会有多个密钥文件</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">所以需要指定一个名称, 例如 id_rsa.[server_name]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>执行<code>ssk-keygen</code>之后，会出现</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter passphrase (empty for no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br><span class="line">Your identification has been saved in id_rsa.[server_name]</span><br><span class="line">Your public key has been saved in id_rsa.[server_name].pub</span><br><span class="line">The key fingerprint is:</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">这里是提示输入使用密钥文件时的密码，可以设置为空，直接回车就是</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>文件生成之后，需要修改其权限，避免服务器验证密钥无法读取</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 600 ~/.ssh/id_rsa.[server_name] ~/.ssh/id_rsa.[server_name].pub</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">600 表示文件拥有者对该文件有读写的权限，其他用户无权限</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>密钥文件生成且权限修改之后将.pub后缀的公钥文件上传至服务器.<br>上传成功之后, 会在服务器的<code>~/.ssh/authorized_keys</code> 文件中添加一条公钥记录<br>如果后续验证失败可以看看该文件内的内容是否有冲突</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i ~/.ssh/id_rsa.[server_name].pub -p [port] [name]@[server_ip]</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-i 指定要上传的公钥文件</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-p 服务器开放端口号</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置完成之后可以开始免密连接服务器了</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -i ~/.ssh/id_rsa.[server_name] -p [port] [name]@[server_ip]</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-i 指定连接服务器时使用的私钥文件</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>ok， 至此最基础的ssh免密连接服务器就完成了</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://stanlee12.github.io/2023/08/09/ssh-connect-service/" data-id="cm6d7o6ji000b57q0bnibh2rh" data-title="使用ssh免密连接服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li></ul>
 
     </footer>
   </div>
@@ -803,6 +847,10 @@ npm install playwright -g
       <ul>
         
           <li>
+            <a href="/2025/01/27/docker-compose-nginx/">使用docker-compose 搭建nginx服务</a>
+          </li>
+        
+          <li>
             <a href="/2025/01/26/docker-nginx/">服务器安装docker以及启用nginx服务</a>
           </li>
         
@@ -816,10 +864,6 @@ npm install playwright -g
         
           <li>
             <a href="/2024/05/14/playwright/">playwright</a>
-          </li>
-        
-          <li>
-            <a href="/2023/12/21/uni-app-push/">uni-app 接入推送</a>
           </li>
         
       </ul>
