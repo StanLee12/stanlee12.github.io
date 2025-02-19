@@ -27,7 +27,7 @@
 <meta property="og:description" content="123456789server &amp;#123;  listen   18080; # 监听的端口号,需要在防火墙中开启  server_name  _; # server_name指令配置为_，则表示该虚拟主机将接受所有域名和主机名的请求。  location &#x2F; &amp;#123; # 用于匹配对根目录的请求    root &#x2F;usr&#x2F;share&#x2F;nginx&#x2F;dist; # 项目build之后存放的文件">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-04T04:35:45.000Z">
-<meta property="article:modified_time" content="2025-01-27T03:51:34.936Z">
+<meta property="article:modified_time" content="2025-01-27T03:54:52.175Z">
 <meta property="article:author" content="Stan Lee">
 <meta property="article:tag" content="nginx">
 <meta property="article:tag" content="vue">
@@ -183,7 +183,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/images/article_2.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -265,7 +265,7 @@
             
               <div class="markdown-body">
                 
-                <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">  <span class="attribute">listen</span>   <span class="number">18080</span>; <span class="comment"># 监听的端口号,需要在防火墙中开启</span></span><br><span class="line">  <span class="attribute">server_name</span>  _; <span class="comment"># server_name指令配置为_，则表示该虚拟主机将接受所有域名和主机名的请求。</span></span><br><span class="line"></span><br><span class="line">  <span class="section">location</span> / &#123; <span class="comment"># 用于匹配对根目录的请求</span></span><br><span class="line">    <span class="attribute">root</span> /usr/share/nginx/dist; <span class="comment"># 项目build之后存放的文件夹</span></span><br><span class="line">    <span class="attribute">try_files</span> <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.html; <span class="comment"># 指令用于尝试请求的文件或目录，如果找不到，则返回 index.html</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">server</span> &#123;<br>  <span class="hljs-attribute">listen</span>   <span class="hljs-number">18080</span>; <span class="hljs-comment"># 监听的端口号,需要在防火墙中开启</span><br>  <span class="hljs-attribute">server_name</span>  _; <span class="hljs-comment"># server_name指令配置为_，则表示该虚拟主机将接受所有域名和主机名的请求。</span><br><br>  <span class="hljs-section">location</span> / &#123; <span class="hljs-comment"># 用于匹配对根目录的请求</span><br>    <span class="hljs-attribute">root</span> /usr/share/nginx/dist; <span class="hljs-comment"># 项目build之后存放的文件夹</span><br>    <span class="hljs-attribute">try_files</span> <span class="hljs-variable">$uri</span> <span class="hljs-variable">$uri</span>/ /index.html; <span class="hljs-comment"># 指令用于尝试请求的文件或目录，如果找不到，则返回 index.html</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -614,5 +614,11 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
-</body>
+<!-- hexo injector body_end start -->
+    <script src="/js/star.js"></script>
+
+    <script src="/js/explosion.js"></script>
+
+    <script src="/js/sakura.js"></script>
+<!-- hexo injector body_end end --></body>
 </html>

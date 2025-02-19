@@ -27,7 +27,7 @@
 <meta property="og:description" content="1git status 查看当前git目录下文件的修改情况 1git diff &amp;#123;file&amp;#125; 查看文件修改了什么内容， 不指定文件默认显示全部修改过的文件 1git checkout . &#x2F; &amp;#123;file&amp;#125; 撤回修改，当为 . 时， 撤销所有的修改，除了新添加的文件。当指定文件时只撤销该文件的修改 1git checkout -b &amp;#123;branch_n">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-02T09:11:48.000Z">
-<meta property="article:modified_time" content="2025-01-27T03:51:34.936Z">
+<meta property="article:modified_time" content="2025-01-27T03:54:52.175Z">
 <meta property="article:author" content="Stan Lee">
 <meta property="article:tag" content="git">
 <meta property="article:tag" content="rebase">
@@ -183,7 +183,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/images/article_2.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -265,19 +265,19 @@
             
               <div class="markdown-body">
                 
-                <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+                <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">git status<br></code></pre></td></tr></table></figure>
 <p>查看当前git目录下文件的修改情况</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff &#123;file&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">git diff &#123;file&#125;<br></code></pre></td></tr></table></figure>
 <p>查看文件修改了什么内容， 不指定文件默认显示全部修改过的文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout . / &#123;file&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">git checkout . / &#123;file&#125;<br></code></pre></td></tr></table></figure>
 <p>撤回修改，当为 . 时， 撤销所有的修改，除了新添加的文件。当指定文件时只撤销该文件的修改</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b &#123;branch_name&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">git checkout -b &#123;branch_name&#125;<br></code></pre></td></tr></table></figure>
 <p>新建一个分支, 当没有 -b 时，指定分支名则为切换分支</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">git pull<br></code></pre></td></tr></table></figure>
 <p>拉取远程仓库最新代码到当前分支</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">git push<br></code></pre></td></tr></table></figure>
 <p>推送当前分支commit到远程分支</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase &#123;branch_name&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">git rebase &#123;branch_name&#125;<br></code></pre></td></tr></table></figure>
 <p>同步分支代码时建议使用，会保持commit记录干净整洁<br>使当前仓库的commit与指定分支进行同步，只会更新当前分支的commit，与主分支无关<br>当出现冲突时，会进入到rebase进度, git status会发现有修改了的文件，其中有冲突，并将冲突解决<br>解决之后使用<code>git add .</code>  然后 <code>git rebase --continue</code>继续rebase.<br>直到分支正常切换到当前分支下。如果中途不想继续rebase可以使用<code>git rebase --abort</code>中断rebase操作</p>
 
                 
@@ -627,5 +627,11 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
-</body>
+<!-- hexo injector body_end start -->
+    <script src="/js/star.js"></script>
+
+    <script src="/js/explosion.js"></script>
+
+    <script src="/js/sakura.js"></script>
+<!-- hexo injector body_end end --></body>
 </html>

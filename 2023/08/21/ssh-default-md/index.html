@@ -27,7 +27,7 @@
 <meta property="og:description" content="1234567Host myserver    HostName [ip_address] # 服务器ip地址    User [user_name] # 服务器登录的账户名称    IdentityFile ~&#x2F;.ssh&#x2F;id_rsa # ssh生成的密钥文件地址    PreferredAuthentications publickey    AddKeysToAgent yes  Prefe">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-21T03:50:20.000Z">
-<meta property="article:modified_time" content="2025-01-27T03:51:34.936Z">
+<meta property="article:modified_time" content="2025-01-27T03:54:52.176Z">
 <meta property="article:author" content="Stan Lee">
 <meta property="article:tag" content="ssh">
 <meta property="article:tag" content="github">
@@ -185,7 +185,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/images/article_2.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -267,22 +267,22 @@
             
               <div class="markdown-body">
                 
-                <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Host myserver</span><br><span class="line">    HostName [ip_address] # 服务器ip地址</span><br><span class="line">    User [user_name] # 服务器登录的账户名称</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa # ssh生成的密钥文件地址</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    AddKeysToAgent yes</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+                <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">Host myserver<br>    HostName [ip_address] # 服务器ip地址<br>    User [user_name] # 服务器登录的账户名称<br>    IdentityFile ~/.ssh/id_rsa # ssh生成的密钥文件地址<br>    PreferredAuthentications publickey<br>    AddKeysToAgent yes<br><br></code></pre></td></tr></table></figure>
 
 <p><code>PreferredAuthentications</code> 是一个用于配置 SSH 客户端首选身份验证方式的选项。它允许你指定客户端在连接远程服务器时首选的身份验证方式顺序。SSH 支持多种身份验证方式，如密码、公钥、GSSAPI 等。</p>
 <p>如果需要同时支持多种身份验证方式，可以使用逗号分隔它们：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PreferredAuthentications publickey,password</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">PreferredAuthentications publickey,password<br></code></pre></td></tr></table></figure>
 
 <p><code>AddKeysToAgent</code> 是一个用于配置 SSH 客户端是否将密钥添加到 SSH 代理（如 ssh-agent）中的选项。SSH 代理可以管理你的私钥，允许你在登录后只需要输入一次密码即可在整个会话中使用私钥。</p>
 <p>默认情况下，SSH 客户端不会自动将密钥添加到代理中。如果你想在每次登录时将密钥添加到代理，可以在 SSH 配置文件中添加以下行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AddKeysToAgent <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">AddKeysToAgent <span class="hljs-built_in">yes</span><br></code></pre></td></tr></table></figure>
 <p>这样，在登录时会提示你输入私钥的密码，并将私钥添加到代理中，以后不再需要重复输入密码。</p>
 <p>还有ssh配置github、gitee、gitlab连接的示例:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">Default gitHub user Self</span></span><br><span class="line">Host github.com</span><br><span class="line">  HostName github.com</span><br><span class="line">  User [stanlee1226@gmail.com] # email</span><br><span class="line">  PreferredAuthentications publickey</span><br><span class="line">  IdentityFile ~/.ssh/id_rsa.github</span><br><span class="line">  AddKeysToAgent yes</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">Default gitHub user Self</span><br>Host github.com<br>  HostName github.com<br>  User [stanlee1226@gmail.com] # email<br>  PreferredAuthentications publickey<br>  IdentityFile ~/.ssh/id_rsa.github<br>  AddKeysToAgent yes<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">Add gitee user</span></span><br><span class="line">Host gitee.com</span><br><span class="line">  HostName gitee.com</span><br><span class="line">  User [stanlee1226@gmail.com] #email</span><br><span class="line">  PreferredAuthentications publickey</span><br><span class="line">  IdentityFile ~/.ssh/id_rsa.gitee</span><br><span class="line">  AddKeysToAgent yes</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">Add gitee user</span><br>Host gitee.com<br>  HostName gitee.com<br>  User [stanlee1226@gmail.com] #email<br>  PreferredAuthentications publickey<br>  IdentityFile ~/.ssh/id_rsa.gitee<br>  AddKeysToAgent yes<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">Add gitlab user</span></span><br><span class="line">Host git@[ip_address]</span><br><span class="line">  HostName [ip_address]</span><br><span class="line">  Port [port]</span><br><span class="line">  User [account]</span><br><span class="line">  PreferredAuthentications publickey</span><br><span class="line">  IdentityFile ~/.ssh/id_rsa.gitlab</span><br><span class="line">  AddKeysToAgent yes</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">Add gitlab user</span><br>Host git@[ip_address]<br>  HostName [ip_address]<br>  Port [port]<br>  User [account]<br>  PreferredAuthentications publickey<br>  IdentityFile ~/.ssh/id_rsa.gitlab<br>  AddKeysToAgent yes<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -635,5 +635,11 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
-</body>
+<!-- hexo injector body_end start -->
+    <script src="/js/star.js"></script>
+
+    <script src="/js/explosion.js"></script>
+
+    <script src="/js/sakura.js"></script>
+<!-- hexo injector body_end end --></body>
 </html>

@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://stanlee12.github.io/images/playwright/playwright-baidu.gif">
 <meta property="article:published_time" content="2024-05-14T03:48:22.000Z">
-<meta property="article:modified_time" content="2025-01-27T03:51:34.936Z">
+<meta property="article:modified_time" content="2025-01-27T03:54:52.175Z">
 <meta property="article:author" content="Stan Lee">
 <meta property="article:tag" content="node">
 <meta property="article:tag" content="playwright">
@@ -186,7 +186,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/images/article_2.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -268,13 +268,13 @@
             
               <div class="markdown-body">
                 
-                <h1 id="微软超强爬虫工具，可用于Web页面自动化测试工具-—-Playwright"><a href="#微软超强爬虫工具，可用于Web页面自动化测试工具-—-Playwright" class="headerlink" title="微软超强爬虫工具，可用于Web页面自动化测试工具 — Playwright"></a>微软超强爬虫工具，可用于Web页面自动化测试工具 — Playwright</h1><h3 id="Playwright是微软在2020年初开源的新一代自动化测试工具。它的功能和Selenium、Pyppeteer等工具类似，可以驱动浏览器进行各种自动化操作。Playwright支持当前所有的主流浏览器，包括Chrome、Edge、Firefox、Safari等，并且支持浏览器有头和无头模式。此外，Playwright的安装和配置过程简单，会自动安装对应的浏览器和驱动，不需要额外配置WebDriver等。"><a href="#Playwright是微软在2020年初开源的新一代自动化测试工具。它的功能和Selenium、Pyppeteer等工具类似，可以驱动浏览器进行各种自动化操作。Playwright支持当前所有的主流浏览器，包括Chrome、Edge、Firefox、Safari等，并且支持浏览器有头和无头模式。此外，Playwright的安装和配置过程简单，会自动安装对应的浏览器和驱动，不需要额外配置WebDriver等。" class="headerlink" title="Playwright是微软在2020年初开源的新一代自动化测试工具。它的功能和Selenium、Pyppeteer等工具类似，可以驱动浏览器进行各种自动化操作。Playwright支持当前所有的主流浏览器，包括Chrome、Edge、Firefox、Safari等，并且支持浏览器有头和无头模式。此外，Playwright的安装和配置过程简单，会自动安装对应的浏览器和驱动，不需要额外配置WebDriver等。"></a>Playwright是微软在2020年初开源的新一代自动化测试工具。它的功能和Selenium、Pyppeteer等工具类似，可以驱动浏览器进行各种自动化操作。Playwright支持当前所有的主流浏览器，包括Chrome、Edge、Firefox、Safari等，并且支持浏览器有头和无头模式。此外，Playwright的安装和配置过程简单，会自动安装对应的浏览器和驱动，不需要额外配置WebDriver等。</h3><h3 id="Playwright支持多种编程语言，包括JavaScript、TypeScript、Python和Java，这使得开发人员可以使用他们喜欢的语言来编写自动化测试。"><a href="#Playwright支持多种编程语言，包括JavaScript、TypeScript、Python和Java，这使得开发人员可以使用他们喜欢的语言来编写自动化测试。" class="headerlink" title="Playwright支持多种编程语言，包括JavaScript、TypeScript、Python和Java，这使得开发人员可以使用他们喜欢的语言来编写自动化测试。"></a>Playwright支持多种编程语言，包括JavaScript、TypeScript、Python和Java，这使得开发人员可以使用他们喜欢的语言来编写自动化测试。</h3><h3 id="我是用的是JavaScript版本，主要介绍基于node的playwright的使用"><a href="#我是用的是JavaScript版本，主要介绍基于node的playwright的使用" class="headerlink" title="我是用的是JavaScript版本，主要介绍基于node的playwright的使用"></a>我是用的是JavaScript版本，主要介绍基于node的playwright的使用</h3><h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h3><pre><code>可以通过使用npm来安装playwright
+                <h1 id="微软超强爬虫工具，可用于Web页面自动化测试工具-—-Playwright"><a href="#微软超强爬虫工具，可用于Web页面自动化测试工具-—-Playwright" class="headerlink" title="微软超强爬虫工具，可用于Web页面自动化测试工具 — Playwright"></a>微软超强爬虫工具，可用于Web页面自动化测试工具 — Playwright</h1><h3 id="Playwright是微软在2020年初开源的新一代自动化测试工具。它的功能和Selenium、Pyppeteer等工具类似，可以驱动浏览器进行各种自动化操作。Playwright支持当前所有的主流浏览器，包括Chrome、Edge、Firefox、Safari等，并且支持浏览器有头和无头模式。此外，Playwright的安装和配置过程简单，会自动安装对应的浏览器和驱动，不需要额外配置WebDriver等。"><a href="#Playwright是微软在2020年初开源的新一代自动化测试工具。它的功能和Selenium、Pyppeteer等工具类似，可以驱动浏览器进行各种自动化操作。Playwright支持当前所有的主流浏览器，包括Chrome、Edge、Firefox、Safari等，并且支持浏览器有头和无头模式。此外，Playwright的安装和配置过程简单，会自动安装对应的浏览器和驱动，不需要额外配置WebDriver等。" class="headerlink" title="Playwright是微软在2020年初开源的新一代自动化测试工具。它的功能和Selenium、Pyppeteer等工具类似，可以驱动浏览器进行各种自动化操作。Playwright支持当前所有的主流浏览器，包括Chrome、Edge、Firefox、Safari等，并且支持浏览器有头和无头模式。此外，Playwright的安装和配置过程简单，会自动安装对应的浏览器和驱动，不需要额外配置WebDriver等。"></a>Playwright是微软在2020年初开源的新一代自动化测试工具。它的功能和Selenium、Pyppeteer等工具类似，可以驱动浏览器进行各种自动化操作。Playwright支持当前所有的主流浏览器，包括Chrome、Edge、Firefox、Safari等，并且支持浏览器有头和无头模式。此外，Playwright的安装和配置过程简单，会自动安装对应的浏览器和驱动，不需要额外配置WebDriver等。</h3><h3 id="Playwright支持多种编程语言，包括JavaScript、TypeScript、Python和Java，这使得开发人员可以使用他们喜欢的语言来编写自动化测试。"><a href="#Playwright支持多种编程语言，包括JavaScript、TypeScript、Python和Java，这使得开发人员可以使用他们喜欢的语言来编写自动化测试。" class="headerlink" title="Playwright支持多种编程语言，包括JavaScript、TypeScript、Python和Java，这使得开发人员可以使用他们喜欢的语言来编写自动化测试。"></a>Playwright支持多种编程语言，包括JavaScript、TypeScript、Python和Java，这使得开发人员可以使用他们喜欢的语言来编写自动化测试。</h3><h3 id="我是用的是JavaScript版本，主要介绍基于node的playwright的使用"><a href="#我是用的是JavaScript版本，主要介绍基于node的playwright的使用" class="headerlink" title="我是用的是JavaScript版本，主要介绍基于node的playwright的使用"></a>我是用的是JavaScript版本，主要介绍基于node的playwright的使用</h3><h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h3><pre><code class="hljs">可以通过使用npm来安装playwright
 
 npm install playwright -g
 
 将playwright安装在全局环境下，我们就可以直接使用playwright命令进行相关操作
 </code></pre>
-<h3 id="2-功能介绍"><a href="#2-功能介绍" class="headerlink" title="2. 功能介绍"></a>2. 功能介绍</h3><pre><code>  Usage: playwright [options] [command]
+<h3 id="2-功能介绍"><a href="#2-功能介绍" class="headerlink" title="2. 功能介绍"></a>2. 功能介绍</h3><pre><code class="hljs">  Usage: playwright [options] [command]
 
   Options:
     -V, --version                          output the version number
@@ -296,7 +296,7 @@ npm install playwright -g
     show-trace [options] [trace...]        show trace viewer
     help [command]                         display help for command
 </code></pre>
-<h3 id="3-自动代码生成指令"><a href="#3-自动代码生成指令" class="headerlink" title="3. 自动代码生成指令"></a>3. 自动代码生成指令</h3><pre><code>  playwright codegen --target javascript -o &#39;playwright-baidu.js&#39; -b chromium https://www.baidu.com 
+<h3 id="3-自动代码生成指令"><a href="#3-自动代码生成指令" class="headerlink" title="3. 自动代码生成指令"></a>3. 自动代码生成指令</h3><pre><code class="hljs">  playwright codegen --target javascript -o &#39;playwright-baidu.js&#39; -b chromium https://www.baidu.com 
 
   // --target 生成脚本的语言，可选python、java、javascript等
 
@@ -305,7 +305,7 @@ npm install playwright -g
   // -b 使用的浏览器内核,包含chromium、firefox、safari等
 </code></pre>
 <h3 id="4-示例"><a href="#4-示例" class="headerlink" title="4. 示例"></a>4. 示例</h3><p><img src="/images/playwright/playwright-baidu.gif" srcset="/img/loading.gif" lazyload alt="示例"></p>
-<pre><code>如图所示, 当在浏览器执行相关操作时，代码记录器会对应的生成相关代码，
+<pre><code class="hljs">如图所示, 当在浏览器执行相关操作时，代码记录器会对应的生成相关代码，
 但是代码不是完全准确无误的，如果是实际使用脚本代码，
 还需要进行检查和修改，也可以添加自己需要代码才能完成的操作，
 总之很大的省去了很多时间和精力.
@@ -660,5 +660,11 @@ npm install playwright -g
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
-</body>
+<!-- hexo injector body_end start -->
+    <script src="/js/star.js"></script>
+
+    <script src="/js/explosion.js"></script>
+
+    <script src="/js/sakura.js"></script>
+<!-- hexo injector body_end end --></body>
 </html>

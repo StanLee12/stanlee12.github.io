@@ -27,7 +27,7 @@
 <meta property="og:description" content="首先需要生成ssh密钥，类似于连接github、gitee的ssh密钥。密钥文件默认生成在 ~&#x2F;.ssh&#x2F; 文件夹下 12345ssh-keygen -t rsa -f [file_name]# -t 指定加密方式, 有rsa 和 dsa, 通常默认使用rsa就好# -f 指定生成密钥文件的名称, 默认生成的是id_rsa, 但是可能会有多个密钥文件# 所以需要指定一个名称,">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-09T09:54:17.000Z">
-<meta property="article:modified_time" content="2025-01-27T03:51:34.936Z">
+<meta property="article:modified_time" content="2025-01-27T03:54:52.176Z">
 <meta property="article:author" content="Stan Lee">
 <meta property="article:tag" content="ssh">
 <meta name="twitter:card" content="summary_large_image">
@@ -182,7 +182,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/images/article_2.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -266,19 +266,19 @@
                 
                 <ol>
 <li><p>首先需要生成ssh密钥，类似于连接github、gitee的ssh密钥。<br>密钥文件默认生成在 ~&#x2F;.ssh&#x2F; 文件夹下</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -f [file_name]</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-t 指定加密方式, 有rsa 和 dsa, 通常默认使用rsa就好</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-f 指定生成密钥文件的名称, 默认生成的是id_rsa, 但是可能会有多个密钥文件</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">所以需要指定一个名称, 例如 id_rsa.[server_name]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh-keygen -t rsa -f [file_name]<br><span class="hljs-meta prompt_"># </span><span class="language-bash">-t 指定加密方式, 有rsa 和 dsa, 通常默认使用rsa就好</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">-f 指定生成密钥文件的名称, 默认生成的是id_rsa, 但是可能会有多个密钥文件</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">所以需要指定一个名称, 例如 id_rsa.[server_name]</span><br><br></code></pre></td></tr></table></figure>
 </li>
 <li><p>执行<code>ssk-keygen</code>之后，会出现</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter passphrase (empty for no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br><span class="line">Your identification has been saved in id_rsa.[server_name]</span><br><span class="line">Your public key has been saved in id_rsa.[server_name].pub</span><br><span class="line">The key fingerprint is:</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">这里是提示输入使用密钥文件时的密码，可以设置为空，直接回车就是</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">Generating public/private rsa key pair.<br>Enter passphrase (empty for no passphrase):<br>Enter same passphrase again:<br>Your identification has been saved in id_rsa.[server_name]<br>Your public key has been saved in id_rsa.[server_name].pub<br>The key fingerprint is:<br><span class="hljs-meta prompt_"># </span><span class="language-bash">这里是提示输入使用密钥文件时的密码，可以设置为空，直接回车就是</span><br></code></pre></td></tr></table></figure>
 </li>
 <li><p>文件生成之后，需要修改其权限，避免服务器验证密钥无法读取</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 600 ~/.ssh/id_rsa.[server_name] ~/.ssh/id_rsa.[server_name].pub</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">600 表示文件拥有者对该文件有读写的权限，其他用户无权限</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo chmod 600 ~/.ssh/id_rsa.[server_name] ~/.ssh/id_rsa.[server_name].pub<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">600 表示文件拥有者对该文件有读写的权限，其他用户无权限</span><br></code></pre></td></tr></table></figure>
 </li>
 <li><p>密钥文件生成且权限修改之后将.pub后缀的公钥文件上传至服务器.<br>上传成功之后, 会在服务器的<code>~/.ssh/authorized_keys</code> 文件中添加一条公钥记录<br>如果后续验证失败可以看看该文件内的内容是否有冲突</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i ~/.ssh/id_rsa.[server_name].pub -p [port] [name]@[server_ip]</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-i 指定要上传的公钥文件</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-p 服务器开放端口号</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh-copy-id -i ~/.ssh/id_rsa.[server_name].pub -p [port] [name]@[server_ip]<br><span class="hljs-meta prompt_"># </span><span class="language-bash">-i 指定要上传的公钥文件</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">-p 服务器开放端口号</span><br></code></pre></td></tr></table></figure>
 </li>
 <li><p>配置完成之后可以开始免密连接服务器了</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -i ~/.ssh/id_rsa.[server_name] -p [port] [name]@[server_ip]</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-i 指定连接服务器时使用的私钥文件</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh -i ~/.ssh/id_rsa.[server_name] -p [port] [name]@[server_ip]<br><span class="hljs-meta prompt_"># </span><span class="language-bash">-i 指定连接服务器时使用的私钥文件</span><br></code></pre></td></tr></table></figure></li>
 </ol>
 <p>ok， 至此最基础的ssh免密连接服务器就完成了</p>
 
@@ -627,5 +627,11 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
-</body>
+<!-- hexo injector body_end start -->
+    <script src="/js/star.js"></script>
+
+    <script src="/js/explosion.js"></script>
+
+    <script src="/js/sakura.js"></script>
+<!-- hexo injector body_end end --></body>
 </html>

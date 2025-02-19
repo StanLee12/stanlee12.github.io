@@ -27,7 +27,7 @@
 <meta property="og:description" content="1ssh -p &amp;#123;port&amp;#125; &amp;#123;name&amp;#125;@&amp;#123;ip_address&amp;#125; 回车之后输入服务器密码 安装nginx 可以使用 linux系统自带的yum包管理器 1find &#x2F; -name &amp;#123;package_name&amp;#125; 可以查看包所在位置 1firewall-cmd —list-ports 查看所有开放端口 12345fir">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-02T07:52:04.000Z">
-<meta property="article:modified_time" content="2025-01-27T03:51:34.936Z">
+<meta property="article:modified_time" content="2025-01-27T03:54:52.176Z">
 <meta property="article:author" content="Stan Lee">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary_large_image">
@@ -182,7 +182,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/images/article_2.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -264,30 +264,30 @@
             
               <div class="markdown-body">
                 
-                <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p &#123;port&#125; &#123;name&#125;@&#123;ip_address&#125;</span><br></pre></td></tr></table></figure>
+                <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ssh -p &#123;port&#125; &#123;name&#125;@&#123;ip_address&#125;<br></code></pre></td></tr></table></figure>
 <p>回车之后输入服务器密码</p>
 <p>安装nginx 可以使用 linux系统自带的yum包管理器</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -name &#123;package_name&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">find / -name &#123;package_name&#125;<br></code></pre></td></tr></table></figure>
 <p>可以查看包所在位置</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd —list-ports</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">firewall-cmd —list-ports<br></code></pre></td></tr></table></figure>
 <p>查看所有开放端口</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd —permanent —zone=public —add-port=&#123;port&#125;/tcp </span><br><span class="line"><span class="meta prompt_">		#</span><span class="language-bash">命令含义：</span></span><br><span class="line">   	--zone #作用域</span><br><span class="line">   	--add-port=1935/tcp  #添加端口，格式为：端口/通讯协议</span><br><span class="line">   	--permanent  #永久生效，没有此参数重启后失效</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">firewall-cmd —permanent —zone=public —add-port=&#123;port&#125;/tcp <br><span class="hljs-meta prompt_">		#</span><span class="language-bash">命令含义：</span><br>   	--zone #作用域<br>   	--add-port=1935/tcp  #添加端口，格式为：端口/通讯协议<br>   	--permanent  #永久生效，没有此参数重启后失效<br></code></pre></td></tr></table></figure>
 <p>添加新的端口</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd —reload</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">firewall-cmd —reload<br></code></pre></td></tr></table></figure>
 <p>重启防火墙，添加新的端口后必须需要重启</p>
 <p>netstat 该工具需要通过yum安装，可以查看机器的网络连接状态</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netstat -anp #查看所有网络连接 </span><br><span class="line">netstat -lnp #查看端口连接</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">netstat -anp #查看所有网络连接 <br>netstat -lnp #查看端口连接<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s stop</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nginx -s stop<br></code></pre></td></tr></table></figure>
 <p>停止nginx所有服务</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nginx -s reload<br></code></pre></td></tr></table></figure>
 <p>重新加载nginx服务</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -c /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">nginx -c /etc/nginx/nginx.conf<br></code></pre></td></tr></table></figure>
 <p>使用指定配置文件启动nginx</p>
 <p>nginx.conf文件有修改，需要先stop nginx服务，然后重新启动</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r -P &#123;port&#125; &#123;dir&#125; &#123;name&#125;@&#123;ip_address&#125;:&#123;dir&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">scp -r -P &#123;port&#125; &#123;dir&#125; &#123;name&#125;@&#123;ip_address&#125;:&#123;dir&#125;<br></code></pre></td></tr></table></figure>
 <p>该命令可以将本机上的文件夹上传至服务器</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux |grep nginx</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ps aux |grep nginx<br></code></pre></td></tr></table></figure>
 <p>该命令查看所有包含有nginx字样的运行服务</p>
 
                 
@@ -629,5 +629,11 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
-</body>
+<!-- hexo injector body_end start -->
+    <script src="/js/star.js"></script>
+
+    <script src="/js/explosion.js"></script>
+
+    <script src="/js/sakura.js"></script>
+<!-- hexo injector body_end end --></body>
 </html>
