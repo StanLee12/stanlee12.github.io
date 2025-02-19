@@ -3,6 +3,7 @@ title: 服务器安装docker以及启用nginx服务
 author: stan
 date: 2025-01-26 13:15:11
 tags: [docker, nginx, centOS]
+index_img: /images/index_img/docker.webp
 ---
 
 # centOS7 安装docker以及通过docker启用一个nginx服务

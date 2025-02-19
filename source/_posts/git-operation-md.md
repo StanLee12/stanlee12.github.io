@@ -3,6 +3,7 @@ title: git操作常用命令说明
 author: stan
 date: 2023-08-02 17:11:48
 tags: [git, rebase]
+index_img: /images/index_img/git.png
 ---
 
 ```shell

@@ -3,6 +3,7 @@ title: docker-compose部署的nginx服务绑定域名
 author: stan
 date: 2025-02-08 16:57:29
 tags: [docker, docker-compose, nginx, 域名]
+index_img: /images/index_img/nginx.webp
 ---
 
 ## 准备域名

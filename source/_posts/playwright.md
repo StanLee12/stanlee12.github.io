@@ -3,6 +3,7 @@ title: playwright
 author: stan
 date: 2024-05-14 11:48:22
 tags: [node, playwright, web自动化测试]
+index_img: /images/index_img/playwright.png
 ---
 
 # 微软超强爬虫工具，可用于Web页面自动化测试工具 --- Playwright

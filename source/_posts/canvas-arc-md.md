@@ -3,6 +3,7 @@ title: 使用canvas绘制扇形
 author: stan
 date: 2023-08-02 17:05:55
 tags: [canvas]
+index_img: images/index_img/canvas.png
 ---
 
 ```html

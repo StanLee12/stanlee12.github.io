@@ -2,7 +2,8 @@
 title: VsCode快速生成Vue3默认用户片段
 author: stan
 date: 2023-08-24 11:56:28
-tags:
+tags: [vscode, vue3]
+index_img: /images/index_img/vscode.png
 ---
 
 #### 使用VsCode开发Vue项目的时候，有个Vue Snippets的插件，其中的VueInit命令可以默认生成一段Vue文件的基础模板

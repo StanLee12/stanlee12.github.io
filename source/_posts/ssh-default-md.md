@@ -3,6 +3,7 @@ title: ssh配置快捷连接服务器
 author: stan
 date: 2023-08-21 11:50:20
 tags: [ssh, github, gitlab, gitee]
+index_img: /images/index_img/ssh.png
 ---
 
 ```shell

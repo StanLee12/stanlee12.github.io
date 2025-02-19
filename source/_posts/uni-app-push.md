@@ -3,6 +3,7 @@ title: uni-app 接入推送
 author: stan
 date: 2023-12-21 16:08:56
 tags: [uni-app, push, notification, uni-app消息推送]
+index_img: /images/index_img/uniapp.png
 ---
 
 ### uni-app 移动端app介入消息推送(本文只介绍安卓版本)

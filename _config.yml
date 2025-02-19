@@ -79,7 +79,7 @@ meta_generator: true
 ## You can customize the date format as defined in
 ## http://momentjs.com/docs/#/displaying/format/
 date_format: YYYY-MM-DD
-time_format: HH:mm:ss
+time_format: HH:mm
 ## updated_option supports 'mtime', 'date', 'empty'
 updated_option: 'mtime'
 
@@ -96,7 +96,7 @@ ignore:
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
-plugin: landscape
+# plugin: landscape
 ## Themes: https://hexo.io/themes/
 theme: fluid
 

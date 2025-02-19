@@ -3,6 +3,7 @@ title: GeoServer发布tif格式的图层
 author: stan
 date: 2023-10-31 18:25:43
 tags: [GeoServer, tif]
+index_img: /images/index_img/geoserver.png
 ---
 
 ## GeoServer支持使用TIF图片作为空间数据的一种格式，可以通过上传、配置和调整参数等方式来使用TIF图片，并与地图和其他数据进行集成和发布。

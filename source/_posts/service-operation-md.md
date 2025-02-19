@@ -3,6 +3,7 @@ title: 服务器操作常用命令
 author: stan
 date: 2023-08-02 15:52:04
 tags: [linux]
+index_img: /images/index_img/linux.jpg
 ---
 
 ```shell

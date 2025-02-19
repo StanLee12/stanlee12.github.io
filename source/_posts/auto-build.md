@@ -3,6 +3,7 @@ title: shell自动化构建部署脚本
 author: stan
 date: 2024-11-08 19:09:35
 tags: [build, ssh, scp, zip, unzip]
+index_img: /images/index_img/vue3.png
 ---
 
 # 使用shell脚本自动化打包部署前端项目

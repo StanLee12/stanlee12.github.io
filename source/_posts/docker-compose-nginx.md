@@ -3,6 +3,7 @@ title: 使用docker-compose 搭建nginx服务
 author: stan
 date: 2025-01-27 11:23:23
 tags: [docker-compose, nginx, docker]
+index_img: /images/index_img/docker.webp
 ---
 
 ## 安装docker-compose

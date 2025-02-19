@@ -3,6 +3,7 @@ title: Vue中使用天地图
 author: stan
 date: 2023-09-14 15:50:30
 tags: [vue, 天地图]
+index_img: /images/index_img/tianditu.svg
 ---
 
 ### Vue3中简单使用天地图的示例

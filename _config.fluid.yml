@@ -482,7 +482,7 @@ footer:
 index:
   # 首页 Banner 头图，可以是相对路径或绝对路径，以下相同
   # Path of Banner image, can be a relative path or an absolute path, the same on other pages
-  banner_img: /img/default.png
+  banner_img: /images/index_bg.jpg
 
   # 头图高度，屏幕百分比
   # Height ratio of banner image
@@ -554,7 +554,7 @@ index:
 # Post Page
 #---------------------------
 post:
-  banner_img: /img/default.png
+  banner_img: /images/article_2.jpg
   banner_img_height: 70
   banner_mask_alpha: 0.3
 
@@ -918,7 +918,7 @@ discuss:
 # Archive Page
 #---------------------------
 archive:
-  banner_img: /img/default.png
+  banner_img: /images/archive_bg.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
 
@@ -958,7 +958,7 @@ category:
 #---------------------------
 tag:
   enable: true
-  banner_img: /img/default.png
+  banner_img: /images/tag_bg.jpg
   banner_img_height: 80
   banner_mask_alpha: 0.3
   tagcloud:
@@ -975,7 +975,7 @@ tag:
 #---------------------------
 about:
   enable: true
-  banner_img: /img/default.png
+  banner_img: /images/about_2.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
   avatar: /images/avatar.jpeg
