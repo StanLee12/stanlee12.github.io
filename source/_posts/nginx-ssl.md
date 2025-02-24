@@ -3,6 +3,7 @@ title: nginx 域名配置 https 访问
 author: stan
 date: 2025-02-24
 tags: [nginx, https. ssl]
+index_img: /images/index_img/nginx.webp
 ---
 
 ##  一、准备工作
