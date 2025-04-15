@@ -1,6 +1,6 @@
 ---
 title: 修复 HBuilder 在 Mac M 系列芯片上的兼容性问题
-author: Stan
+author: stan
 date: 2025-04-14 10:00:00
 tags: [HBuilder, Mac, M系列芯片, ARM]
 index_img: /images/index_img/uniapp.png
