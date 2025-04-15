@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>大语言模型平台 Cherry Studio 开启 MCP Filesystem 服务</title>
+    <link href="/2025/04/15/cherry-studio-mcp/"/>
+    <url>/2025/04/15/cherry-studio-mcp/</url>
+    
+    <content type="html"><![CDATA[<h2 id="MCP-服务"><a href="#MCP-服务" class="headerlink" title="MCP 服务"></a>MCP 服务</h2><p>MCP全称是Model Context Protocol，是一个基于LLM(大语言模型)的协议，你可以理解为用户结合ai服务的http协议，通过这个协议你可以调用ai服务的接口，获取ai服务的返回结果。<br>再通俗点讲就是，通过实现该协议，你可以将自己的平台与ai服务进行对接，通过ai调用自己平台的接口，实现自己平台的ai化。</p><h2 id="Cherry-Studio"><a href="#Cherry-Studio" class="headerlink" title="Cherry Studio"></a>Cherry Studio</h2><p>Cherry Studio是一个基于MCP协议的ai服务平台，你可以理解为一个ai服务的后台管理系统，你可以通过该系统来管理你的ai服务。这个是国内开源的一个平台，不需要注册，非常方便。</p><p>Cherry studio可以通过 <a href="https://cherry-ai.com/">https://cherry-ai.com/</a> 进行下载</p><h2 id="配置ai-token"><a href="#配置ai-token" class="headerlink" title="配置ai token"></a>配置ai token</h2><p><img src="/images/cherry-studio-mcp/1.jpg" alt="配置Token"></p><p>Cherry Studio配置ai模型的方式非常方便, 你只需要到设置中找到对应的想要使用的模型，然后点击右侧的获取会自动跳转至该模型平台，获取到token后，粘贴到API密钥输入框内即可。</p><h2 id="配置MCP服务"><a href="#配置MCP服务" class="headerlink" title="配置MCP服务"></a>配置MCP服务</h2><p><img src="/images/cherry-studio-mcp/2.jpg" alt="配置MCP"></p><p>在Cherry Studio中，你可以通过点击左侧的MCP服务，来配置MCP服务。</p><p>我们这里以Cherry Studio内置的Filesystem服务为例，点击添加，即可添加一个Filesystem服务。</p><p><img src="/images/cherry-studio-mcp/3.jpg" alt="配置MCP"></p><p>还需要将自己想要控制的文件夹作为参数配置给MCP服务，如图所示。<br>这样，我们就配置好了一个MCP服务。</p><h2 id="开启MCP服务"><a href="#开启MCP服务" class="headerlink" title="开启MCP服务"></a>开启MCP服务</h2><p>当配置完MCP服务以后，我们切换到AI对话窗口，开启需要使用的MCP服务：<br><img src="/images/cherry-studio-mcp/4.jpg" alt="测试"></p><p>并且我们可以预设一段话，方便AI更能清晰的理解我们的需求，例如:</p><blockquote><p>你是一个智能机器人，拥有我的文件夹操作权限，我需要你帮助我操作文件夹</p></blockquote><p>这样，我们就可以通过AI对话窗口来控制我们的文件夹了。</p><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p><img src="/images/cherry-studio-mcp/5.jpg" alt="测试"></p><p>如上所示，ai已经能够访问我们的文件夹了，并且可以执行我们的指令了。当然具体有哪些指令可以操作，就需要我们去 相应的 MCP 服务中去查看了。如果有些特殊的需求，我们可以自己实现一个 MCP 服务。这就是我接下来将要研究的内容了。</p><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><p>想要了解更多关于MCP的内容，可以参考以下链接：</p><ul><li><a href="https://mcp.so/">mcp服务</a></li><li><a href="https://github.com/CherryHQ/cherry-studio">cherry studio</a></li><li><a href="https://modelcontextprotocol.io/">mcp协议</a></li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>cherry studio</tag>
+      
+      <tag>mcp</tag>
+      
+      <tag>deepseek</tag>
+      
+      <tag>ai</tag>
+      
+      <tag>llm</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>修复 HBuilder 在 Mac M 系列芯片上的兼容性问题</title>
     <link href="/2025/04/14/fix-hbuilder-arm-issue/"/>
     <url>/2025/04/14/fix-hbuilder-arm-issue/</url>
