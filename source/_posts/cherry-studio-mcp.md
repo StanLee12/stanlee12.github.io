@@ -1,5 +1,5 @@
 ---
-title: 大语言模型平台 Cherry Studio 开启 MCP Filesystem 服务
+title: AI模型平台Cherry Studio开启MCP Filesystem服务
 author: stan
 date: 2025-04-15 10:54:57
 tags: [cherry studio, mcp, deepseek, ai, llm]
