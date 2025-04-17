@@ -3,7 +3,7 @@ title: AI模型平台Cherry Studio开启MCP Filesystem服务
 author: stan
 date: 2025-04-15 10:54:57
 tags: [cherry studio, mcp, deepseek, ai, llm]
-index_img: /images/index_img/cherry_studio.png
+index_img: /images/index_img/cherry_studio.avif
 ---
 
 ## MCP 服务
