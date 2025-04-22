@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Vue3中v-for列表中使用Transition，设置delay延迟失效的bug</title>
+    <link href="/2025/04/22/vue3-transition/"/>
+    <url>/2025/04/22/vue3-transition/</url>
+    
+    <content type="html"><![CDATA[<p>当我们想在<code>v-for</code>下的每一列添加渐入效果的动画，然后根据index设置不同的延迟时间，就会发现设置的延迟时间失效了。</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;(item, index) in 5&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;item&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">Transition</span></span><br><span class="hljs-tag">        <span class="hljs-attr">appear</span></span><br><span class="hljs-tag">        <span class="hljs-attr">:enter-active-class</span>=<span class="hljs-string">&quot;`animate__animated animate__fadeInRight animate__delay-$&#123;index + 1&#125;s`&quot;</span></span><br><span class="hljs-tag">    &gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;item&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;index&quot;</span>&gt;</span><br>            &#123;&#123; index &#125;&#125;<br>        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">Transition</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure><p>其中设置动画效果是通过的 <code>animate.css</code> 库实现的, 其中 <code>animate__delay-1s</code> 就是设置延迟时间的, 表示延迟 <code>1s</code> 后开始动画。</p><p>但是当通过 <code>index</code> 为 <code>enter-active-class</code> 设置延迟时间时，动态赋值 <code>animate__delay-$&#123;index + 1&#125;s</code> 时，发现设置的延迟时间失效了。<br>也不算是失效，而是有些列的延迟时间正常，但是有的列的延迟时间却没有生效。</p><p>我猜测是由于 <code>class</code> 动态绑定的原因，渲染延迟失效，导致 <code>class</code> 没有正确的被解析和转换。</p><p>所以，将其延迟属性通过 <code>style</code> 样式的方式进行设置，就可以解决这个问题。</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;(item, index) in 5&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;item&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">Transition</span></span><br><span class="hljs-tag">        <span class="hljs-attr">appear</span></span><br><span class="hljs-tag">        <span class="hljs-attr">:enter-active-class</span>=<span class="hljs-string">&quot;`animate__animated animate__fadeInRight`&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">:style</span>=<span class="hljs-string">&quot;&#123; animationDelay: `$&#123;index + 1&#125;s` &#125;&quot;</span></span><br><span class="hljs-tag">    &gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">Transition</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure><p>这样就可以解决这个问题了。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Vue</tag>
+      
+      <tag>v-for</tag>
+      
+      <tag>Transition</tag>
+      
+      <tag>delay</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>AI模型平台Cherry Studio 使用Github MCP服务</title>
     <link href="/2025/04/15/github-mcp/"/>
     <url>/2025/04/15/github-mcp/</url>

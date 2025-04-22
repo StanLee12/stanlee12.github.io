@@ -19,28 +19,27 @@
   <meta name="author" content="stan">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Github MCP服务除了 Cherry Studio内置的MCP服务外，https:&#x2F;&#x2F;mcp.so&#x2F; 上还提供了很多官方平台提供的mcp服务  因为平时github使用的挺多的，所以就选择Github MCP服务进行一个对接 获取Github token首先我们需要获取一个Github token，用于通过mcp服务访问我们的仓库 在 Settings -&gt; Developer set">
+    <meta name="description" content="当我们想在v-for下的每一列添加渐入效果的动画，然后根据index设置不同的延迟时间，就会发现设置的延迟时间失效了。 12345678910&lt;div v-for&#x3D;&quot;(item, index) in 5&quot; :key&#x3D;&quot;item&quot;&gt;    &lt;Transition        appear        :enter-active-class">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AI模型平台Cherry Studio 使用Github MCP服务">
-<meta property="og:url" content="https://stanlee12.github.io/2025/04/15/github-mcp/index.html">
+<meta property="og:title" content="Vue3中v-for列表中使用Transition，设置delay延迟失效的bug">
+<meta property="og:url" content="https://stanlee12.github.io/2025/04/22/vue3-transition/index.html">
 <meta property="og:site_name" content="Stan&#39;s blog">
-<meta property="og:description" content="Github MCP服务除了 Cherry Studio内置的MCP服务外，https:&#x2F;&#x2F;mcp.so&#x2F; 上还提供了很多官方平台提供的mcp服务  因为平时github使用的挺多的，所以就选择Github MCP服务进行一个对接 获取Github token首先我们需要获取一个Github token，用于通过mcp服务访问我们的仓库 在 Settings -&gt; Developer set">
+<meta property="og:description" content="当我们想在v-for下的每一列添加渐入效果的动画，然后根据index设置不同的延迟时间，就会发现设置的延迟时间失效了。 12345678910&lt;div v-for&#x3D;&quot;(item, index) in 5&quot; :key&#x3D;&quot;item&quot;&gt;    &lt;Transition        appear        :enter-active-class">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://stanlee12.github.io/images/index_img/github.webp">
-<meta property="article:published_time" content="2025-04-15T08:52:03.000Z">
-<meta property="article:modified_time" content="2025-04-15T09:42:11.464Z">
+<meta property="og:image" content="https://stanlee12.github.io/images/index_img/vue3.png">
+<meta property="article:published_time" content="2025-04-22T10:34:21.000Z">
+<meta property="article:modified_time" content="2025-04-22T10:50:29.990Z">
 <meta property="article:author" content="Stan Lee">
-<meta property="article:tag" content="github">
-<meta property="article:tag" content="cherry studio">
-<meta property="article:tag" content="mcp">
-<meta property="article:tag" content="ai">
-<meta property="article:tag" content="llm">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="v-for">
+<meta property="article:tag" content="Transition">
+<meta property="article:tag" content="delay">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://stanlee12.github.io/images/index_img/github.webp">
+<meta name="twitter:image" content="https://stanlee12.github.io/images/index_img/vue3.png">
   
   
   
-  <title>AI模型平台Cherry Studio 使用Github MCP服务 - Stan&#39;s blog</title>
+  <title>Vue3中v-for列表中使用Transition，设置delay延迟失效的bug - Stan&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -220,7 +219,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="AI模型平台Cherry Studio 使用Github MCP服务"></span>
+            <span id="subtitle" data-typed-text="Vue3中v-for列表中使用Transition，设置delay延迟失效的bug"></span>
           
         </div>
 
@@ -231,8 +230,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-04-15 16:52" pubdate>
-          2025年4月15日 下午
+        <time datetime="2025-04-22 18:34" pubdate>
+          2025年4月22日 晚上
         </time>
       </span>
     
@@ -243,7 +242,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          731 字
+          329 字
         
       </span>
     
@@ -254,7 +253,7 @@
         
         
         
-          7 分钟
+          3 分钟
         
       </span>
     
@@ -291,43 +290,20 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">AI模型平台Cherry Studio 使用Github MCP服务</h1>
+            <h1 id="seo-header">Vue3中v-for列表中使用Transition，设置delay延迟失效的bug</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="Github-MCP服务"><a href="#Github-MCP服务" class="headerlink" title="Github MCP服务"></a>Github MCP服务</h2><p>除了 <code>Cherry Studio</code>内置的MCP服务外，<a target="_blank" rel="noopener" href="https://mcp.so/">https://mcp.so/</a> 上还提供了很多官方平台提供的mcp服务</p>
-<p><img src="/images/github-mcp/1.jpg" srcset="/img/loading.gif" lazyload alt="示例"></p>
-<p>因为平时github使用的挺多的，所以就选择Github MCP服务进行一个对接</p>
-<h2 id="获取Github-token"><a href="#获取Github-token" class="headerlink" title="获取Github token"></a>获取Github token</h2><p>首先我们需要获取一个Github token，用于通过mcp服务访问我们的仓库</p>
-<p>在 <code>Settings</code> -&gt; <code>Developer settings</code> -&gt; <code>Personal access tokens</code> -&gt; <code>Tokens(classic)</code> 中创建一个token</p>
-<p>为了安全起见我们新建一个 <code>Fine-grained personal access tokens</code><br><img src="/images/github-mcp/2.jpg" srcset="/img/loading.gif" lazyload alt="示例"></p>
-<p>注意，需要将你想要通过<code>ai</code>操作你仓库的权限勾选中，否则该<code>Token</code>也无法执行相应的操作<br><img src="/images/github-mcp/4.jpg" srcset="/img/loading.gif" lazyload alt="示例"></p>
-<p>这个 <code>Token</code> 我们需要保存下来，因为后面我们需要使用, 页面刷新就再也看不到了，所以记得找个记事本保存一下</p>
-<h2 id="配置Github-MCP服务"><a href="#配置Github-MCP服务" class="headerlink" title="配置Github MCP服务"></a>配置Github MCP服务</h2><p>具体配置可以参考GitHub MCP服务的文档: <a target="_blank" rel="noopener" href="https://github.com/github/github-mcp-server">https://github.com/github/github-mcp-server</a></p>
-<p>其中有一段<code>Usage with Claude Desktop</code>的配置，我们可以参考一下:</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;mcpServers&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;github&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;command&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;docker&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;args&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-string">&quot;run&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;-i&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;--rm&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;-e&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;GITHUB_PERSONAL_ACCESS_TOKEN&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;ghcr.io/github/github-mcp-server&quot;</span><br>      <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;env&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;GITHUB_PERSONAL_ACCESS_TOKEN&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&lt;YOUR_TOKEN&gt;&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
-<p>根据<code>Cherry Studio</code>开启MCP服务的配置项，我们不难发现是参考的<code>Claude</code>的配置，所以我们可以直接复制过来，然后将<code>GITHUB_PERSONAL_ACCESS_TOKEN</code>替换为我们自己的<code>Token</code></p>
-<p>然后在 <code>Cherry Studio</code> 中点击 <code>MCP</code> 服务，点击 <code>+</code> 号添加一个服务<br>点击计入该空白服务，并进行如下配置:<br><img src="/images/github-mcp/3.jpg" srcset="/img/loading.gif" lazyload alt="示例"></p>
-<ol>
-<li><p>名称, 我们就起一个方便我们识别的名称就好</p>
-</li>
-<li><p>类型, 选择 stdio 就好，因为我们的 <code>Github MCP</code>服务是启动在本地<code>docker</code>中的</p>
-</li>
-<li><p>命令, <code>Cherry Studio</code>默认推荐的命令是<code>uvx</code> 和 <code>npx</code>, 但是<code>Github MCP</code>是通过<code>docker</code>来启动的，所以我们事先需要安装<code>docker</code>, 然后此处手动输入 <code>docker</code> 即可</p>
-</li>
-<li><p>参数, 我们将 <code>json</code> 中的 <code>args</code> 部分复制过来即可, 注意要将引号以及逗号删除</p>
-</li>
-<li><p>环境变量, 配置的形式是<code>key=value</code>, 所以需要我们将 <code>GITHUB_PERSONAL_ACCESS_TOKEN=&lt;your token&gt;</code> 粘贴进去, <code>&lt;your token&gt;</code> 替换为Github账号中获取的Token</p>
-</li>
-</ol>
-<p>配置完毕之后，我们点击保存并启用该服务</p>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>切换到对话窗口, 首先我们需要告知<code>ai</code> 模型一个基本信息，我们需要操作的是哪个仓库<br>例如:</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-comment"># 角色设定</span><br>你是一个智能机器人，拥有GitHub API操作权限，你的工作是帮我管理我的GitHub代码仓库，检查是否有我未处理的issue/pr，并给出合理的解决建议。<br><br><span class="hljs-comment"># 基本信息</span><br>我github的id是：StanLee12  <br>我自己的代码仓库是：https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/StanLee12/</span>stanlee12.github.io<br></code></pre></td></tr></table></figure>
+                <p>当我们想在<code>v-for</code>下的每一列添加渐入效果的动画，然后根据index设置不同的延迟时间，就会发现设置的延迟时间失效了。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;(item, index) in 5&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;item&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">Transition</span></span><br><span class="hljs-tag">        <span class="hljs-attr">appear</span></span><br><span class="hljs-tag">        <span class="hljs-attr">:enter-active-class</span>=<span class="hljs-string">&quot;`animate__animated animate__fadeInRight animate__delay-$&#123;index + 1&#125;s`&quot;</span></span><br><span class="hljs-tag">    &gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;item&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;index&quot;</span>&gt;</span><br>            &#123;&#123; index &#125;&#125;<br>        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">Transition</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
-<p>将这段话发给<code>模型</code>，然后我们就可以开始通过<code>Cherry Studio</code>来操作我们的<code>Github</code>仓库了</p>
-<p><img src="/images/github-mcp/5.jpg" srcset="/img/loading.gif" lazyload alt="示例"></p>
-<p>可以看到<code>ai</code>通过<code>mcp</code>服务调用了 <code>list_pull_requests</code> 和 <code>list_code_scanning_alerts</code>方法， 但是第二个失败了，是因为我的<code>Token</code>没有给到相关的权限</p>
+<p>其中设置动画效果是通过的 <code>animate.css</code> 库实现的, 其中 <code>animate__delay-1s</code> 就是设置延迟时间的, 表示延迟 <code>1s</code> 后开始动画。</p>
+<p>但是当通过 <code>index</code> 为 <code>enter-active-class</code> 设置延迟时间时，动态赋值 <code>animate__delay-$&#123;index + 1&#125;s</code> 时，发现设置的延迟时间失效了。<br>也不算是失效，而是有些列的延迟时间正常，但是有的列的延迟时间却没有生效。</p>
+<p>我猜测是由于 <code>class</code> 动态绑定的原因，渲染延迟失效，导致 <code>class</code> 没有正确的被解析和转换。</p>
+<p>所以，将其延迟属性通过 <code>style</code> 样式的方式进行设置，就可以解决这个问题。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;(item, index) in 5&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;item&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">Transition</span></span><br><span class="hljs-tag">        <span class="hljs-attr">appear</span></span><br><span class="hljs-tag">        <span class="hljs-attr">:enter-active-class</span>=<span class="hljs-string">&quot;`animate__animated animate__fadeInRight`&quot;</span></span><br><span class="hljs-tag">        <span class="hljs-attr">:style</span>=<span class="hljs-string">&quot;&#123; animationDelay: `$&#123;index + 1&#125;s` &#125;&quot;</span></span><br><span class="hljs-tag">    &gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">Transition</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>这样就可以解决这个问题了。</p>
 
                 
               </div>
@@ -340,15 +316,13 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/github/" class="print-no-link">#github</a>
+        <a href="/tags/Vue/" class="print-no-link">#Vue</a>
       
-        <a href="/tags/cherry-studio/" class="print-no-link">#cherry studio</a>
+        <a href="/tags/v-for/" class="print-no-link">#v-for</a>
       
-        <a href="/tags/mcp/" class="print-no-link">#mcp</a>
+        <a href="/tags/Transition/" class="print-no-link">#Transition</a>
       
-        <a href="/tags/ai/" class="print-no-link">#ai</a>
-      
-        <a href="/tags/llm/" class="print-no-link">#llm</a>
+        <a href="/tags/delay/" class="print-no-link">#delay</a>
       
     </div>
   
@@ -360,8 +334,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>AI模型平台Cherry Studio 使用Github MCP服务</div>
-      <div>https://stanlee12.github.io/2025/04/15/github-mcp/</div>
+      <div>Vue3中v-for列表中使用Transition，设置delay延迟失效的bug</div>
+      <div>https://stanlee12.github.io/2025/04/22/vue3-transition/</div>
     </div>
     <div class="license-meta">
       
@@ -373,7 +347,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年4月15日</div>
+          <div>2025年4月22日</div>
         </div>
       
       
@@ -405,18 +379,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/04/22/vue3-transition/" title="Vue3中v-for列表中使用Transition，设置delay延迟失效的bug">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Vue3中v-for列表中使用Transition，设置delay延迟失效的bug</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/04/15/cherry-studio-mcp/" title="AI模型平台Cherry Studio开启MCP Filesystem服务">
-                        <span class="hidden-mobile">AI模型平台Cherry Studio开启MCP Filesystem服务</span>
+                      <a href="/2025/04/15/github-mcp/" title="AI模型平台Cherry Studio 使用Github MCP服务">
+                        <span class="hidden-mobile">AI模型平台Cherry Studio 使用Github MCP服务</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
