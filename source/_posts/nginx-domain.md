@@ -17,13 +17,13 @@ index_img: /images/index_img/nginx.webp
 
 进入控制台, 找到自己拥有的域名列表，找到需要解析的域名，点击:
 
-![1](../images/nginx-domain/1.jpg)
+![1](/images/nginx-domain/1.jpg)
 
 
-![2](../images/nginx-domain/2.jpg)
+![2](/images/nginx-domain/2.jpg)
 
 
-![3](../images/nginx-domain/3.jpg)
+![3](/images/nginx-domain/3.jpg)
 
 `主机记录` 指的是子域名的名称, 默认的主域名是 `www.domain.com`, 而子域名就指的是 `blog.domain.com`,  我们先添加子域名 `blog` 作为博客地址。
 
