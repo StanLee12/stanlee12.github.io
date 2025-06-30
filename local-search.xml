@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Let&#39;s Encrypt Certbot 自动申请免费 SSL 证书，并自动续费</title>
+    <link href="/2025/06/30/certbot-ssl/"/>
+    <url>/2025/06/30/certbot-ssl/</url>
+    
+    <content type="html"><![CDATA[<h2 id="1-环境以及版本"><a href="#1-环境以及版本" class="headerlink" title="1. 环境以及版本"></a>1. 环境以及版本</h2><table><thead><tr><th>配置</th><th>-版本-</th></tr></thead><tbody><tr><td>CentOS</td><td>7.9.2009</td></tr><tr><td>certbot</td><td>4.1.1</td></tr><tr><td>nginx</td><td>1.26.1</td></tr><tr><td>python</td><td>2.7.5</td></tr></tbody></table><h2 id="2-安装snap"><a href="#2-安装snap" class="headerlink" title="2. 安装snap"></a>2. 安装snap</h2><p>Let’s Encrypt 官方推荐的是使用snap进行安装，所以我们需要先安装snap</p><h3 id="2-1-先安装-EPEL"><a href="#2-1-先安装-EPEL" class="headerlink" title="2.1 先安装 EPEL"></a>2.1 先安装 <code>EPEL</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install -y epel-release<br></code></pre></td></tr></table></figure><h3 id="2-2-安装snap"><a href="#2-2-安装snap" class="headerlink" title="2.2 安装snap"></a>2.2 安装snap</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install snapd<br></code></pre></td></tr></table></figure><h3 id="2-3-启动snap服务"><a href="#2-3-启动snap服务" class="headerlink" title="2.3 启动snap服务"></a>2.3 启动snap服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">systemctl <span class="hljs-built_in">enable</span> --now snapd.socket<br><span class="hljs-built_in">ln</span> -s /var/lib/snapd/snap /snap<br></code></pre></td></tr></table></figure><h3 id="2-4-安装certbot-snap包"><a href="#2-4-安装certbot-snap包" class="headerlink" title="2.4 安装certbot snap包"></a>2.4 安装certbot snap包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">snap install core; snap refresh core<br>snap install --classic certbot<br></code></pre></td></tr></table></figure><h3 id="2-5-软链接certbot命令"><a href="#2-5-软链接certbot命令" class="headerlink" title="2.5 软链接certbot命令"></a>2.5 软链接certbot命令</h3><p>设置<code>certbot</code>命令软连接，确保<code>certbot</code>命令能够执行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ln</span> -s /snap/bin/certbot /usr/bin/certbot<br></code></pre></td></tr></table></figure><h2 id="3-申请证书"><a href="#3-申请证书" class="headerlink" title="3. 申请证书"></a>3. 申请证书</h2><p>certbot的自动化非常方便，只需要一行命令即可完成证书的申请和续签，非常的方便。<br>我们这里只考虑使用<code>nginx</code>作为web代理的情况</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">certbot --nginx<br></code></pre></td></tr></table></figure><p>执行上述命令之后，会提示输入邮箱，邮箱用于接收证书过期的通知。<br>然后<code>certbot</code>会自动扫描你的<code>nginx</code>配置文件，找到所有的<code>server</code>配置块，然后判断是否有<code>listen 80</code>或者<code>listen 443</code>的配置，如果有，就会自动申请证书。<br>同时，还会自动配置<code>nginx</code>的<code>ssl</code>证书，重启<code>nginx</code>服务即可生效。</p><p>等配置完成之后，可以打开<code>nginx</code>的配置文件查看<code>server</code>配置块内被certbot修改的内容,即已配置好<code>ssl</code></p><p><code>注意事项: 最开始我是使用的移动云服务器，certbot的自动化配置一直失败，卡在了请求本地部署的web服务的域名时一直超时，然后我在服务器上ping了一下本地部署的服务域名，发现并不能ping通，而通过其他的外部服务器是可以访问的</code><br><code>查询了下移动云的服务器因为一些默认配置导致本机是无法访问自己的你公网ip的，需要在云服务器控制台进行配置修改</code><br><code>之后我在自己的另外一台服务器上重试，是完全可行的，一套命令下来畅通无阻，顺利完成https配置</code></p><h2 id="4-自动续签"><a href="#4-自动续签" class="headerlink" title="4. 自动续签"></a>4. 自动续签</h2><p><code>certbot</code>默认有效期是三个月, 如果你想要啥它能自动续签，可以用到<code>linux</code>上的一个定时服务</p><h3 id="4-1-设置定时任务"><a href="#4-1-设置定时任务" class="headerlink" title="4.1 设置定时任务"></a>4.1 设置定时任务</h3><p>在<code>crontab</code>中添加定时任务，每天凌晨2点执行一次<code>certbot</code>的续签命令</p><p>执行<code>crontab</code>的编辑命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">crontab -e<br></code></pre></td></tr></table></figure><p>在打开的编辑器中添加定时任务, 如下:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">0 2 * * * certbot renew --quiet --nginx<br></code></pre></td></tr></table></figure><p>这段代码的意思是 每天凌晨2点执行一次<code>certbot renew</code>命令, 对<code>nginx</code>的配置进行续签, <code>--quiet</code>参数表示静默模式, 不会有任何输出, <code>--nginx</code>参数表示对<code>nginx</code>的配置进行操作</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>ssl</tag>
+      
+      <tag>certbot</tag>
+      
+      <tag>https</tag>
+      
+      <tag>centOS7</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Docker 部署 3.0.1 版本的nacos，并使用mysql作为数据库</title>
     <link href="/2025/06/20/docker-nacos/"/>
     <url>/2025/06/20/docker-nacos/</url>
