@@ -19,27 +19,27 @@
   <meta name="author" content="stan">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1. 环境以及版本   配置 -版本-    CentOS 7.9.2009   certbot 4.1.1   nginx 1.26.1   python 2.7.5   2. 安装snapLet’s Encrypt 官方推荐的是使用snap进行安装，所以我们需要先安装snap 2.1 先安装 EPEL1yum install -y epel-release  2.2 安装snap1yum in">
+    <meta name="description" content="前言前端开发使用到地图组件的时候，难免要使用到InfoWindow, 但是在使用的过程中，发现InfoWindow的内容不能直接渲染vue组件，所以就有了这篇文章。只能通过原生的html文本进行渲染，而且事件绑定还有起的麻烦，在vue2中得将事件绑定到 window 的全局对象下，才得以调用。所以研究发现了 vue3 的一个特性，可以通过 vnode 来渲染vue组件。话不多说，进入使用环节. 实">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Let&#39;s Encrypt Certbot 自动申请免费 SSL 证书，并自动续费">
-<meta property="og:url" content="https://stanlee12.github.io/2025/06/30/certbot-ssl/index.html">
+<meta property="og:title" content="Vue3 中结合地图组件渲染InfoWindow">
+<meta property="og:url" content="https://stanlee12.github.io/2025/09/02/info-window/index.html">
 <meta property="og:site_name" content="Stan&#39;s blog">
-<meta property="og:description" content="1. 环境以及版本   配置 -版本-    CentOS 7.9.2009   certbot 4.1.1   nginx 1.26.1   python 2.7.5   2. 安装snapLet’s Encrypt 官方推荐的是使用snap进行安装，所以我们需要先安装snap 2.1 先安装 EPEL1yum install -y epel-release  2.2 安装snap1yum in">
+<meta property="og:description" content="前言前端开发使用到地图组件的时候，难免要使用到InfoWindow, 但是在使用的过程中，发现InfoWindow的内容不能直接渲染vue组件，所以就有了这篇文章。只能通过原生的html文本进行渲染，而且事件绑定还有起的麻烦，在vue2中得将事件绑定到 window 的全局对象下，才得以调用。所以研究发现了 vue3 的一个特性，可以通过 vnode 来渲染vue组件。话不多说，进入使用环节. 实">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://stanlee12.github.io/images/index_img/certbot.webp">
-<meta property="article:published_time" content="2025-06-30T02:08:17.000Z">
-<meta property="article:modified_time" content="2025-06-30T03:05:26.951Z">
+<meta property="og:image" content="https://stanlee12.github.io/images/index_img/vue3.png">
+<meta property="article:published_time" content="2025-09-02T03:44:43.000Z">
+<meta property="article:modified_time" content="2025-09-02T03:59:54.934Z">
 <meta property="article:author" content="Stan Lee">
-<meta property="article:tag" content="ssl">
-<meta property="article:tag" content="certbot">
-<meta property="article:tag" content="https">
-<meta property="article:tag" content="centOS7">
+<meta property="article:tag" content="vue3">
+<meta property="article:tag" content="天地图">
+<meta property="article:tag" content="infoWindow">
+<meta property="article:tag" content="地图">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://stanlee12.github.io/images/index_img/certbot.webp">
+<meta name="twitter:image" content="https://stanlee12.github.io/images/index_img/vue3.png">
   
   
   
-  <title>Let&#39;s Encrypt Certbot 自动申请免费 SSL 证书，并自动续费 - Stan&#39;s blog</title>
+  <title>Vue3 中结合地图组件渲染InfoWindow - Stan&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -219,7 +219,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Let&#39;s Encrypt Certbot 自动申请免费 SSL 证书，并自动续费"></span>
+            <span id="subtitle" data-typed-text="Vue3 中结合地图组件渲染InfoWindow"></span>
           
         </div>
 
@@ -230,8 +230,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-06-30 10:08" pubdate>
-          2025年6月30日 上午
+        <time datetime="2025-09-02 11:44" pubdate>
+          2025年9月2日 中午
         </time>
       </span>
     
@@ -242,7 +242,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          630 字
+          491 字
         
       </span>
     
@@ -253,7 +253,7 @@
         
         
         
-          6 分钟
+          5 分钟
         
       </span>
     
@@ -290,61 +290,23 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Let&#39;s Encrypt Certbot 自动申请免费 SSL 证书，并自动续费</h1>
+            <h1 id="seo-header">Vue3 中结合地图组件渲染InfoWindow</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="1-环境以及版本"><a href="#1-环境以及版本" class="headerlink" title="1. 环境以及版本"></a>1. 环境以及版本</h2><table>
-<thead>
-<tr>
-<th>配置</th>
-<th>-版本-</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>CentOS</td>
-<td>7.9.2009</td>
-</tr>
-<tr>
-<td>certbot</td>
-<td>4.1.1</td>
-</tr>
-<tr>
-<td>nginx</td>
-<td>1.26.1</td>
-</tr>
-<tr>
-<td>python</td>
-<td>2.7.5</td>
-</tr>
-</tbody></table>
-<h2 id="2-安装snap"><a href="#2-安装snap" class="headerlink" title="2. 安装snap"></a>2. 安装snap</h2><p>Let’s Encrypt 官方推荐的是使用snap进行安装，所以我们需要先安装snap</p>
-<h3 id="2-1-先安装-EPEL"><a href="#2-1-先安装-EPEL" class="headerlink" title="2.1 先安装 EPEL"></a>2.1 先安装 <code>EPEL</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install -y epel-release<br></code></pre></td></tr></table></figure>
-
-<h3 id="2-2-安装snap"><a href="#2-2-安装snap" class="headerlink" title="2.2 安装snap"></a>2.2 安装snap</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install snapd<br></code></pre></td></tr></table></figure>
-
-<h3 id="2-3-启动snap服务"><a href="#2-3-启动snap服务" class="headerlink" title="2.3 启动snap服务"></a>2.3 启动snap服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">systemctl <span class="hljs-built_in">enable</span> --now snapd.socket<br><span class="hljs-built_in">ln</span> -s /var/lib/snapd/snap /snap<br></code></pre></td></tr></table></figure>
-
-<h3 id="2-4-安装certbot-snap包"><a href="#2-4-安装certbot-snap包" class="headerlink" title="2.4 安装certbot snap包"></a>2.4 安装certbot snap包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">snap install core; snap refresh core<br>snap install --classic certbot<br></code></pre></td></tr></table></figure>
-<h3 id="2-5-软链接certbot命令"><a href="#2-5-软链接certbot命令" class="headerlink" title="2.5 软链接certbot命令"></a>2.5 软链接certbot命令</h3><p>设置<code>certbot</code>命令软连接，确保<code>certbot</code>命令能够执行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ln</span> -s /snap/bin/certbot /usr/bin/certbot<br></code></pre></td></tr></table></figure>
-
-<h2 id="3-申请证书"><a href="#3-申请证书" class="headerlink" title="3. 申请证书"></a>3. 申请证书</h2><p>certbot的自动化非常方便，只需要一行命令即可完成证书的申请和续签，非常的方便。<br>我们这里只考虑使用<code>nginx</code>作为web代理的情况</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">certbot --nginx<br></code></pre></td></tr></table></figure>
-
-<p>执行上述命令之后，会提示输入邮箱，邮箱用于接收证书过期的通知。<br>然后<code>certbot</code>会自动扫描你的<code>nginx</code>配置文件，找到所有的<code>server</code>配置块，然后判断是否有<code>listen 80</code>或者<code>listen 443</code>的配置，如果有，就会自动申请证书。<br>同时，还会自动配置<code>nginx</code>的<code>ssl</code>证书，重启<code>nginx</code>服务即可生效。</p>
-<p>等配置完成之后，可以打开<code>nginx</code>的配置文件查看<code>server</code>配置块内被certbot修改的内容,即已配置好<code>ssl</code></p>
-<p><code>注意事项: 最开始我是使用的移动云服务器，certbot的自动化配置一直失败，卡在了请求本地部署的web服务的域名时一直超时，然后我在服务器上ping了一下本地部署的服务域名，发现并不能ping通，而通过其他的外部服务器是可以访问的</code><br><code>查询了下移动云的服务器因为一些默认配置导致本机是无法访问自己的你公网ip的，需要在云服务器控制台进行配置修改</code><br><code>之后我在自己的另外一台服务器上重试，是完全可行的，一套命令下来畅通无阻，顺利完成https配置</code></p>
-<h2 id="4-自动续签"><a href="#4-自动续签" class="headerlink" title="4. 自动续签"></a>4. 自动续签</h2><p><code>certbot</code>默认有效期是三个月, 如果你想要啥它能自动续签，可以用到<code>linux</code>上的一个定时服务</p>
-<h3 id="4-1-设置定时任务"><a href="#4-1-设置定时任务" class="headerlink" title="4.1 设置定时任务"></a>4.1 设置定时任务</h3><p>在<code>crontab</code>中添加定时任务，每天凌晨2点执行一次<code>certbot</code>的续签命令</p>
-<p>执行<code>crontab</code>的编辑命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">crontab -e<br></code></pre></td></tr></table></figure>
-
-<p>在打开的编辑器中添加定时任务, 如下:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">0 2 * * * certbot renew --quiet --nginx<br></code></pre></td></tr></table></figure>
-
-<p>这段代码的意思是 每天凌晨2点执行一次<code>certbot renew</code>命令, 对<code>nginx</code>的配置进行续签, <code>--quiet</code>参数表示静默模式, 不会有任何输出, <code>--nginx</code>参数表示对<code>nginx</code>的配置进行操作</p>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前端开发使用到地图组件的时候，难免要使用到<code>InfoWindow</code>, 但是在使用的过程中，发现<code>InfoWindow</code>的内容不能直接渲染<code>vue</code>组件，所以就有了这篇文章。<br>只能通过原生的<code>html</code>文本进行渲染，而且事件绑定还有起的麻烦，在<code>vue2</code>中得将事件绑定到 <code>window</code> 的全局对象下，才得以调用。所以研究发现了 <code>vue3</code> 的一个特性，可以通过 <code>vnode</code> 来渲染<code>vue</code>组件。<br>话不多说，进入使用环节.</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><ol>
+<li><p>先创建一个<code>vue</code>组件，用来渲染<code>InfoWindow</code>的内容。<br> <code>InfoWindow.vue</code></p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;w-300px bg-[#303133]&quot;</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;flex flex-col p-x-20px&quot;</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;font-bold text-20px color-#009e5c&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;handleClick(&#x27;info&#x27;)&quot;</span>&gt;</span></span><br><span class="language-xml">            这是InfoWindow</span><br><span class="language-xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> props = <span class="hljs-title function_">defineProps</span>(&#123;</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-attr">data</span>: &#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-attr">type</span>: <span class="hljs-title class_">Object</span>,</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-attr">default</span>: <span class="hljs-function">() =&gt;</span> (&#123;&#125;)</span></span><br><span class="language-javascript"><span class="language-xml">&#125;</span></span><br><span class="language-javascript"><span class="language-xml">&#125;)</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> emit = <span class="hljs-title function_">defineEmits</span>([<span class="hljs-string">&#x27;click&#x27;</span>])</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> <span class="hljs-title function_">handleClick</span> = (<span class="hljs-params">type: string</span>) =&gt; &#123;</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-title function_">emit</span>(<span class="hljs-string">&#x27;click&#x27;</span>, type)</span></span><br><span class="language-javascript"><span class="language-xml">&#125;</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;scss&quot;</span> <span class="hljs-attr">scoped</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<p> 可以看到，这是一个标准的<code>Vue3</code>组件，包含数据<code>data</code> 以及 回调事件 <code>click</code></p>
+</li>
+<li><p>在<code>InfoWindow</code>的<code>content</code>中，使用<code>vnode</code>来渲染<code>vue</code>组件。</p>
+<p> <code>index.vue</code></p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; createVNode, render &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">InfoWindow</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./InfoWindow.vue&#x27;</span><br><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">showInfoWindow</span> = (<span class="hljs-params"></span>) =&gt; &#123;<br>    <span class="hljs-keyword">const</span> vnode = <span class="hljs-title function_">createVNode</span>(<span class="hljs-title class_">InfoWindow</span>, &#123; landData, <span class="hljs-attr">onClick</span>: handleClick &#125;)<br>    <span class="hljs-keyword">const</span> container = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;div&#x27;</span>);<br>    <span class="hljs-title function_">render</span>(vnode, container)<br>    mapRef.<span class="hljs-property">value</span>.<span class="hljs-title function_">showInfoWindow</span>(vnode.<span class="hljs-property">el</span>, lnglat)<br>&#125;<br><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">handleClick</span> = (<span class="hljs-params">type: string</span>) =&gt; &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(type)<br>&#125;<br></code></pre></td></tr></table></figure>
+<p> 可以看到，我们使用 <code>Vue</code> 提供的 <code>createVNode</code> 方法以及 <code>render</code> 方法来渲染<code>vue</code>组件。<br> <code>createVNode</code> 方法用来创建<code>vnode</code>，第一个参数传入封装的组件，第二个参数传入组件的属性, 需要注意的是 回调事件前需要加 <code>on</code>。<br> <code>render</code> 方法用来渲染<code>vnode</code>，第一个参数传入<code>vnode</code>，第二个参数传入<code>dom</code>节点。<br> 可以看到，我们创建了一个<code>div</code>节点，用来作为<code>InfoWindow</code>的<code>content</code>，并将<code>vnode</code>渲染到这个<code>div</code>节点中。<br> 最后将这个<code>div</code>节点作为<code>InfoWindow</code>的<code>content</code>传入<code>mapRef.value.showInfoWindow</code>方法中。<br> 即可渲染成功。</p>
+</li>
+</ol>
 
                 
               </div>
@@ -357,13 +319,13 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/ssl/" class="print-no-link">#ssl</a>
+        <a href="/tags/vue3/" class="print-no-link">#vue3</a>
       
-        <a href="/tags/certbot/" class="print-no-link">#certbot</a>
+        <a href="/tags/%E5%A4%A9%E5%9C%B0%E5%9B%BE/" class="print-no-link">#天地图</a>
       
-        <a href="/tags/https/" class="print-no-link">#https</a>
+        <a href="/tags/infoWindow/" class="print-no-link">#infoWindow</a>
       
-        <a href="/tags/centOS7/" class="print-no-link">#centOS7</a>
+        <a href="/tags/%E5%9C%B0%E5%9B%BE/" class="print-no-link">#地图</a>
       
     </div>
   
@@ -375,8 +337,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Let&#39;s Encrypt Certbot 自动申请免费 SSL 证书，并自动续费</div>
-      <div>https://stanlee12.github.io/2025/06/30/certbot-ssl/</div>
+      <div>Vue3 中结合地图组件渲染InfoWindow</div>
+      <div>https://stanlee12.github.io/2025/09/02/info-window/</div>
     </div>
     <div class="license-meta">
       
@@ -388,7 +350,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年6月30日</div>
+          <div>2025年9月2日</div>
         </div>
       
       
@@ -420,18 +382,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/09/02/info-window/" title="Vue3 中结合地图组件渲染InfoWindow">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Vue3 中结合地图组件渲染InfoWindow</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/06/20/docker-nacos/" title="Docker 部署 3.0.1 版本的nacos，并使用mysql作为数据库">
-                        <span class="hidden-mobile">Docker 部署 3.0.1 版本的nacos，并使用mysql作为数据库</span>
+                      <a href="/2025/06/30/certbot-ssl/" title="Let&#39;s Encrypt Certbot 自动申请免费 SSL 证书，并自动续费">
+                        <span class="hidden-mobile">Let&#39;s Encrypt Certbot 自动申请免费 SSL 证书，并自动续费</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
