@@ -19,27 +19,25 @@
   <meta name="author" content="stan">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言前端开发使用到地图组件的时候，难免要使用到InfoWindow, 但是在使用的过程中，发现InfoWindow的内容不能直接渲染vue组件，所以就有了这篇文章。只能通过原生的html文本进行渲染，而且事件绑定还有起的麻烦，在vue2中得将事件绑定到 window 的全局对象下，才得以调用。所以研究发现了 vue3 的一个特性，可以通过 vnode 来渲染vue组件。话不多说，进入使用环节. 实">
+    <meta name="description" content="InputStream与OutputStreamJava是一种面向对象的编程语言，它提供了丰富的类库来处理文件流。文件流是指将文件中的数据读取到内存中或将内存中的数据写入到文件中的操作。 在Java中，文件流主要分为两种类型：输入流（InputStream）和输出流（OutputStream）。输入流用于从文件中读取数据，而输出流用于将数据写入到文件中。 Java提供了多个类来实现文件流的操作，例">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue3 中结合地图组件渲染InfoWindow">
-<meta property="og:url" content="https://stanlee12.github.io/2025/09/02/info-window/index.html">
+<meta property="og:title" content="Java学习记录(3) - 文件流">
+<meta property="og:url" content="https://stanlee12.github.io/2025/11/24/java-study-3/index.html">
 <meta property="og:site_name" content="Stan&#39;s blog">
-<meta property="og:description" content="前言前端开发使用到地图组件的时候，难免要使用到InfoWindow, 但是在使用的过程中，发现InfoWindow的内容不能直接渲染vue组件，所以就有了这篇文章。只能通过原生的html文本进行渲染，而且事件绑定还有起的麻烦，在vue2中得将事件绑定到 window 的全局对象下，才得以调用。所以研究发现了 vue3 的一个特性，可以通过 vnode 来渲染vue组件。话不多说，进入使用环节. 实">
+<meta property="og:description" content="InputStream与OutputStreamJava是一种面向对象的编程语言，它提供了丰富的类库来处理文件流。文件流是指将文件中的数据读取到内存中或将内存中的数据写入到文件中的操作。 在Java中，文件流主要分为两种类型：输入流（InputStream）和输出流（OutputStream）。输入流用于从文件中读取数据，而输出流用于将数据写入到文件中。 Java提供了多个类来实现文件流的操作，例">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://stanlee12.github.io/images/index_img/vue3.png">
-<meta property="article:published_time" content="2025-09-02T03:44:43.000Z">
-<meta property="article:modified_time" content="2025-09-02T03:59:54.934Z">
+<meta property="og:image" content="https://stanlee12.github.io/images/index_img/java.gif">
+<meta property="article:published_time" content="2025-11-24T10:04:25.000Z">
+<meta property="article:modified_time" content="2025-11-27T10:36:10.082Z">
 <meta property="article:author" content="Stan Lee">
-<meta property="article:tag" content="vue3">
-<meta property="article:tag" content="天地图">
-<meta property="article:tag" content="infoWindow">
-<meta property="article:tag" content="地图">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="文件流">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://stanlee12.github.io/images/index_img/vue3.png">
+<meta name="twitter:image" content="https://stanlee12.github.io/images/index_img/java.gif">
   
   
   
-  <title>Vue3 中结合地图组件渲染InfoWindow - Stan&#39;s blog</title>
+  <title>Java学习记录(3) - 文件流 - Stan&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -219,7 +217,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Vue3 中结合地图组件渲染InfoWindow"></span>
+            <span id="subtitle" data-typed-text="Java学习记录(3) - 文件流"></span>
           
         </div>
 
@@ -230,8 +228,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-09-02 11:44" pubdate>
-          2025年9月2日 中午
+        <time datetime="2025-11-24 18:04" pubdate>
+          2025年11月24日 晚上
         </time>
       </span>
     
@@ -242,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          491 字
+          326 字
         
       </span>
     
@@ -253,7 +251,7 @@
         
         
         
-          5 分钟
+          3 分钟
         
       </span>
     
@@ -290,23 +288,18 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Vue3 中结合地图组件渲染InfoWindow</h1>
+            <h1 id="seo-header">Java学习记录(3) - 文件流</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前端开发使用到地图组件的时候，难免要使用到<code>InfoWindow</code>, 但是在使用的过程中，发现<code>InfoWindow</code>的内容不能直接渲染<code>vue</code>组件，所以就有了这篇文章。<br>只能通过原生的<code>html</code>文本进行渲染，而且事件绑定还有起的麻烦，在<code>vue2</code>中得将事件绑定到 <code>window</code> 的全局对象下，才得以调用。所以研究发现了 <code>vue3</code> 的一个特性，可以通过 <code>vnode</code> 来渲染<code>vue</code>组件。<br>话不多说，进入使用环节.</p>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><ol>
-<li><p>先创建一个<code>vue</code>组件，用来渲染<code>InfoWindow</code>的内容。<br> <code>InfoWindow.vue</code></p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;w-300px bg-[#303133]&quot;</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;flex flex-col p-x-20px&quot;</span>&gt;</span></span><br><span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;font-bold text-20px color-#009e5c&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;handleClick(&#x27;info&#x27;)&quot;</span>&gt;</span></span><br><span class="language-xml">            这是InfoWindow</span><br><span class="language-xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>&lt;/template&gt;<br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> props = <span class="hljs-title function_">defineProps</span>(&#123;</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-attr">data</span>: &#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-attr">type</span>: <span class="hljs-title class_">Object</span>,</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-attr">default</span>: <span class="hljs-function">() =&gt;</span> (&#123;&#125;)</span></span><br><span class="language-javascript"><span class="language-xml">&#125;</span></span><br><span class="language-javascript"><span class="language-xml">&#125;)</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> emit = <span class="hljs-title function_">defineEmits</span>([<span class="hljs-string">&#x27;click&#x27;</span>])</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">const</span> <span class="hljs-title function_">handleClick</span> = (<span class="hljs-params">type: string</span>) =&gt; &#123;</span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-title function_">emit</span>(<span class="hljs-string">&#x27;click&#x27;</span>, type)</span></span><br><span class="language-javascript"><span class="language-xml">&#125;</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;scss&quot;</span> <span class="hljs-attr">scoped</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
-<p> 可以看到，这是一个标准的<code>Vue3</code>组件，包含数据<code>data</code> 以及 回调事件 <code>click</code></p>
-</li>
-<li><p>在<code>InfoWindow</code>的<code>content</code>中，使用<code>vnode</code>来渲染<code>vue</code>组件。</p>
-<p> <code>index.vue</code></p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; createVNode, render &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">InfoWindow</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./InfoWindow.vue&#x27;</span><br><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">showInfoWindow</span> = (<span class="hljs-params"></span>) =&gt; &#123;<br>    <span class="hljs-keyword">const</span> vnode = <span class="hljs-title function_">createVNode</span>(<span class="hljs-title class_">InfoWindow</span>, &#123; landData, <span class="hljs-attr">onClick</span>: handleClick &#125;)<br>    <span class="hljs-keyword">const</span> container = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">&#x27;div&#x27;</span>);<br>    <span class="hljs-title function_">render</span>(vnode, container)<br>    mapRef.<span class="hljs-property">value</span>.<span class="hljs-title function_">showInfoWindow</span>(vnode.<span class="hljs-property">el</span>, lnglat)<br>&#125;<br><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">handleClick</span> = (<span class="hljs-params">type: string</span>) =&gt; &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(type)<br>&#125;<br></code></pre></td></tr></table></figure>
-<p> 可以看到，我们使用 <code>Vue</code> 提供的 <code>createVNode</code> 方法以及 <code>render</code> 方法来渲染<code>vue</code>组件。<br> <code>createVNode</code> 方法用来创建<code>vnode</code>，第一个参数传入封装的组件，第二个参数传入组件的属性, 需要注意的是 回调事件前需要加 <code>on</code>。<br> <code>render</code> 方法用来渲染<code>vnode</code>，第一个参数传入<code>vnode</code>，第二个参数传入<code>dom</code>节点。<br> 可以看到，我们创建了一个<code>div</code>节点，用来作为<code>InfoWindow</code>的<code>content</code>，并将<code>vnode</code>渲染到这个<code>div</code>节点中。<br> 最后将这个<code>div</code>节点作为<code>InfoWindow</code>的<code>content</code>传入<code>mapRef.value.showInfoWindow</code>方法中。<br> 即可渲染成功。</p>
-</li>
-</ol>
+                <h3 id="InputStream与OutputStream"><a href="#InputStream与OutputStream" class="headerlink" title="InputStream与OutputStream"></a>InputStream与OutputStream</h3><p>Java是一种面向对象的编程语言，它提供了丰富的类库来处理文件流。文件流是指将文件中的数据读取到内存中或将内存中的数据写入到文件中的操作。</p>
+<p>在Java中，文件流主要分为两种类型：输入流（InputStream）和输出流（OutputStream）。输入流用于从文件中读取数据，而输出流用于将数据写入到文件中。</p>
+<p>Java提供了多个类来实现文件流的操作，例如FileInputStream、FileOutputStream、BufferedInputStream、BufferedOutputStream等。这些类都实现了InputStream和OutputStream接口，提供了不同的读写方式和缓冲区大小。</p>
+<p>通过使用文件流，我们可以方便地读取和写入文件中的数据。例如，我们可以使用FileInputStream来读取文件中的字节数据，使用FileOutputStream来写入字节数据到文件中。</p>
+<h3 id="示例-文件读取"><a href="#示例-文件读取" class="headerlink" title="示例 - 文件读取"></a>示例 - 文件读取</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test8</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">try</span> (<span class="hljs-type">InputStream</span> <span class="hljs-variable">is</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(<span class="hljs-string">&quot;/Users/stanlee/work/chart.json&quot;</span>);<br>            <span class="hljs-type">InputStreamReader</span> <span class="hljs-variable">isr</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">InputStreamReader</span>(is, <span class="hljs-string">&quot;utf-8&quot;</span>);<br>            <span class="hljs-type">BufferedReader</span> <span class="hljs-variable">br</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedReader</span>(isr);<br>        ) &#123;<br>            String line;<br>            <span class="hljs-type">StringBuilder</span> <span class="hljs-variable">sb</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuilder</span>();<br>            <span class="hljs-keyword">while</span> ((line = br.readLine()) != <span class="hljs-literal">null</span>) &#123;<br>                sb.append(line);<br>            &#125;<br>            log.info(sb.toString());<br>        &#125; <span class="hljs-keyword">catch</span> (FileNotFoundException e) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RuntimeException</span>(e);<br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RuntimeException</span>(e);<br>        &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="示例-文件复制"><a href="#示例-文件复制" class="headerlink" title="示例 - 文件复制"></a>示例 - 文件复制</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test9</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">try</span>(<span class="hljs-type">InputStream</span> <span class="hljs-variable">input</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(<span class="hljs-string">&quot;/Users/stanlee/work/chart.json&quot;</span>);<br>            <span class="hljs-type">OutputStream</span> <span class="hljs-variable">output</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(<span class="hljs-string">&quot;/Users/stanlee/work/chart-copy.json&quot;</span>);<br>        ) &#123;<br>            input.transferTo(output);<br>            output.flush();<br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RuntimeException</span>(e);<br>        &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -319,13 +312,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/vue3/" class="print-no-link">#vue3</a>
+        <a href="/tags/java/" class="print-no-link">#java</a>
       
-        <a href="/tags/%E5%A4%A9%E5%9C%B0%E5%9B%BE/" class="print-no-link">#天地图</a>
-      
-        <a href="/tags/infoWindow/" class="print-no-link">#infoWindow</a>
-      
-        <a href="/tags/%E5%9C%B0%E5%9B%BE/" class="print-no-link">#地图</a>
+        <a href="/tags/%E6%96%87%E4%BB%B6%E6%B5%81/" class="print-no-link">#文件流</a>
       
     </div>
   
@@ -337,8 +326,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Vue3 中结合地图组件渲染InfoWindow</div>
-      <div>https://stanlee12.github.io/2025/09/02/info-window/</div>
+      <div>Java学习记录(3) - 文件流</div>
+      <div>https://stanlee12.github.io/2025/11/24/java-study-3/</div>
     </div>
     <div class="license-meta">
       
@@ -350,7 +339,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年9月2日</div>
+          <div>2025年11月24日</div>
         </div>
       
       
@@ -382,9 +371,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/11/20/java-study-1/" title="Java学习记录(1) - 类与接口">
+                      <a href="/2025/11/25/java-study-4/" title="Java学习记录(4) - 邮件发送以及查看">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Java学习记录(1) - 类与接口</span>
+                        <span class="hidden-mobile">Java学习记录(4) - 邮件发送以及查看</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -392,8 +381,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/06/30/certbot-ssl/" title="Let&#39;s Encrypt Certbot 自动申请免费 SSL 证书，并自动续费">
-                        <span class="hidden-mobile">Let&#39;s Encrypt Certbot 自动申请免费 SSL 证书，并自动续费</span>
+                      <a href="/2025/11/22/java-study-2/" title="Java学习记录(2) - 注解、反射、泛型">
+                        <span class="hidden-mobile">Java学习记录(2) - 注解、反射、泛型</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
