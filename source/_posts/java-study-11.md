@@ -3,7 +3,7 @@ title: Java学习记录(11) - SpringBoot
 author: stan
 date: 2025-12-19 15:51:11
 tags: [java, springboot]
-index_img: /images/index_img/java.gif
+index_img: /images/index_img/spring_boot.webp
 ---
 
 ## 前言

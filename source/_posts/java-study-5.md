@@ -3,7 +3,7 @@ title: Java学习记录(5) -  Http编程
 author: stan
 date: 2025-11-26 18:04:25
 tags: [java, http]
-index_img: /images/index_img/java.gif
+index_img: /images/index_img/java_http.webp
 ---
 
 ### 通过学习Http编程，更清晰的了解Java实现网络通信的底层逻辑与实现。
