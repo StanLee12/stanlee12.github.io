@@ -1,0 +1,752 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/favicon.ico">
+  <link rel="icon" href="/images/favicon.ico">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="stan">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="前言Spring Cloud 是一个基于 Spring Boot 的微服务框架，它提供了一整套的解决方案，帮助开发者快速构建和部署微服务。国内的阿里巴巴也提供了自己的微服务框架，即 Spring Cloud Alibaba。所以我们在学习的时候可以使用Spring Cloud Alibaba，它提供了一整套的解决方案，帮助开发者快速构建和部署微服务，包括服务注册与发现、配置中心、负载均衡、断路器等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring Cloud 学习笔记">
+<meta property="og:url" content="https://stanlee12.github.io/2026/01/07/spring-cloud/index.html">
+<meta property="og:site_name" content="Stan&#39;s blog">
+<meta property="og:description" content="前言Spring Cloud 是一个基于 Spring Boot 的微服务框架，它提供了一整套的解决方案，帮助开发者快速构建和部署微服务。国内的阿里巴巴也提供了自己的微服务框架，即 Spring Cloud Alibaba。所以我们在学习的时候可以使用Spring Cloud Alibaba，它提供了一整套的解决方案，帮助开发者快速构建和部署微服务，包括服务注册与发现、配置中心、负载均衡、断路器等">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://stanlee12.github.io/images/index_img/spring_cloud.png">
+<meta property="article:published_time" content="2026-01-07T04:06:24.000Z">
+<meta property="article:modified_time" content="2026-01-07T04:46:59.974Z">
+<meta property="article:author" content="Stan Lee">
+<meta property="article:tag" content="Spring Cloud">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="微服务">
+<meta property="article:tag" content="Nacos">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://stanlee12.github.io/images/index_img/spring_cloud.png">
+  
+  
+  
+  <title>Spring Cloud 学习笔记 - Stan&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"stanlee12.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body><!-- hexo injector body_begin start -->
+    <link rel="stylesheet" href="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.css"><!--APlayer的样式-->
+    <script src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script><!--APlayer的依赖-->
+    <script src="https://unpkg.com/meting@2/dist/Meting.min.js"></script><!--Meting的依赖-->
+    <meting-js
+        server="netease"
+        type="song"
+        autoplay=true
+        lrc-type=3
+        id="4940920"
+        fixed=true
+        mini=true
+    >
+    </meting-js>
+    <script> 
+        let ref = setInterval(function(){	//每隔2秒尝试播放一次
+            isaplay();
+        },2000);
+        function isaplay(){
+            $(".aplayer-play").click()	//尝试播放
+            setTimeout(function() {		//延时100毫秒再执行其内部的判断
+                if($(".aplayer-pause").length > 0){
+                    clearInterval(ref);		//停止Interval，即停止循环
+            }}, 100);
+        }
+    </script>
+<!-- hexo injector body_begin end -->
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Stan&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/images/article_3.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Spring Cloud 学习笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-01-07 12:06" pubdate>
+          2026年1月7日 中午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          30 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Spring Cloud 学习笔记</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Spring Cloud 是一个基于 Spring Boot 的微服务框架，它提供了一整套的解决方案，帮助开发者快速构建和部署微服务。国内的阿里巴巴也提供了自己的微服务框架，即 Spring Cloud Alibaba。<br>所以我们在学习的时候可以使用Spring Cloud Alibaba，它提供了一整套的解决方案，帮助开发者快速构建和部署微服务，包括服务注册与发现、配置中心、负载均衡、断路器等。本章节的主要内容主要是介绍Spring Cloud Alibaba的主要组件，以及如何使用它们来构建和部署微服务。</p>
+<ul>
+<li>Spring-cloud-alibaba：基于 Spring Cloud 的微服务框架，提供了一整套的解决方案，帮助开发者快速构建和部署微服务。</li>
+<li>Nacos：服务注册与发现、配置中心</li>
+<li>Gateway：API 网关，用于路由、过滤、负载均衡等</li>
+</ul>
+<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs shell">├── cloud-common<br>│   ├── HELP.md<br>│   ├── mvnw<br>│   ├── mvnw.cmd<br>│   ├── pom.xml<br>│   ├── src<br>│   └── target<br>├── cloud-gateway<br>│   ├── HELP.md<br>│   ├── mvnw<br>│   ├── mvnw.cmd<br>│   ├── pom.xml<br>│   ├── src<br>│   └── target<br>├── order-service<br>│   ├── HELP.md<br>│   ├── mvnw<br>│   ├── mvnw.cmd<br>│   ├── pom.xml<br>│   ├── src<br>│   └── target<br>├── pom.xml<br>└── user-service<br>    ├── HELP.md<br>    ├── mvnw<br>    ├── mvnw.cmd<br>    ├── pom.xml<br>    ├── src<br>    └── target<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>cloud-common：公共模块，包含一些公共的类、接口、枚举等</li>
+<li>cloud-gateway：API 网关模块，用于路由、过滤、负载均衡等</li>
+<li>order-service：订单服务模块，用于处理订单相关的业务逻辑</li>
+<li>user-service：用户服务模块，用于处理用户相关的业务逻辑</li>
+</ul>
+<p> 其中项目的根目录有一个<code>pom.xml</code>文件，它是项目的父工程，用于管理子工程的依赖和插件。相当于是一个项目的总配置文件，进行依赖以及项目配置的总管理。<br> 文件内容如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">project</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span></span><br><span class="hljs-tag">         <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span><br><span class="hljs-tag">         <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://maven.apache.org/POM/4.0.0</span></span><br><span class="hljs-string"><span class="hljs-tag">         http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">modelVersion</span>&gt;</span>4.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">modelVersion</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.demo<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-demo<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">packaging</span>&gt;</span>pom<span class="hljs-tag">&lt;/<span class="hljs-name">packaging</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">java.version</span>&gt;</span>17<span class="hljs-tag">&lt;/<span class="hljs-name">java.version</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">spring.boot.version</span>&gt;</span>3.4.5<span class="hljs-tag">&lt;/<span class="hljs-name">spring.boot.version</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">spring.cloud.version</span>&gt;</span>2024.0.1<span class="hljs-tag">&lt;/<span class="hljs-name">spring.cloud.version</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">spring.cloud.alibaba.version</span>&gt;</span>2023.0.3.2<span class="hljs-tag">&lt;/<span class="hljs-name">spring.cloud.alibaba.version</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">dependencyManagement</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>            <span class="hljs-comment">&lt;!-- Spring Boot --&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-dependencies<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>$&#123;spring.boot.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>pom<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>import<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-comment">&lt;!-- Spring Cloud --&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-dependencies<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>$&#123;spring.cloud.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>pom<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>import<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-comment">&lt;!-- Spring-cloud-alibaba --&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.alibaba.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-alibaba-dependencies<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>$&#123;spring.cloud.alibaba.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>pom<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>import<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">dependencyManagement</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">project</span>&gt;</span><br><br></code></pre></td></tr></table></figure>
+
+<p> 其中 <code>packaging</code> 标签指定了项目的打包方式，这里是 <code>pom</code>，表示这是一个父工程，不包含可执行的代码，只是用于管理子工程的依赖和插件。<br> 其中的 <code>dependencyManagement</code> 标签用于管理子工程的依赖，这里指定了 Spring Boot、Spring Cloud、Spring Cloud Alibaba 等依赖的版本，以及它们的打包方式。<br> 在子模块中使用时，只需要在 <code>pom.xml</code> 文件中添加对应的依赖即可，不需要再指定版本号。<br> 例如，在 <code>order-service</code> 模块中使用 Nacos 作为服务注册与发现组件，只需要添加如下依赖即可：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.alibaba.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-discovery<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>其中<code>spring-cloud-alibaba-dependencies</code> 其中已内置了 Nacos 相关的依赖，所以我们只需要添加 <code>spring-cloud-starter-alibaba-nacos-discovery</code> 依赖即可。</p>
+<h2 id="子模块配置"><a href="#子模块配置" class="headerlink" title="子模块配置"></a>子模块配置</h2><p>在子模块的 <code>pom.xml</code> 文件中，需要添加如下配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">parent</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.demo<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-demo<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">relativePath</span> /&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">parent</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>其中 <code>parent</code> 标签指定了父工程的坐标，这里是 <code>spring-cloud-demo</code> 项目的根目录下的 <code>pom.xml</code> 文件。<br>通过添加这个配置，子模块就可以继承父工程的依赖和插件，避免重复配置。<br>子模块<code>pom.xml</code>内容如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">project</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span> <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span><br><span class="hljs-tag">         <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">modelVersion</span>&gt;</span>4.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">modelVersion</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">parent</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.demo<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-demo<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">relativePath</span>/&gt;</span> <span class="hljs-comment">&lt;!-- lookup parent from repository --&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">parent</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>user-service<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>user-service<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">description</span>&gt;</span>user-service<span class="hljs-tag">&lt;/<span class="hljs-name">description</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">url</span>/&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">licenses</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">license</span>/&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">licenses</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">developers</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">developer</span>/&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">developers</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">scm</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">connection</span>/&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">developerConnection</span>/&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">tag</span>/&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">url</span>/&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">scm</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">java.version</span>&gt;</span>17<span class="hljs-tag">&lt;/<span class="hljs-name">java.version</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.alibaba.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-discovery<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.alibaba.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-config<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">project</span>&gt;</span><br><br></code></pre></td></tr></table></figure>
+
+<p>其中我们需要使用到spring-boot-starter-web依赖，用于提供RESTful API。<br>然后就是添加<code>spring-cloud-starter-alibaba-nacos-discovery</code>用于服务注册与发现。<br>同时，我们也需要添加<code>spring-cloud-starter-alibaba-nacos-config</code>用于配置中心。可以通过nacos中心进行项目配置的动态获取与更新。</p>
+<h2 id="Nacos"><a href="#Nacos" class="headerlink" title="Nacos"></a>Nacos</h2><p>我是基于<code>Docker</code>部署的Nacos服务，所以仅需要一行命令即可启动Nacos服务。我是创建的3.0版本的Nacos服务。与以往的版本使用方式不太一致。</p>
+<ol>
+<li><p>拉取镜像:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker pull nacos/nacos-server:3.0.1<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>生成密钥(启动Nacos服务时需要):</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">openssl rand -base64 32 | tr -d &#x27;/+=&#x27; | cut -c1-32<br>echo $TOKEN<br></code></pre></td></tr></table></figure>
+<p>示例输出：OQCiofvklDg15KV4dJxqzxkL9BITbMYB。</p>
+</li>
+</ol>
+<p>将其进行base64编码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">echo -n &quot;OQCiofvklDg15KV4dJxqzxkL9BITbMYB&quot; | base64 -w 0<br></code></pre></td></tr></table></figure>
+<p>输出示例：T1FDaW9mdmtsRGcxNUtWNGRIeHF6eGtMOUJJVGJNWUI&#x3D;。</p>
+<p>即可生成我们需要的NACOS_AUTH_TOKEN。</p>
+<ol start="3">
+<li>启动Nacos服务:<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker run --name nacos \<br>    -e MODE=standalone \<br>    -e NACOS_AUTH_TOKEN=T1FDaW9mdmtsRGcxNUtWNGRIeHF6eGtMOUJJVGJNWUI= \<br>    -e NACOS_AUTH_IDENTITY_KEY=nacos \<br>    -e NACOS_AUTH_IDENTITY_VALUE=nacos \<br>    -p 8080:8080 \ # 新版本的nacos的控制台地址变成了 127.0.0.1:8080/index.html<br>    -p 8848:8848 \<br>    -p 9848:9848 \<br>    -d nacos/nacos-server:3.0.1<br></code></pre></td></tr></table></figure></li>
+</ol>
+<p>注: 启动完成后，即可通过 <code>http://localhost:8080/index.html</code> 访问 Nacos 控制台，默认账号密码均为 <code>nacos</code>。访问web控制台的端口是<code>8080</code>, 服务连接端口是<code>8848</code>。</p>
+<h2 id="UserService"><a href="#UserService" class="headerlink" title="UserService"></a>UserService</h2><h3 id="项目依赖"><a href="#项目依赖" class="headerlink" title="项目依赖"></a>项目依赖</h3><p>在<code>UserService</code>模块的 <code>pom.xml</code> 文件中，需要添加如下依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">project</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span> <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span><br><span class="hljs-tag">         <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">modelVersion</span>&gt;</span>4.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">modelVersion</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">parent</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.demo<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-demo<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">relativePath</span>/&gt;</span> <span class="hljs-comment">&lt;!-- lookup parent from repository --&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">parent</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>user-service<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>user-service<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">description</span>&gt;</span>user-service<span class="hljs-tag">&lt;/<span class="hljs-name">description</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">url</span>/&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">licenses</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">license</span>/&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">licenses</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">developers</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">developer</span>/&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">developers</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">scm</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">connection</span>/&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">developerConnection</span>/&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">tag</span>/&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">url</span>/&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">scm</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">java.version</span>&gt;</span>17<span class="hljs-tag">&lt;/<span class="hljs-name">java.version</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.alibaba.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-discovery<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.alibaba.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-config<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">project</span>&gt;</span><br><br></code></pre></td></tr></table></figure>
+
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p>在<code>UserService</code>模块的 <code>application.yaml</code> 文件中，需要添加如下配置：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">18080</span><br><br><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">application:</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">user-service</span><br>  <span class="hljs-attr">profiles:</span><br>    <span class="hljs-attr">active:</span> <span class="hljs-string">dev</span><br>  <span class="hljs-attr">config:</span><br>    <span class="hljs-attr">import:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">optional:classpath:application.yaml</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">optional:nacos:$&#123;spring.application.name&#125;.yaml</span><br>  <span class="hljs-attr">cloud:</span><br>    <span class="hljs-attr">nacos:</span><br>      <span class="hljs-attr">discovery:</span><br>        <span class="hljs-attr">server-addr:</span> <span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span><span class="hljs-string">:8848</span><br>        <span class="hljs-attr">namespace:</span> <span class="hljs-string">ec9ee84f-9e35-400b-8c31-8ed8cca22316</span><br><span class="hljs-attr">logging:</span><br>  <span class="hljs-attr">level:</span><br>    <span class="hljs-attr">com.demo.userservice:</span> <span class="hljs-string">debug</span><br><br><br></code></pre></td></tr></table></figure>
+<ul>
+<li>其中<code>server.port</code>配置了服务的端口号为<code>18080</code>。</li>
+<li><code>spring.application.name</code>配置了服务的名称为<code>user-service</code>。</li>
+<li><code>spring.profiles.active</code>配置了当前环境为<code>dev</code>。</li>
+<li><code>spring.config.import</code>配置了从本地的配置文件<code>classpath:application.yaml</code>和远程的<code>Nacos</code>服务中心<code>nacos:$&#123;spring.application.name&#125;.yaml</code>中导入配置。其中有先后顺序，后面的相同配置项会覆盖前面的配置。</li>
+<li><code>spring.cloud.nacos.discovery.server-addr</code>配置了Nacos服务的连接地址为<code>127.0.0.1:8848</code>。</li>
+<li><code>spring.cloud.nacos.discovery.namespace</code>配置了Nacos服务的命名空间为<code>ec9ee84f-9e35-400b-8c31-8ed8cca22316</code>。需要登录Nacos控制台，在命名空间列表中进行新建命名空间，即可获取到命名空间ID。</li>
+<li><code>logging.level.com.demo.userservice</code>配置了<code>com.demo.userservice</code>包的日志级别为<code>debug</code>。</li>
+</ul>
+<h3 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.demo.userservice.controller;<br><br><span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.GetMapping;<br><span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;<br><span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.RestController;<br><br><span class="hljs-meta">@RestController</span><br><span class="hljs-meta">@RequestMapping(&quot;/api/users&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserController</span> &#123;<br><br>    <span class="hljs-meta">@GetMapping(&quot;/hello&quot;)</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">index</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Hello World&quot;</span>;<br>    &#125;<br><br>    <span class="hljs-meta">@GetMapping(&quot;/getUser&quot;)</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getUser</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Stan&quot;</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>因为是一个示例项目，所以就简单的创建一个<code>UserController</code>类，用于提供<code>/api/users/hello</code>和<code>/api/users/getUser</code>两个接口。通过访问这两个接口，即可验证服务是否正常运行。</p>
+<ul>
+<li><code>/api/users/hello</code>接口返回<code>Hello World</code>字符串。</li>
+<li><code>/api/users/getUser</code>接口返回<code>Stan</code>字符串。</li>
+</ul>
+<h2 id="验证服务是否正常运行"><a href="#验证服务是否正常运行" class="headerlink" title="验证服务是否正常运行"></a>验证服务是否正常运行</h2><ol>
+<li>启动<code>UserService</code>模块。</li>
+<li>访问<code>http://localhost:18080/api/users/hello</code>，即可返回<code>Hello World</code>字符串。</li>
+<li>访问<code>http://localhost:18080/api/users/getUser</code>，即可返回<code>Stan</code>字符串。</li>
+</ol>
+<p>如果能够正常返回字符串，说明服务已经启动成功。</p>
+<h2 id="网关"><a href="#网关" class="headerlink" title="网关"></a>网关</h2><h3 id="项目依赖-1"><a href="#项目依赖-1" class="headerlink" title="项目依赖"></a>项目依赖</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">project</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span> <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span><br><span class="hljs-tag">         <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">modelVersion</span>&gt;</span>4.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">modelVersion</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">parent</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.demo<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-demo<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">relativePath</span>/&gt;</span> <span class="hljs-comment">&lt;!-- lookup parent from repository --&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">parent</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.demo<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>cloud-gateway<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>cloud-gateway<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">description</span>&gt;</span>cloud-gateway<span class="hljs-tag">&lt;/<span class="hljs-name">description</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">url</span>/&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">licenses</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">license</span>/&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">licenses</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">developers</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">developer</span>/&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">developers</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">scm</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">connection</span>/&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">developerConnection</span>/&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">tag</span>/&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">url</span>/&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">scm</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">java.version</span>&gt;</span>17<span class="hljs-tag">&lt;/<span class="hljs-name">java.version</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- Gateway 网关核心依赖 --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-starter-gateway<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- Nacos 服务发现 --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.alibaba.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-discovery<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-comment">&lt;!-- 负载均衡 (Spring Cloud 2020 及以后版本需要显式引入) --&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.cloud<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-cloud-starter-loadbalancer<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">project</span>&gt;</span><br><br></code></pre></td></tr></table></figure>
+
+<h3 id="配置文件-1"><a href="#配置文件-1" class="headerlink" title="配置文件"></a>配置文件</h3><p>在<code>Gateway</code>模块的 <code>application.yaml</code> 文件中，需要添加如下配置：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">9090</span><br><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">application:</span><br>    <span class="hljs-attr">name:</span> <span class="hljs-string">cloud-gateway</span><br>  <span class="hljs-attr">cloud:</span><br>    <span class="hljs-attr">nacos:</span><br>      <span class="hljs-attr">discovery:</span><br>        <span class="hljs-attr">server-addr:</span> <span class="hljs-string">localhost:8848</span><br>        <span class="hljs-attr">namespace:</span> <span class="hljs-string">ec9ee84f-9e35-400b-8c31-8ed8cca22316</span><br>    <span class="hljs-attr">gateway:</span><br>      <span class="hljs-attr">discovery:</span><br>        <span class="hljs-attr">locator:</span><br>          <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span><br>          <span class="hljs-attr">lower-case-service-id:</span> <span class="hljs-literal">true</span><br>      <span class="hljs-attr">routes:</span><br>        <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">user-service</span><br>          <span class="hljs-attr">uri:</span> <span class="hljs-string">lb://user-service</span><br>          <span class="hljs-attr">predicates:</span><br>            <span class="hljs-bullet">-</span> <span class="hljs-string">Path=/api/users/**</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>server.port</code>配置了网关的端口号为<code>9090</code>。</li>
+<li><code>spring.application.name</code>配置了网关的名称为<code>cloud-gateway</code>。</li>
+<li><code>spring.cloud.nacos.discovery.server-addr</code>配置了Nacos服务的连接地址为<code>localhost:8848</code>。</li>
+<li><code>spring.cloud.nacos.discovery.namespace</code>配置了Nacos服务的命名空间为<code>ec9ee84f-9e35-400b-8c31-8ed8cca22316</code>。</li>
+<li><code>spring.cloud.gateway.discovery.locator.enabled</code>配置了开启网关的服务发现功能。</li>
+<li><code>spring.cloud.gateway.discovery.locator.lower-case-service-id</code>配置了将服务ID转换为小写。</li>
+<li><code>routes</code>配置了网关的路由规则。<ul>
+<li><code>id</code>配置了路由的ID为<code>user-service</code>。</li>
+<li><code>uri</code>配置了路由的目标服务为<code>lb://user-service</code>，其中<code>lb</code>表示负载均衡。</li>
+</ul>
+</li>
+<li><code>predicates</code>配置了路由的断言规则。<ul>
+<li><code>Path=/api/users/**</code>配置了路由的路径为<code>/api/users/**</code>，表示所有以<code>/api/users/</code>开头的请求都将被路由到<code>user-service</code>服务。</li>
+</ul>
+</li>
+</ul>
+<h3 id="网关说明"><a href="#网关说明" class="headerlink" title="网关说明"></a>网关说明</h3><p>网关是微服务架构中的一个重要组件，它负责接收外部请求并将其路由到相应的微服务。网管模块中不应该编写业务逻辑，而应该专注于路由、过滤、负载均衡等功能。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过以上配置，我们成功地创建了一个基于Spring Cloud的微服务架构，包括服务注册与发现、配置中心、API网关等组件。每个微服务模块都有自己的业务逻辑，而网关模块则负责将外部请求路由到相应的微服务。</p>
+<ol>
+<li>启动<code>UserService</code>模块。</li>
+<li>启动<code>Gateway</code>模块。</li>
+</ol>
+<p>访问<code>Nacos</code>控制台, 即可发现服务列表中会有两个服务: <code>user-service</code>和<code>cloud-gateway</code>。状态为运行时。</p>
+<p>通过访问<code>http://localhost:9090/api/users/hello</code>，即可返回<code>Hello World</code>字符串。这首先是访问到的<code>cloud-gateway</code>网关，网关再将请求路由到<code>user-service</code>服务。<br>至此，我们成功地实现了基于Spring Cloud的微服务架构，包括服务注册与发现、配置中心、API网关等组件。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Spring-Cloud/" class="print-no-link">#Spring Cloud</a>
+      
+        <a href="/tags/Java/" class="print-no-link">#Java</a>
+      
+        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="print-no-link">#微服务</a>
+      
+        <a href="/tags/Nacos/" class="print-no-link">#Nacos</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Spring Cloud 学习笔记</div>
+      <div>https://stanlee12.github.io/2026/01/07/spring-cloud/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>stan</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年1月7日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/12/19/java-study-11/" title="Java学习记录(11) - SpringBoot">
+                        <span class="hidden-mobile">Java学习记录(11) - SpringBoot</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <i class="iconfont icon-love"></i> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<!-- hexo injector body_end start -->
+    <script src="/js/star.js"></script>
+
+    <script src="/js/explosion.js"></script>
+
+    <script src="/js/sakura.js"></script>
+<!-- hexo injector body_end end --></body>
+</html>
