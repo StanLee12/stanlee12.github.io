@@ -4,6 +4,29 @@
   
   
   <entry>
+    <title>Idea通过远程连接的Docker服务一键部署应用</title>
+    <link href="/2026/10/14/idea-docker/"/>
+    <url>/2026/10/14/idea-docker/</url>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><code>Idea</code>默认带了运行<code>Docker</code>容器的功能，但是我们需要连接到远程的<code>Docker</code>服务，才能部署应用。这篇文章的基础是在上一篇中我们完成了<code>Idea</code>连接远程的<code>Docker</code>服务。</p><h2 id="新建运行配置"><a href="#新建运行配置" class="headerlink" title="新建运行配置"></a>新建运行配置</h2><p><img src="/images/idea-docker/idea-docker-1.png" alt="示例"></p><p>在<code>Idea</code>右上角点击 <code>运行配置 -&gt; 新建</code> 即可新建一个运行配置。</p><h2 id="选择Docker运行文件"><a href="#选择Docker运行文件" class="headerlink" title="选择Docker运行文件"></a>选择<code>Docker</code>运行文件</h2><p><img src="/images/idea-docker/idea-docker-2.png" alt="示例"></p><p>因为我这里运行牵扯到了<code>Docker</code>的<code>networks</code>, 所以是使用<code>Docker Compose</code>文件。</p><h2 id="配置Docker-Compose"><a href="#配置Docker-Compose" class="headerlink" title="配置Docker Compose"></a>配置<code>Docker Compose</code></h2><p><img src="/images/idea-docker/idea-docker-3.png" alt="示例"></p><p>首先我们<code>Docker</code>服务当然要选服务器上的，而不是选本地的，注意不要选错了。<br>到这一步骤，你点击运行该配置，也就是完成了部署，应用就会在服务器上运行了。跟你在服务器上通过<code>docker-compose up -d</code>是一样的。</p><h2 id="打包命令"><a href="#打包命令" class="headerlink" title="打包命令"></a>打包命令</h2><p>如果还想简化操作，需要在部署前执行打包，则可以：</p><p><img src="/images/idea-docker/idea-docker-4.png" alt="示例"></p><p><img src="/images/idea-docker/idea-docker-5.png" alt="示例"></p><p>添加<code>执行前</code>的一些操作，运行<code>mvn</code>的打包指令即可，这样就实现了在<code>Idea</code>中一键打包部署应用。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Idea</tag>
+      
+      <tag>Docker</tag>
+      
+      <tag>Deploy</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>连接远程服务器上部署的Docker服务</title>
     <link href="/2026/10/14/remote-docker/"/>
     <url>/2026/10/14/remote-docker/</url>
