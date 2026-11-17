@@ -1,5 +1,5 @@
 ---
-title: Java学习记录(11) - SpringBoot
+title: Java (11) - SpringBoot
 author: stan
 date: 2025-12-19 15:51:11
 tags: [java, springboot]

@@ -1,5 +1,5 @@
 ---
-title: Java学习记录(1) - 类与接口
+title: Java (1) - 类与接口
 author: stan
 date: 2025-11-20 18:04:25
 tags: [java, class, interface]

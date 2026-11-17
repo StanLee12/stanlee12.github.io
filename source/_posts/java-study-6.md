@@ -1,5 +1,5 @@
 ---
-title: Java学习记录(6) - 数据库连接
+title: Java (6) - 数据库连接
 author: stan
 date: 2025-11-27 18:04:25
 tags: [java, mysql, jdbc]

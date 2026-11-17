@@ -1,5 +1,5 @@
 ---
-title: Java学习记录(7) - Servlet与Jsp
+title: Java (7) - Servlet与Jsp
 author: stan
 date: 2025-12-4 11:44:43
 tags: [java, servlet, jsp]

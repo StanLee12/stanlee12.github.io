@@ -1,5 +1,5 @@
 ---
-title: Java学习记录(9) - Spring之AOP编程
+title: Java (9) - Spring之AOP编程
 author: stan
 date: 2025-12-10 10:29:45
 tags: [java, Spring, AOP]

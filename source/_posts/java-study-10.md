@@ -1,5 +1,5 @@
 ---
-title: Java学习记录(10) - SpringMVC(实现api接口请求)
+title: Java (10) - SpringMVC(实现api接口请求)
 author: stan
 date: 2025-12-18 13:39:48
 tags: [java, Spring, MVC, Servlet]

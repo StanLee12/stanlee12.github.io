@@ -1,5 +1,5 @@
 ---
-title: Java学习记录(4) - 邮件发送以及查看
+title: Java (4) - 邮件发送以及查看
 author: stan
 date: 2025-11-25 18:04:25
 tags: [java, 邮件]

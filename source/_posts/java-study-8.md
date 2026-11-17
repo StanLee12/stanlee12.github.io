@@ -1,5 +1,5 @@
 ---
-title: Java学习记录(8) - Spring之IoC容器
+title: Java (8) - Spring之IoC容器
 author: stan
 date: 2025-12-08 17:19:55
 tags: [java, Spring, IoC]

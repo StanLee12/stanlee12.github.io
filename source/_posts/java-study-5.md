@@ -1,5 +1,5 @@
 ---
-title: Java学习记录(5) -  Http编程
+title: Java (5) -  Http编程
 author: stan
 date: 2025-11-26 18:04:25
 tags: [java, http]

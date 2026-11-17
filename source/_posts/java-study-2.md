@@ -1,5 +1,5 @@
 ---
-title: Java学习记录(2) - 注解、反射、泛型
+title: Java (2) - 注解、反射、泛型
 author: stan
 date: 2025-11-22 18:04:25
 tags: [java, 反射, 泛型, 注解]
